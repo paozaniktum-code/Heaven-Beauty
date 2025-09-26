@@ -330,6 +330,45 @@
     outline-offset:2px;
   }
 }
+/* ===== Nav - tidy tabs ===== */
+.navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; padding: 10px 16px;
+}
+.nav-left {
+  overflow: hidden;           /* กันสั่น */
+}
+.nav-menu {
+  display: flex; align-items: center; gap: 28px;
+  list-style: none; margin: 0; padding: 0;
+  flex-wrap: nowrap;          /* ไม่หักบรรทัด */
+}
+.nav-menu a {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 40px; padding: 0 12px; border-radius: 10px;
+  font-weight: 600; text-decoration: none; color: #434343;
+  line-height: 1.15;          /* ไทย/อังกฤษสูงเท่ากัน */
+  white-space: nowrap;
+}
+.nav-menu a:hover,
+.nav-menu a.active { background: rgba(0,0,0,.06); }
+
+.nav-right { display: flex; align-items: center; gap: 8px; }
+.nav-right label { color:#666; font-weight:600; }
+.nav-lang {
+  height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid #e5e7eb;
+  background: #fff; font-weight: 600; color:#111;
+}
+
+/* Mobile: เมนูเลื่อนได้แนวนอน แต่คงเรียงแถวเดิม */
+@media (max-width: 768px){
+  .navbar { gap: 12px; padding: 8px 12px; }
+  .nav-left { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .nav-left::-webkit-scrollbar { display:none; }  /* ซ่อนสกอลล์บาร์ */
+  .nav-menu { gap: 16px; }
+  .nav-right label { display:none; }             /* เหลือแค่ดรอปดาวน์ภาษา */
+  .nav-lang { height: 36px; }
+}
 
 
   </style>
@@ -345,25 +384,29 @@
 
   <header>
     <nav>
-      <div class="nav-row">
-        <a href="#" class="logo" data-i18n="brand">Heaven &amp; Beauty</a>
-      </div>
-      <button class="hamburger-btn" aria-label="Toggle navigation menu">☰</button>
-      <ul class="nav-menu">
-        <li><a href="#home" data-i18n="nav.home">หน้าแรก</a></li>
-        <li><a href="#products" data-i18n="nav.products">ผลิตภัณฑ์</a></li>
-        <li><a href="#about" data-i18n="nav.about">เกี่ยวกับเรา</a></li>
-        <li><a href="#wellness" data-i18n="nav.wellness">Wellness</a></li>
-        <li><a href="#contact" data-i18n="nav.contact">ติดต่อ</a></li>
-      </ul>
-      <div class="lang-select">
-        <label for="lang" data-i18n="lang.label">ภาษา:</label>
-        <select id="lang" aria-label="Language selector">
-          <option value="th">ไทย</option>
-          <option value="en">English</option>
-        
-        </select>
-      </div>
+      <nav class="navbar">
+  <div class="nav-left">
+    <ul class="nav-menu">
+      <li><a href="#home" class="active">หน้าแรก</a></li>
+      <li><a href="#products">ผลิตภัณฑ์</a></li>
+      <li><a href="#about">เกี่ยวกับเรา</a></li>
+      <li><a href="#wellness">Wellness</a></li>
+      <li><a href="#contact">ติดต่อ</a></li>
+    </ul>
+  </div>
+
+  <div class="nav-right">
+    <label for="lang">ภาษา:</label>
+    <select id="lang" class="nav-lang">
+      <option value="th" selected>ไทย</option>
+      <option value="en">English</option>
+      <option value="zh">中文</option>
+      <option value="ja">日本語</option>
+      <option value="ko">한국어</option>
+    </select>
+  </div>
+</nav>
+
     </nav>
   </header>
 
