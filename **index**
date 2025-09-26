@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Heaven and Beauty - Wellness & Organic Beauty</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-/F9C0vFiKhv6KRkFdXKnQQ2Fj2Ahg17eqbAzZzBjcXFLK8opKa5tuPUbsy9vI0D0LPsr1HOuwyL/0I1nqOrFow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
     body { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #e1bee7 100%); min-height: 100vh; overflow-x: hidden; padding-top: 50px; /* เพิ่ม padding ด้านบนเพื่อหลีกเลี่ยง Header ที่ sticky */ }
 
@@ -354,9 +356,7 @@
         <select id="lang" aria-label="Language selector">
           <option value="th">ไทย</option>
           <option value="en">English</option>
-          <option value="zh">中文</option>
-          <option value="ja">日本語</option>
-          <option value="ko">한국어</option>
+        
         </select>
       </div>
     </nav>
@@ -561,12 +561,13 @@
       </div>
     </div>
     <div class="social-links">
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" title="Facebook">📘</a>
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">📷</a>
-      <a href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener noreferrer" class="social-link" title="LINE">💬</a>
-      <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-link" title="TikTok">🎵</a>
-      <a href="mailto:info@heavenbeauty.com" class="social-link" title="Email">📧</a>
-    </div>
+  <a href="https://facebook.com" class="social-link" title="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://instagram.com" class="social-link" title="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+  <a href="https://line.me/R/ti/p/@heavenbeauty" class="social-link" title="LINE" target="_blank" rel="noopener"><i class="fab fa-line"></i></a>
+  <a href="https://tiktok.com" class="social-link" title="TikTok" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i></a>
+  <a href="mailto:info@heavenbeauty.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+</div>
+
   </section>
 
   <footer>
