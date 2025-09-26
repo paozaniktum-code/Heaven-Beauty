@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heaven and Beauty - Wellness & Organic Beauty</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="nav">
+      <a href="#" class="logo" data-i18n="brand">Heaven &amp; Beauty</a>
+      <ul class="nav-menu">
+        <li><a href="#home" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="#products" data-i18n="nav.products">ผลิตภัณฑ์</a></li>
+        <li><a href="#about" data-i18n="nav.about">เกี่ยวกับเรา</a></li>
+        <li><a href="#wellness" data-i18n="nav.wellness">Wellness</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">ติดต่อ</a></li>
+      </ul>
+      <div class="lang-select">
+        <label for="lang" data-i18n="lang.label">ภาษา:</label>
+        <select id="lang" aria-label="Language selector">
+          <option value="th">ไทย</option>
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+          <option value="ja">日本語</option>
+          <option value="ko">한국어</option>
+        </select>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <h1 data-i18n="hero.title">ยินดีต้อนรับสู่ Heaven and Beauty</h1>
+    <p data-i18n="hero.desc">เราคัดสรรส่วนผสมที่ดีที่สุดจากธรรมชาติ เพื่อสร้างสรรค์ผลิตภัณฑ์ออร์แกนิคที่ปลอดภัยและอ่อนโยนต่อผิวคุณ ดูแลสุขภาพและความงามอย่างธรรมชาติ</p>
+    <a href="#products" class="cta-button" data-i18n="hero.cta">สำรวจผลิตภัณฑ์</a>
+  </section>
+
+  <!-- Products -->
+  <section class="products" id="products">
+    <h2 data-i18n="products.title">ผลิตภัณฑ์ของเรา</h2>
+    <div class="product-categories">
+      <button class="category-btn active" data-category="all" data-i18n="products.cat_all">ทั้งหมด</button>
+      <button class="category-btn" data-category="skincare" data-i18n="products.cat_skincare">ดูแลผิว</button>
+      <button class="category-btn" data-category="wellness" data-i18n="products.cat_wellness">เวลเนส</button>
+      <button class="category-btn" data-category="aromatherapy" data-i18n="products.cat_aroma">อโรมาเธอราปี</button>
+    </div>
+
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <article class="product-card" data-category="skincare">
+        <div class="product-image"><img src="images/products/serum.png" alt="serum" /></div>
+        <div class="product-info">
+          <h3 data-i18n="p1.name">เซรั่มบำรุงผิวหน้า</h3>
+          <p data-i18n="p1.desc">เซรั่มจากสารสกัดธรรมชาติ ช่วยให้ผิวเปล่งปลั่งและชุ่มชื้น</p>
+          <div class="product-price">฿1,290</div>
+          <div class="product-actions">
+            <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
+            <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
+          </div>
+        </div>
+      </article>
+      <!-- Product 2 -->
+      <article class="product-card" data-category="skincare">
+        <div class="product-image"><img src="images/products/body-cream.png" alt="body-cream" /></div>
+        <div class="product-info">
+          <h3 data-i18n="p2.name">ครีมบำรุงผิวกาย</h3>
+          <p data-i18n="p2.desc">อโลเวร่าและน้ำมันธรรมชาติ เพื่อผิวนุ่มเนียน</p>
+          <div class="product-price">฿890</div>
+          <div class="product-actions">
+            <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
+            <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
+          </div>
+        </div>
+      </article>
+      <!-- Product 3 -->
+      <article class="product-card" data-category="wellness">
+        <div class="product-image"><img src="images/products/collagen.png" alt="collagen" /></div>
+        <div class="product-info">
+          <h3 data-i18n="p3.name">อาหารเสริมคอลลาเจน</h3>
+          <p data-i18n="p3.desc">คอลลาเจนจากธรรมชาติ ช่วยบำรุงผิวจากภายใน</p>
+          <div class="product-price">฿1,590</div>
+          <div class="product-actions">
+            <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
+            <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="about-container">
+      <h2 data-i18n="about.title">เกี่ยวกับเรา</h2>
+      <div class="about-subtitle" data-i18n="about.subtitle">Heaven and Beauty</div>
+      <p class="about-description" data-i18n="about.body">เราเป็นแบรนด์ความงามและสุขภาพที่มุ่งมั่นในการนำเสนอผลิตภัณฑ์ออร์แกนิคคุณภาพสูง ด้วยความเชื่อมั่นว่าความงามที่แท้จริงต้องเริ่มต้นจากภายใน เราคัดสรรส่วนผสมจากธรรมชาติที่ดีที่สุดจากทั่วโลก เพื่อสร้างสรรค์ผลิตภัณฑ์ที่ปลอดภัย อ่อนโยน และมีประสิทธิภาพ</p>
+      <div class="about-stats">
+        <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label" data-i18n="about.stat1">ปีแห่งประสบการณ์</div></div>
+        <div class="stat-item"><div class="stat-number">50K+</div><div class="stat-label" data-i18n="about.stat2">ลูกค้าที่ไว้วางใจ</div></div>
+        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label" data-i18n="about.stat3">ส่วนผสมธรรมชาติ</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wellness / Features -->
+  <section class="features" id="wellness">
+    <h2 data-i18n="wellness.title">ความงามและสุขภาพแบบองค์รวม</h2>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">🌿</div><h3 data-i18n="wellness.f1t">100% ออร์แกนิค</h3><p data-i18n="wellness.f1d">ส่วนผสมจากธรรมชาติล้วนๆ ปลอดสารเคมีที่เป็นอันตราย</p></div>
+      <div class="feature-card"><div class="feature-icon">🧘‍♀️</div><h3 data-i18n="wellness.f2t">ผ่อนคลายจิตใจ</h3><p data-i18n="wellness.f2d">รู้สึกสงบ ผ่อนคลาย และเติมพลัง</p></div>
+      <div class="feature-card"><div class="feature-icon">✨</div><h3 data-i18n="wellness.f3t">เปล่งปลั่งธรรมชาติ</h3><p data-i18n="wellness.f3d">เผยผิวที่สดใส สุขภาพดี ด้วยพลังธรรมชาติ</p></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2 data-i18n="contact.title">ติดต่อเรา</h2>
+    <p class="contact-subtitle" data-i18n="contact.subtitle">เราพร้อมให้คำปรึกษาและดูแลความงามของคุณด้วยใจ
+ติดตามข่าวสารและเคล็ดลับความงามเฉพาะจากเรา</p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <span class="contact-item-icon">📍</span>
+        <h3 data-i18n="contact.branch">สาขาหลัก</h3>
+        <p data-i18n="contact.addr">เซ็นทรัลเวิลด์ ชั้น 3
+999/9 เพลินจิต กรุงเทพฯ 10330</p>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">📞</span>
+        <h3 data-i18n="contact.phone">โทรศัพท์</h3>
+        <p data-i18n="contact.phone_detail">02-123-4567
+หรือ 089-123-4567
+เปิดทุกวัน 10:00–22:00 น.</p>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">💌</span>
+        <h3 data-i18n="contact.email">อีเมล</h3>
+        <p>info@heavenbeauty.com
+support@heavenbeauty.com
+<span data-i18n="contact.sla">ตอบกลับภายใน 24 ชั่วโมง</span></p>
+      </div>
+    </div>
+
+    <div class="social-links brand-colors">
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" title="facebook" aria-label="Facebook">
+        <img class="icon" alt="Facebook" />
+      </a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link" title="instagram" aria-label="Instagram">
+        <img class="icon" alt="Instagram" />
+      </a>
+      <a href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener noreferrer" class="social-link" title="line" aria-label="LINE">
+        <img class="icon" alt="LINE" />
+      </a>
+      <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-link" title="tiktok" aria-label="TikTok">
+        <img class="icon" alt="TikTok" />
+      </a>
+      <a href="mailto:info@heavenbeauty.com" class="social-link" title="email" aria-label="Email">
+        <img class="icon" alt="Email" />
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; <span id="year"></span> <span data-i18n="brand">Heaven &amp; Beauty</span>. <span data-i18n="footer">ดูแลความงามและสุขภาพด้วยใจ</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
