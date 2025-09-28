@@ -127,9 +127,14 @@
     .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
     .product-card { background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 1.5rem; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s ease; border: 2px solid transparent; }
     .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(233, 30, 99, 0.2); border-color: rgba(233, 30, 99, 0.3); }
-    .product-image { margin-bottom: 1rem; display: flex; justify-content: center; }
-    .product-svg { width: 120px; height: 140px; transition: transform 0.3s ease; }
-    .product-card:hover .product-svg { transform: scale(1.05); }
+    .product-image { margin-bottom: 1rem; display:flex; justify-content:center; }
+.product-image img{
+  width: 140px; height: 140px;           /* ปรับได้ */
+  object-fit: contain;                    /* ครอบไม่บิดสัดส่วน */
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.12));
+  transition: transform .3s ease;
+}
+.product-card:hover .product-image img{ transform: scale(1.05); }
     .product-info h3 { color: #e91e63; font-size: 1.15rem; margin-bottom: 0.5rem; font-weight: 700; }
     .product-info p { color: #666; line-height: 1.6; margin-bottom: 0.75rem; font-size: 0.95rem; }
     .product-price { font-size: 1.3rem; font-weight: 800; color: #e91e63; margin-bottom: .75rem; }
@@ -326,11 +331,11 @@
       <!-- (การ์ดสินค้าเหมือนเดิมทั้งหมด) -->
       <div class="product-card" data-category="skincare">
         <div class="product-image">
-  <img src="assets/products/serum.jpg" alt="เซรั่มบำรุงผิวหน้า" loading="lazy">
+  <img src="https://i.postimg.cc/rp8Cz6hX/image.jpg" alt="กันเเดดตัว" loading="lazy">
 </div>
 
         <div class="product-info">
-          <h3 data-i18n="p1.name">เซรั่มบำรุงผิวหน้า</h3>
+          <h3 data-i18n="p1.name">เกันเเดดตัว</h3>
           <p data-i18n="p1.desc">เซรั่มจากสารสกัดธรรมชาติ ช่วยให้ผิวเปล่งปลั่งและชุ่มชื้น</p>
           <div class="product-price">฿1,290</div>
           <div class="product-actions">
@@ -342,11 +347,11 @@
 
       <div class="product-card" data-category="skincare">
         <div class="product-image">
-  <img src="assets/products/serum.jpg" alt="เซรั่มบำรุงผิวหน้า" loading="lazy">
+  <img src="https://i.postimg.cc/HLp4jGSC/image.jpg" alt="กันเเดดหน้าฝาทอง" loading="lazy">
 </div>
 
         <div class="product-info">
-          <h3 data-i18n="p2.name">ครีมบำรุงผิวกาย</h3>
+          <h3 data-i18n="p2.name">กันเเดดหน้าฝาทอง</h3>
           <p data-i18n="p2.desc">ครีมบำรุงผิวจากอโลเวร่าและน้ำมันธรรมชาติ เพื่อผิวนุ่มเนียน</p>
           <div class="product-price">฿890</div>
           <div class="product-actions">
@@ -358,11 +363,11 @@
 
       <div class="product-card" data-category="wellness">
        <div class="product-image">
-  <img src="assets/products/serum.jpg" alt="เซรั่มบำรุงผิวหน้า" loading="lazy">
+  <img src="https://i.postimg.cc/yNVXWqfB/image.jpg" alt="ตัวกันเเฮงค์" loading="lazy">
 </div>
 
         <div class="product-info">
-          <h3 data-i18n="p3.name">อาหารเสริมคอลลาเจน</h3>
+          <h3 data-i18n="p3.name">ตัวกันเเฮงค์</h3>
           <p data-i18n="p3.desc">คอลลาเจนจากธรรมชาติ ช่วยบำรุงผิวจากภายใน</p>
           <div class="product-price">฿1,590</div>
           <div class="product-actions">
@@ -374,11 +379,11 @@
 
       <div class="product-card" data-category="aromatherapy">
         <div class="product-image">
-  <img src="assets/products/serum.jpg" alt="เซรั่มบำรุงผิวหน้า" loading="lazy">
+  <img src="https://i.postimg.cc/TPRqh8kd/image.jpg" alt="วิตซี" loading="lazy">
 </div>
 
         <div class="product-info">
-          <h3 data-i18n="p4.name">น้ำมันหอมระเหย ลาเวนเดอร์</h3>
+          <h3 data-i18n="p4.name">วิตซี</h3>
           <p data-i18n="p4.desc">น้ำมันหอมระเหยบริสุทธิ์ ช่วยผ่อนคลายและนอนหลับสบาย</p>
           <div class="product-price">฿690</div>
           <div class="product-actions">
@@ -388,37 +393,6 @@
         </div>
       </div>
 
-      <div class="product-card" data-category="skincare">
-        <div class="product-image">
-  <img src="assets/products/serum.jpg" alt="เซรั่มบำรุงผิวหน้า" loading="lazy">
-</div>
-
-        <div class="product-info">
-          <h3 data-i18n="p5.name">มาส์กหน้าชาเขียว</h3>
-          <p data-i18n="p5.desc">มาส์กหน้าจากชาเขียวออร์แกนิค ช่วยลดสิว และกระชับรูขุมขน</p>
-          <div class="product-price">฿590</div>
-          <div class="product-actions">
-            <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
-            <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="wellness">
-       <div class="product-image">
-  <img src="assets/products/serum.jpg" alt="เซรั่มบำรุงผิวหน้า" loading="lazy">
-</div>
-
-        <div class="product-info">
-          <h3 data-i18n="p6.name">ชาดีท็อกซ์</h3>
-          <p data-i18n="p6.desc">ชาสมุนไพรออร์แกนิค ช่วยขับสารพิษและเสริมสร้างภูมิคุ้มกัน</p>
-          <div class="product-price">฿490</div>
-          <div class="product-actions">
-            <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
-            <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
