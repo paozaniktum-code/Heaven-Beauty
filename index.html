@@ -164,6 +164,15 @@
     .luxury-frame::before { content: ''; position: absolute; inset: -2px; background: linear-gradient(45deg, #ffd700, #e91e63, #8e24aa, #ffd700); border-radius: 32px; z-index: -1; animation: luxuryBorder 4s linear infinite; }
     @keyframes luxuryBorder { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
     .frame-content { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+/* ให้รูปพอดีกรอบ Luxury */
+.luxury-frame { position: relative; width: 350px; height: 450px; }
+.luxury-frame .frame-content img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* ครอบเต็มกรอบ ถ้าอยากไม่ครอปให้เปลี่ยนเป็น contain */
+  border-radius: 24px;        /* โค้งมนให้กลืนกับกรอบ */
+  display: block;
+}
 
     .about-values { text-align: center; }
     .about-values h3 { font-size: 2rem; color: #e91e63; margin-bottom: 2rem; font-weight: 800; background: linear-gradient(135deg, #ffd700 0%, #e91e63 50%, #8e24aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -412,7 +421,7 @@
         <div class="about-visual">
           <div class="luxury-frame">
             <div class="frame-content">
-              <svg viewBox="0 0 300 400" class="about-illustration">
+               <img src="assets/about/about-visual.jpg" alt="Heaven and Beauty – About visual" loading="lazy">
                 <defs>
                   <linearGradient id="luxuryGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style="stop-color:#ffd700;stop-opacity:0.8" />
