@@ -2,295 +2,275 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Heaven and Beauty - Wellness & Organic Beauty</title>
-  <link rel="stylesheet" 
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
-  integrity="sha512-/F9C0vFiKhv6KRkFdXKnQQ2Fj2Ahg17eqbAzZzBjcXFLK8opKa5tuPUbsy9vI0D0LPsr1HOuwyL/0I1nqOrFow==" 
-  crossorigin="anonymous" 
-  referrerpolicy="no-referrer" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    body { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #e1bee7 100%); min-height: 100vh; overflow-x: hidden; padding-top: 50px; }
-
-    /* Animated Background with Stars */
-    .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.2; }
-    .floating-star { position: absolute; animation: floatStar 8s ease-in-out infinite; }
-    .floating-star svg { width: 25px; height: 25px; }
-
-    .floating-star:nth-child(1) { top: 5%; left: 8%; animation-delay: 0s; }
-    .floating-star:nth-child(2) { top: 12%; right: 15%; animation-delay: 1.5s; }
-    .floating-star:nth-child(3) { top: 20%; left: 25%; animation-delay: 3s; }
-    .floating-star:nth-child(4) { top: 28%; right: 8%; animation-delay: 0.8s; }
-    .floating-star:nth-child(5) { top: 35%; left: 12%; animation-delay: 2.2s; }
-    .floating-star:nth-child(6) { top: 42%; left: 60%; animation-delay: 4s; }
-    .floating-star:nth-child(7) { top: 48%; right: 25%; animation-delay: 1.2s; }
-    .floating-star:nth-child(8) { top: 55%; left: 35%; animation-delay: 3.5s; }
-    .floating-star:nth-child(9) { top: 62%; right: 12%; animation-delay: 0.5s; }
-    .floating-star:nth-child(10) { top: 68%; left: 18%; animation-delay: 2.8s; }
-    .floating-star:nth-child(11) { top: 75%; right: 35%; animation-delay: 1.8s; }
-    .floating-star:nth-child(12) { top: 82%; left: 45%; animation-delay: 4.2s; }
-    .floating-star:nth-child(13) { top: 88%; right: 18%; animation-delay: 0.3s; }
-    .floating-star:nth-child(14) { top: 15%; left: 70%; animation-delay: 2.5s; }
-    .floating-star:nth-child(15) { top: 38%; right: 45%; animation-delay: 3.8s; }
-    .floating-star:nth-child(16) { top: 58%; left: 75%; animation-delay: 1.5s; }
-    .floating-star:nth-child(17) { top: 78%; right: 8%; animation-delay: 4.5s; }
-    .floating-star:nth-child(18) { top: 25%; left: 85%; animation-delay: 2s; }
-    .floating-star:nth-child(19) { top: 45%; right: 5%; animation-delay: 3.2s; }
-    .floating-star:nth-child(20) { top: 65%; left: 5%; animation-delay: 1s; }
-
-    @keyframes floatStar {
-      0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); opacity: 0.4; }
-      25% { transform: translateY(-20px) rotate(90deg) scale(1.2); opacity: 0.8; }
-      50% { transform: translateY(-35px) rotate(180deg) scale(0.8); opacity: 0.3; }
-      75% { transform: translateY(-15px) rotate(270deg) scale(1.1); opacity: 0.6; }
+    :root{
+      --brand:#e91e63;
+      --brand-2:#f06292;
+      --bg-1:#fce4ec;
+      --bg-2:#f8bbd9;
+      --bg-3:#e1bee7;
+      --text:#434343;
+      --muted:#666;
+      --max-w-desktop:1200px;
+      --max-w-tablet:960px;
+      --radius-xl:40px;
     }
 
-    /* Header */
-    header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 0.5rem 0; position: fixed; top: 0; left: 0; width: 100%; z-index: 100; box-shadow: 0 2px 20px rgba(233, 30, 99, 0.1); }
-    nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0 2rem; }
-    .logo { font-size: 1.6rem; font-weight: bold; color: #e91e63; text-decoration: none; white-space: nowrap; }
-    .nav-row { display: flex; align-items: center; gap: 1.25rem; }
-    .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; gap: 1rem; }
-    .nav-menu a { text-decoration: none; color: #666; font-weight: 500; transition: color 0.3s ease; padding: 0.5rem 1rem; border-radius: 25px; }
-    .nav-menu a:hover { color: #e91e63; background: rgba(233, 30, 99, 0.1); }
+    /* ===== Base */
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0}
+    body{
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color:var(--text);
+      background: linear-gradient(135deg,var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
+      min-height:100vh; overflow-x:hidden;
+      padding-top:64px; /* header height */
+    }
+    .container{ width:100%; max-width:var(--max-w-desktop); margin:0 auto; padding:0 24px; }
 
-    /* Language selector */
-    .lang-select { display: flex; align-items: center; gap: .5rem; }
-    .lang-select label { font-size: .9rem; color: #666; }
-    .lang-select select { padding: .5rem .75rem; border-radius: 999px; border: 1px solid #e5e7eb; background: #fff; font-weight: 600; }
-    
-    /* Hamburger Button Style (เพิ่มเข้าไป) */
-    .hamburger-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.6rem;
-      color: #e91e63;
-      cursor: pointer;
-      padding: .5rem;
-      z-index: 101;
-      position: relative;
+    /* ===== Floating soft background */
+    .bg-animation{ position:fixed; inset:0; z-index:-1; opacity:.2 }
+    .floating-star{ position:absolute; animation:floatStar 8s ease-in-out infinite }
+    .floating-star svg{ width:24px;height:24px }
+    .floating-star:nth-child(1){ top:5%; left:8%}
+    .floating-star:nth-child(2){ top:12%; right:15%; animation-delay:1.5s}
+    .floating-star:nth-child(3){ top:62%; right:12%; animation-delay:.5s}
+    @keyframes floatStar{
+      0%,100%{ transform:translateY(0) rotate(0) scale(1); opacity:.4}
+      25%{ transform:translateY(-20px) rotate(90deg) scale(1.2); opacity:.8}
+      50%{ transform:translateY(-35px) rotate(180deg) scale(.8); opacity:.3}
+      75%{ transform:translateY(-15px) rotate(270deg) scale(1.05); opacity:.6}
     }
-    /* เส้น 3 ขีดแบบ icon */
-    .hamburger-btn .bar{
-      display:block;width:26px;height:3px;background:#e91e63;border-radius:2px;margin:5px 0;transition:.35s ease;
+
+    /* ===== Header / Navbar */
+    header{
+      position:fixed; inset:0 0 auto 0; height:64px; z-index:100;
+      background:rgba(255,255,255,.95); backdrop-filter: blur(10px);
+      box-shadow:0 2px 20px rgba(233,30,99,.08);
     }
-    .hamburger-btn.active .bar:nth-child(1){ transform: translateY(8px) rotate(45deg); }
-    .hamburger-btn.active .bar:nth-child(2){ opacity:0; }
-    .hamburger-btn.active .bar:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
-    /* เอฟเฟกต์ ripple ภายในปุ่มตอนคลิก */
+    .navbar{ height:64px; display:flex; align-items:center; justify-content:space-between; gap:16px }
+    .brand img{ height:52px; width:auto; object-fit:contain }
+    .nav-left{ display:flex; align-items:center; gap:24px }
+    .nav-menu{ display:flex; gap:24px; list-style:none; margin:0; padding:0 }
+    .nav-menu a{
+      display:inline-flex; align-items:center; justify-content:center;
+      height:40px; padding:0 12px; border-radius:10px; text-decoration:none;
+      color:#434343; font-weight:600; white-space:nowrap;
+    }
+    .nav-menu a:hover,.nav-menu a.active{ background:rgba(0,0,0,.06) }
+
+    .nav-right{ display:flex; align-items:center; gap:10px }
+    .nav-right label{ color:#666; font-weight:600 }
+    .nav-lang{
+      height:40px; padding:0 12px; border-radius:10px; border:1px solid #e5e7eb;
+      background:#fff; font-weight:600; color:#111;
+    }
+
+    /* Hamburger */
+    .hamburger-btn{
+      display:none; position:relative; width:36px; height:28px;
+      background:none; border:0; cursor:pointer; padding:0; margin-right:6px;
+      color:var(--brand);
+    }
+    .hamburger-btn .bar{ display:block; width:26px;height:3px;background:var(--brand); border-radius:2px; margin:5px 0; transition:.35s ease }
+    .hamburger-btn.active .bar:nth-child(1){ transform:translateY(8px) rotate(45deg) }
+    .hamburger-btn.active .bar:nth-child(2){ opacity:0 }
+    .hamburger-btn.active .bar:nth-child(3){ transform:translateY(-8px) rotate(-45deg) }
     .hamburger-btn::after{
-      content:"";position:absolute;inset:0;border-radius:12px;background:rgba(233,30,99,.12);
-      transform:scale(0);opacity:0;transition:.35s ease;
+      content:""; position:absolute; inset:-6px; border-radius:12px;
+      background:rgba(233,30,99,.12); transform:scale(0); opacity:0; transition:.35s ease;
     }
-    .hamburger-btn:active::after{ transform:scale(1.4);opacity:1;transition:0s; }
+    .hamburger-btn:active::after{ transform:scale(1.4); opacity:1; transition:0s }
 
-    /* Mobile-opened menu */
-    .nav-menu.active {
-      display: flex !important;
-      flex-direction: column;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.98);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      padding: 1rem 0;
-      z-index: 99;
+    /* ===== Hero */
+    .hero{
+      position:relative; overflow:hidden;
+      margin:32px auto; border-radius:var(--radius-xl);
+      background:linear-gradient(135deg, rgba(255,255,255,.9) 0%, rgba(248,187,217,.25) 100%);
+      border:1px solid rgba(255,255,255,.35);
+      box-shadow:0 25px 50px rgba(233,30,99,.15);
     }
-    .nav-menu.active li { width: 100%; text-align: center; }
-    .nav-menu.active a { display: block; width: 90%; margin: .5rem auto; border-bottom: 1px solid rgba(233,30,99,.1); }
+    .hero .inner{ padding: clamp(48px, 6vw, 96px) 24px; text-align:center }
+    .hero h1{
+      margin:0 0 12px; font-weight:800; line-height:1.15;
+      font-size:clamp(28px, 4.2vw, 48px);
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 50%, #ec407a 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      text-shadow: 3px 3px 6px rgba(233,30,99,.15);
+    }
+    .hero h1::after{
+      content:""; display:block; margin:14px auto 0; width:120px; height:4px;
+      background:linear-gradient(45deg,var(--brand),var(--brand-2)); border-radius:2px;
+      box-shadow:0 2px 10px rgba(233,30,99,.25);
+    }
+    .hero p{ margin:0 auto 28px; max-width:780px; color:#555; line-height:1.8; font-size:clamp(14px, 1.6vw, 18px) }
+    .cta-button{
+      display:inline-block; padding:14px 28px; border-radius:999px; border:0;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#fff; font-weight:800;
+      letter-spacing:.5px; text-decoration:none; box-shadow:0 10px 30px rgba(233,30,99,.3); position:relative; overflow:hidden;
+    }
+    .cta-button::before{ content:""; position:absolute; inset:0; left:-100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent); transition:left .6s ease }
+    .cta-button:hover::before{ left:100% }
 
-    /* Hero Section */
-    .hero { text-align: center; padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; position: relative; background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 187, 217, 0.2) 100%); backdrop-filter: blur(15px); border-radius: 40px; margin-top: 2rem; margin-bottom: 2rem; box-shadow: 0 25px 50px rgba(233, 30, 99, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); overflow: hidden; }
-    .floating-flowers { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-    .floating-flower { position: absolute; animation: floatFlower 6s ease-in-out infinite; }
-    @keyframes floatFlower { 0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg) scale(1); opacity: 0.7; } 25% { transform: translateY(-20px) translateX(10px) rotate(90deg) scale(1.1); opacity: 0.9; } 50% { transform: translateY(-35px) translateX(-5px) rotate(180deg) scale(0.9); opacity: 0.5; } 75% { transform: translateY(-15px) translateX(-10px) rotate(270deg) scale(1.05); opacity: 0.8; } }
-    .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(233, 30, 99, 0.03) 0%, transparent 70%); animation: heroGlow 15s linear infinite; z-index: -1; }
-    @keyframes heroGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    .hero h1 { font-size: 3rem; color: #e91e63; margin-bottom: 1.2rem; text-shadow: 3px 3px 6px rgba(233, 30, 99, 0.2); font-weight: 700; position: relative; background: linear-gradient(135deg, #e91e63 0%, #f06292 50%, #ec407a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero h1::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 120px; height: 4px; background: linear-gradient(45deg, #e91e63, #f06292); border-radius: 2px; box-shadow: 0 2px 10px rgba(233, 30, 99, 0.3); }
-    .hero p { font-size: 1.15rem; color: #555; line-height: 1.8; max-width: 780px; margin: 0 auto 2.5rem; font-weight: 300; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
-    .cta-button { background: linear-gradient(135deg, #e91e63 0%, #f06292 50%, #ec407a 100%); color: white; padding: 1rem 2rem; border: none; border-radius: 50px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: all 0.4s ease; text-decoration: none; display: inline-block; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3); text-transform: uppercase; letter-spacing: 1px; }
-    .cta-button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.6s ease; }
-    .cta-button:hover::before { left: 100%; }
-    .cta-button:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 20px 40px rgba(233, 30, 99, 0.4); }
+    /* ===== Sections: Products / About / Features / Contact share */
+    section{ scroll-margin-top:80px }
 
     /* Products */
-    .products { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
-    .products h2 { text-align: center; font-size: 2rem; color: #e91e63; margin-bottom: 2rem; }
-    .product-categories { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
-    .category-btn { padding: 0.7rem 1.25rem; border: 2px solid #e91e63; background: transparent; color: #e91e63; border-radius: 25px; cursor: pointer; font-weight: 700; transition: all 0.3s ease; }
-    .category-btn.active, .category-btn:hover { background: #e91e63; color: white; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3); }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-    .product-card { background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 1.5rem; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s ease; border: 2px solid transparent; }
-    .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(233, 30, 99, 0.2); border-color: rgba(233, 30, 99, 0.3); }
-    .product-image { margin-bottom: 1rem; display:flex; justify-content:center; }
-.product-image img{
-  width: 140px; height: 140px;           /* ปรับได้ */
-  object-fit: contain;                    /* ครอบไม่บิดสัดส่วน */
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,.12));
-  transition: transform .3s ease;
-}
-.product-card:hover .product-image img{ transform: scale(1.05); }
-    .product-info h3 { color: #e91e63; font-size: 1.15rem; margin-bottom: 0.5rem; font-weight: 700; }
-    .product-info p { color: #666; line-height: 1.6; margin-bottom: 0.75rem; font-size: 0.95rem; }
-    .product-price { font-size: 1.3rem; font-weight: 800; color: #e91e63; margin-bottom: .75rem; }
-    .product-actions { display:flex; gap:.5rem; justify-content:center; flex-wrap: wrap; }
-    .buy-btn, .line-btn { padding: .6rem 1rem; border-radius: 999px; border: 0; font-weight: 700; cursor: pointer; }
-    .buy-btn { background: #e91e63; color:#fff; }
-    .line-btn { background: #06C755; color:#fff; text-decoration:none; display:inline-block; }
-    .product-card.hidden { display: none; }
+    .products{ padding: 64px 0 }
+    .products h2{ text-align:center; color:var(--brand); font-size:clamp(22px,3vw,32px); margin:0 0 24px }
+    .product-categories{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:24px }
+    .category-btn{
+      padding:.7rem 1.1rem; border:2px solid var(--brand); color:var(--brand);
+      background:transparent; border-radius:25px; font-weight:800; cursor:pointer; transition:.25s ease
+    }
+    .category-btn.active,.category-btn:hover{ background:var(--brand); color:#fff; box-shadow:0 5px 15px rgba(233,30,99,.3); transform:translateY(-2px) }
+    .products-grid{
+      display:grid; gap:24px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+    .product-card{
+      background:rgba(255,255,255,.95); border-radius:20px; padding:24px; text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,.08); border:2px solid transparent; transition:.25s ease
+    }
+    .product-card:hover{ transform:translateY(-8px); box-shadow:0 20px 40px rgba(233,30,99,.16); border-color:rgba(233,30,99,.25) }
+    .product-image{ display:flex; justify-content:center; margin-bottom:12px }
+    .product-image img{ width:140px; height:140px; object-fit:contain; filter:drop-shadow(0 6px 14px rgba(0,0,0,.12)); transition:transform .3s ease }
+    .product-card:hover .product-image img{ transform:scale(1.05) }
+    .product-info h3{ color:var(--brand); font-size:1.1rem; margin:10px 0 }
+    .product-info p{ color:#666; line-height:1.6; font-size:.95rem; margin: 0 0 10px }
+    .product-price{ font-weight:900; color:var(--brand); font-size:1.4rem; margin:8px 0 14px }
+    .product-actions{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap }
+    .line-btn,.buy-btn{ padding:.6rem 1rem; border-radius:999px; font-weight:800; border:0; cursor:pointer }
+    .line-btn{ background:#06C755; color:#fff; text-decoration:none }
+    .buy-btn{ background:var(--brand); color:#fff }
 
     /* About */
-    .about { padding: 6rem 2rem; background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 187, 217, 0.2) 50%, rgba(225, 190, 231, 0.3) 100%); backdrop-filter: blur(20px); margin: 3rem 2rem; border-radius: 50px; box-shadow: 0 30px 80px rgba(233, 30, 99, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); position: relative; overflow: hidden; }
-    .about::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 70%); animation: luxuryGlow 25s linear infinite; z-index: -1; }
-    @keyframes luxuryGlow { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.1); } 100% { transform: rotate(360deg) scale(1); } }
-    .about-container { max-width: 1200px; margin: 0 auto; }
-    .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 5rem; }
-    .about-text h2 { font-size: 2.4rem; color: #e91e63; margin-bottom: 1rem; font-weight: 800; background: linear-gradient(135deg, #ffd700 0%, #e91e63 50%, #8e24aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); position: relative; }
-    .about-text h2::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 100px; height: 4px; background: linear-gradient(45deg, #ffd700, #e91e63, #8e24aa); border-radius: 2px; box-shadow: 0 2px 10px rgba(233, 30, 99, 0.3); }
-    .about-subtitle { font-size: 1.3rem; color: #8e24aa; font-weight: 600; margin-bottom: 1rem; letter-spacing: 1px; }
-    .about-description { font-size: 1.05rem; line-height: 1.8; color: #555; margin-bottom: 2rem; text-align: justify; font-weight: 300; }
-    .about-stats { display: flex; gap: 1rem; justify-content: space-between; }
-    .stat-item { text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.8); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid transparent; background-clip: padding-box; position: relative; transition: all 0.3s ease; flex:1 }
-    .stat-item::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #ffd700, #e91e63, #8e24aa); border-radius: 16px; padding: 2px; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; z-index: -1; }
-    .stat-number { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, #ffd700 0%, #e91e63 50%, #8e24aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.25rem; }
-    .stat-label { font-size: 0.85rem; color: #666; font-weight: 600; }
-    .about-visual { display: flex; justify-content: center; align-items: center; }
-    .luxury-frame { position: relative; width: 350px; height: 450px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 187, 217, 0.3) 100%); border-radius: 30px; padding: 2rem; box-shadow: 0 20px 60px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.3); overflow: hidden; }
-    .luxury-frame::before { content: ''; position: absolute; inset: -2px; background: linear-gradient(45deg, #ffd700, #e91e63, #8e24aa, #ffd700); border-radius: 32px; z-index: -1; animation: luxuryBorder 4s linear infinite; }
-    @keyframes luxuryBorder { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-    .frame-content { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-/* ให้รูปพอดีกรอบ Luxury */
-.luxury-frame { position: relative; width: 350px; height: 450px; }
-.luxury-frame .frame-content img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;          /* ครอบเต็มกรอบ ถ้าอยากไม่ครอปให้เปลี่ยนเป็น contain */
-  border-radius: 24px;        /* โค้งมนให้กลืนกับกรอบ */
-  display: block;
-}
+    .about{ padding:72px 0 }
+    .about .grid{ display:grid; gap:40px; grid-template-columns: 1.1fr .9fr; align-items:center }
+    .about h2{ font-size:clamp(24px,3.2vw,38px); margin:0 0 8px; font-weight:900;
+      background:linear-gradient(135deg,#ffd700 0%, var(--brand) 50%, #8e24aa 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      position:relative;
+    }
+    .about h2::after{ content:""; position:absolute; left:0; bottom:-10px; width:100px; height:4px;
+      background:linear-gradient(45deg,#ffd700,var(--brand),#8e24aa); border-radius:2px; box-shadow:0 2px 10px rgba(233,30,99,.25)
+    }
+    .about .subtitle{ font-size:1.25rem; color:#8e24aa; font-weight:700; margin:14px 0 }
+    .about .desc{ color:#555; line-height:1.85; font-weight:300; margin:16px 0 28px }
+    .about .stats{ display:flex; gap:14px; flex-wrap:wrap }
+    .stat{ flex:1 1 240px; text-align:center; padding:16px; background:rgba(255,255,255,.85);
+      border-radius:16px; position:relative; box-shadow:0 10px 30px rgba(0,0,0,.08)
+    }
+    .stat .num{ font-weight:900; font-size:1.8rem;
+      background:linear-gradient(135deg,#ffd700 0%, var(--brand) 50%, #8e24aa 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      margin-bottom:4px
+    }
+    .stat .lbl{ font-size:.9rem; color:#666; font-weight:700 }
 
-    .about-values { text-align: center; }
-    .about-values h3 { font-size: 2rem; color: #e91e63; margin-bottom: 2rem; font-weight: 800; background: linear-gradient(135deg, #ffd700 0%, #e91e63 50%, #8e24aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .value-card { background: rgba(255, 255, 255, 0.9); padding: 2rem 1.5rem; border-radius: 20px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.1); transition: all 0.4s ease; position: relative; overflow: hidden; border: 2px solid transparent; }
-    .value-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 25px 60px rgba(233, 30, 99, 0.2); border-color: rgba(255, 215, 0, 0.3); }
+    .about-visual{ display:flex; justify-content:center }
+    .luxury-frame{
+      position:relative; width: min(420px, 100%); height:clamp(360px, 45vw, 480px);
+      background:linear-gradient(135deg, rgba(255,255,255,.92) 0%, rgba(248,187,217,.28) 100%);
+      border:1px solid rgba(255,255,255,.35); border-radius:30px; padding:18px; overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.6);
+    }
+    .luxury-frame::before{
+      content:""; position:absolute; inset:-2px; z-index:-1; border-radius:32px;
+      background:linear-gradient(45deg,#ffd700,var(--brand),#8e24aa,#ffd700);
+      animation:luxuryBorder 4s linear infinite;
+    }
+    @keyframes luxuryBorder{ 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    .frame-content{ width:100%; height:100%; display:flex; align-items:center; justify-content:center }
+    .frame-content img{ width:100%; height:100%; object-fit:cover; border-radius:24px; display:block }
 
-    /* Wellness & Features */
-    .features { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
-    .features h2 { text-align: center; font-size: 2rem; color: #e91e63; margin-bottom: 2rem; }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-    .feature-card { background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-    .feature-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    /* Features */
+    .features{ padding:64px 0 }
+    .features h2{ text-align:center; color:var(--brand); font-size:clamp(22px,3vw,32px); margin:0 0 24px }
+    .features-grid{ display:grid; gap:18px; grid-template-columns: repeat(3, minmax(0,1fr)) }
+    .feature-card{ background:rgba(255,255,255,.92); padding:24px; border-radius:20px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.08) }
+    .feature-icon{ font-size:2rem; margin-bottom:8px }
 
     /* Contact */
-    .contact { background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 187, 217, 0.3) 100%); backdrop-filter: blur(20px); padding: 6rem 3rem; margin: 3rem 2rem; border-radius: 40px; text-align: center; box-shadow: 0 30px 60px rgba(233, 30, 99, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); position: relative; overflow: hidden; }
-    .contact h2 { color: #e91e63; font-size: 2rem; margin-bottom: 1rem; font-weight: 800; position: relative; }
-    .contact-subtitle { font-size: 1.05rem; color: #666; margin-bottom: 2rem; font-weight: 300; line-height: 1.6; }
-    .contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-    .contact-item { background: rgba(255, 255, 255, 0.8); padding: 1.25rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid rgba(233, 30, 99, 0.1); }
-    .contact-item-icon { font-size: 1.7rem; margin-bottom: .5rem; display: block; }
-    .social-links { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
-    .social-link { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: linear-gradient(135deg, #e91e63 0%, #f06292 50%, #ec407a 100%); color: white; text-decoration: none; border-radius: 50%; font-size: 1.2rem; transition: all 0.4s ease; position: relative; overflow: hidden; box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3); }
-    .social-link:hover { transform: translateY(-6px) scale(1.05); box-shadow: 0 15px 35px rgba(233, 30, 99, 0.5); }
+    .contact{
+      margin:64px 0; padding:64px 24px; border-radius:var(--radius-xl);
+      background:linear-gradient(135deg, rgba(255,255,255,.95) 0%, rgba(248,187,217,.3) 100%);
+      border:1px solid rgba(255,255,255,.35); box-shadow:0 25px 50px rgba(233,30,99,.15); text-align:center
+    }
+    .contact h2{ color:var(--brand); font-size:clamp(22px,3vw,32px); margin:0 0 8px; font-weight:900 }
+    .contact-subtitle{ color:#666; font-weight:300; line-height:1.7; margin:6px 0 24px }
+    .contact-info{ display:grid; gap:14px; grid-template-columns: repeat(3, minmax(0,1fr)); margin-bottom:16px }
+    .contact-item{ background:rgba(255,255,255,.85); padding:18px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.1) }
+    .contact-item-icon{ font-size:1.5rem; display:block; margin-bottom:6px }
+    .social-icons{ display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-top:16px }
+    .social-icons a{
+      width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+      text-decoration:none; background:#ff4081; color:#fff; box-shadow:0 6px 16px rgba(0,0,0,.2)
+    }
+    .social-icons a:nth-child(3){ background:#06C755 } /* LINE */
+    .social-icons a:nth-child(4){ background:#000 }   /* TikTok */
 
-    /* Footer */
-    footer { text-align: center; padding: 2rem; color: #666; background: rgba(255, 255, 255, 0.8); }
+    footer{ text-align:center; color:#666; padding:28px 0; background:rgba(255,255,255,.8) }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .about { margin: 2rem 1rem; padding: 3rem 1.5rem; border-radius: 30px; }
-      .about-content { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-      .hero { padding: 4rem 1.5rem; }
-      .nav-menu { flex-wrap: wrap; }
+    /* ======== Tablet (<=1199px) */
+    @media (max-width:1199px){
+      .container{ max-width:var(--max-w-tablet) }
+      .products .products-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) }
+      .features-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) }
+      .about .grid{ grid-template-columns:1fr; text-align:center }
+      .about h2::after{ left:50%; transform:translateX(-50%) }
+      .about .stats{ justify-content:center }
     }
 
-    /* มือถือ: ซ่อนเมนูปกติและแสดง hamburger */
-    @media (max-width: 600px) {
-      .nav-menu { display: none; }
-      .hamburger-btn { display: block; order: 2; }
+    /* ======== Mobile (<=768px) */
+    @media (max-width:768px){
+      body{ padding-top:60px }
+      .navbar{ gap:10px; padding:0 8px }
+      .nav-menu{ display:none }       /* hide desktop menu */
+      .hamburger-btn{ display:block } /* show burger */
+      .nav-right label{ display:none }
+      .nav-lang{ height:36px }
 
-      nav {
-        flex-direction: row; 
-        justify-content: space-between; 
-        align-items: center; 
-        padding: 0 1rem;
+      /* Mobile dropdown */
+      .nav-menu.active{
+        display:flex !important; flex-direction:column; position:absolute; left:0; right:0; top:64px;
+        background:#fff; box-shadow:0 10px 20px rgba(0,0,0,.1); padding:12px 0; z-index:90
       }
-      .nav-row { width: auto; order: 1; }
-      .logo { font-size: 1.4rem; }
-      .lang-select { order: 3; margin-left: 0.5rem; }
-      .lang-select select { padding: 0.3rem 0.5rem; font-size: 0.9rem; }
+      .nav-menu.active a{ border-bottom:1px solid rgba(233,30,99,.1); width:90%; margin:0 auto }
 
-      .hero { padding: 3rem 1rem; margin: 1rem 1rem; }
-      .hero h1 { font-size: 1.6rem; line-height: 1.3; }
-      .hero p { font-size: 0.9rem; margin-bottom: 2rem; }
-
-      .products, .features { padding: 2rem 1rem; }
-      .products h2, .features h2, .contact h2, .about h2 { font-size: 1.8rem; }
-      .product-categories { gap: 0.5rem; }
-      .products-grid { grid-template-columns: 1fr; }
-
-      .about { margin: 2rem 1rem; padding: 3rem 1.5rem; border-radius: 30px; }
-      .about-content { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-      .about-text h2::after { left: 50%; transform: translateX(-50%); }
-      .about-description { text-align: center; }
-      .about-stats { flex-direction: column; gap: 0.75rem; }
-      .stat-item { flex: none; width: 100%; max-width: 300px; margin: 0 auto; }
-      .about-visual { display: none; }
-
-      .values-grid { grid-template-columns: 1fr; }
-      .contact { padding: 3rem 1rem; margin: 2rem 1rem; }
-      .contact-subtitle { font-size: 0.95rem; }
-      .contact-info { grid-template-columns: 1fr; gap: 0.75rem; }
-    }
-
-    /* Animations */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* Nav tidy tabs (คงเดิม) */
-    .navbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 10px 16px; }
-    .nav-left { overflow: hidden; }
-    .nav-menu { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; flex-wrap: nowrap; }
-    .nav-menu a { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 12px; border-radius: 10px; font-weight: 600; text-decoration: none; color: #434343; line-height: 1.15; white-space: nowrap; }
-    .nav-menu a:hover, .nav-menu a.active { background: rgba(0,0,0,.06); }
-    .nav-right { display: flex; align-items: center; gap: 8px; }
-    .nav-right label { color:#666; font-weight:600; }
-    .nav-lang { height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid #e5e7eb; background: #fff; font-weight: 600; color:#111; }
-
-    @media (max-width: 768px){
-      .navbar { gap: 12px; padding: 8px 12px; }
-      .nav-left { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .nav-left::-webkit-scrollbar { display:none; }
-      .nav-menu { gap: 16px; }
-      .nav-right label { display:none; }
-      .nav-lang { height: 36px; }
+      .hero .inner{ padding:44px 16px }
+      .products .products-grid{ grid-template-columns:1fr }
+      .features-grid{ grid-template-columns:1fr }
+      .contact-info{ grid-template-columns:1fr }
+      .luxury-frame{ height:340px }
     }
   </style>
 </head>
 <body>
+  <!-- floating stars -->
   <div class="bg-animation">
-    <div class="floating-star"><svg viewBox="0 0 24 24"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#f06292" opacity="0.6"/></svg></div>
-    <div class="floating-star"><svg viewBox="0 0 24 24"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#e91e63" opacity="0.5"/></svg></div>
-    <div class="floating-star"><svg viewBox="0 0 24 24"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#ec407a" opacity="0.7"/></svg></div>
-    <div class="floating-star"><svg viewBox="0 0 24 24"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#f8bbd9" opacity="0.4"/></svg></div>
-    <div class="floating-star"><svg viewBox="0 0 24 24"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#e1bee7" opacity="0.6"/></svg></div>
+    <div class="floating-star"><svg viewBox="0 0 24 24"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#f06292"/></svg></div>
+    <div class="floating-star"><svg viewBox="0 0 24 24"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#e91e63"/></svg></div>
+    <div class="floating-star"><svg viewBox="0 0 24 24"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#ec407a"/></svg></div>
   </div>
 
+  <!-- ===== Header -->
   <header>
-    <nav>
+    <div class="container">
       <nav class="navbar">
-        <div class="nav-left" style="display:flex;align-items:center;gap:24px;">
-          <!-- โลโก้ -->
-          <a href="#home" class="brand" style="display:inline-flex;align-items:center;gap:10px;">
-            <img src="https://i.postimg.cc/q7Z9WpbC/Black-and-White-Elegant-Floral-Beauty-Salon-Logo.png" alt="Heaven and Beauty" style="height:70px;width:auto;object-fit:contain;">
+        <div class="nav-left">
+          <a href="#home" class="brand">
+            <img src="https://i.postimg.cc/q7Z9WpbC/Black-and-White-Elegant-Floral-Beauty-Salon-Logo.png" alt="Heaven and Beauty" />
           </a>
-
-          <!-- เมนู -->
-          <ul class="nav-menu">
+          <ul class="nav-menu" id="navMenu">
             <li><a href="#home" class="active" data-i18n="nav.home">หน้าแรก</a></li>
             <li><a href="#products" data-i18n="nav.products">ผลิตภัณฑ์</a></li>
             <li><a href="#about" data-i18n="nav.about">เกี่ยวกับเรา</a></li>
@@ -298,15 +278,10 @@
             <li><a href="#contact" data-i18n="nav.contact">ติดต่อ</a></li>
           </ul>
         </div>
-
         <div class="nav-right">
-          <!-- ปุ่ม Hamburger (ใหม่) -->
-          <button class="hamburger-btn" aria-label="Toggle menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+          <button class="hamburger-btn" id="hamburger" aria-label="Toggle menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
           </button>
-
           <label for="lang" data-i18n="lang.label">ภาษา:</label>
           <select id="lang" class="nav-lang">
             <option value="th" selected>ไทย</option>
@@ -314,326 +289,316 @@
           </select>
         </div>
       </nav>
-    </nav>
+    </div>
   </header>
 
+  <!-- ===== Hero -->
   <section class="hero" id="home">
-    <div class="floating-flowers">
-      <div class="floating-flower" style="top: 15%; left: 10%; animation-delay: 0s;"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#f06292" opacity="0.7"/></svg></div>
-      <div class="floating-flower" style="top: 25%; right: 15%; animation-delay: 1s;"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#e91e63" opacity="0.6"/></svg></div>
+    <div class="container inner">
+      <h1 data-i18n="hero.title">ยินดีต้อนรับสู่ Heaven and Beauty</h1>
+      <p data-i18n="hero.desc">เราคัดสรรส่วนผสมที่ดีที่สุดจากธรรมชาติ เพื่อสร้างสรรค์ผลิตภัณฑ์ออร์แกนิคที่ปลอดภัยและอ่อนโยนต่อผิวคุณ ดูแลสุขภาพและความงามอย่างธรรมชาติ</p>
+      <a href="#products" class="cta-button" data-i18n="hero.cta">สำรวจผลิตภัณฑ์</a>
     </div>
-    <h1 data-i18n="hero.title">ยินดีต้อนรับสู่ Heaven and Beauty</h1>
-    <p data-i18n="hero.desc">เราคัดสรรส่วนผสมที่ดีที่สุดจากธรรมชาติ เพื่อสร้างสรรค์ผลิตภัณฑ์ออร์แกนิคที่ปลอดภัยและอ่อนโยนต่อผิวคุณ ดูแลสุขภาพและความงามอย่างธรรมชาติ</p>
-    <a href="#products" class="cta-button" data-i18n="hero.cta">สำรวจผลิตภัณฑ์</a>
   </section>
 
+  <!-- ===== Products -->
   <section class="products" id="products">
-    <h2 data-i18n="products.title">ผลิตภัณฑ์ของเรา</h2>
-    <div class="product-categories">
-      <button class="category-btn active" data-category="all" data-i18n="products.cat_all">ทั้งหมด</button>
-      <button class="category-btn" data-category="skincare" data-i18n="products.cat_skincare">ดูแลผิว</button>
-      <button class="category-btn" data-category="wellness" data-i18n="products.cat_wellness">เวลเนส</button>
-      <button class="category-btn" data-category="aromatherapy" data-i18n="products.cat_aroma">อโรมาเธอราปี</button>
-    </div>
+    <div class="container">
+      <h2 data-i18n="products.title">ผลิตภัณฑ์ของเรา</h2>
 
-    <div class="products-grid">
-      <!-- (การ์ดสินค้าเหมือนเดิมทั้งหมด) -->
-      <div class="product-card" data-category="skincare">
-        <div class="product-image">
-  <img src="https://i.postimg.cc/rp8Cz6hX/image.jpg" alt="กันเเดดตัว" loading="lazy">
-</div>
-
-        <div class="product-info">
-          <h3 data-i18n="p1.name">กันเเดดตัว</h3>
-          <p data-i18n="p1.desc">เซรั่มจากสารสกัดธรรมชาติ ช่วยให้ผิวเปล่งปลั่งและชุ่มชื้น</p>
-          <div class="product-price">฿1,290</div>
-          <div class="product-actions">
-            <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
-            <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
-          </div>
-        </div>
+      <div class="product-categories">
+        <button class="category-btn active" data-category="all" data-i18n="products.cat_all">ทั้งหมด</button>
+        <button class="category-btn" data-category="skincare" data-i18n="products.cat_skincare">ดูแลผิว</button>
+        <button class="category-btn" data-category="wellness" data-i18n="products.cat_wellness">เวลเนส</button>
+        <button class="category-btn" data-category="aromatherapy" data-i18n="products.cat_aroma">อโรมาเธอราปี</button>
       </div>
 
-      <div class="product-card" data-category="skincare">
-        <div class="product-image">
-  <img src="https://i.postimg.cc/HLp4jGSC/image.jpg" alt="กันเเดดหน้าฝาทอง" loading="lazy">
-</div>
-
-        <div class="product-info">
-          <h3 data-i18n="p2.name">กันเเดดหน้าฝาทอง</h3>
-          <p data-i18n="p2.desc">ครีมบำรุงผิวจากอโลเวร่าและน้ำมันธรรมชาติ เพื่อผิวนุ่มเนียน</p>
-          <div class="product-price">฿890</div>
-          <div class="product-actions">
-            <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
-            <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
+      <div class="products-grid">
+        <!-- Card 1 -->
+        <div class="product-card" data-category="skincare">
+          <div class="product-image">
+            <img src="assets/products/serum.jpg" alt="เซรั่มบำรุงผิวหน้า" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 data-i18n="p1.name">เซรั่มบำรุงผิวหน้า</h3>
+            <p data-i18n="p1.desc">เซรั่มจากสารสกัดธรรมชาติ ช่วยให้ผิวเปล่งปลั่งและชุ่มชื้น</p>
+            <div class="product-price">฿1,290</div>
+            <div class="product-actions">
+              <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
+              <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="product-card" data-category="wellness">
-       <div class="product-image">
-  <img src="https://i.postimg.cc/yNVXWqfB/image.jpg" alt="ตัวกันเเฮงค์" loading="lazy">
-</div>
-
-        <div class="product-info">
-          <h3 data-i18n="p3.name">ตัวกันเเฮงค์</h3>
-          <p data-i18n="p3.desc">คอลลาเจนจากธรรมชาติ ช่วยบำรุงผิวจากภายใน</p>
-          <div class="product-price">฿1,590</div>
-          <div class="product-actions">
-            <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
-            <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
+        <!-- Card 2 -->
+        <div class="product-card" data-category="skincare">
+          <div class="product-image">
+            <img src="assets/products/body-cream.jpg" alt="ครีมบำรุงผิวกาย" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 data-i18n="p2.name">ครีมบำรุงผิวกาย</h3>
+            <p data-i18n="p2.desc">ครีมบำรุงผิวจากอโลเวร่าและน้ำมันธรรมชาติ เพื่อผิวนุ่มเนียน</p>
+            <div class="product-price">฿890</div>
+            <div class="product-actions">
+              <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
+              <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="product-card" data-category="aromatherapy">
-        <div class="product-image">
-  <img src="https://i.postimg.cc/TPRqh8kd/image.jpg" alt="วิตซี" loading="lazy">
-</div>
-
-        <div class="product-info">
-          <h3 data-i18n="p4.name">วิตซี</h3>
-          <p data-i18n="p4.desc">น้ำมันหอมระเหยบริสุทธิ์ ช่วยผ่อนคลายและนอนหลับสบาย</p>
-          <div class="product-price">฿690</div>
-          <div class="product-actions">
-            <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
-            <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
+        <!-- Card 3 -->
+        <div class="product-card" data-category="wellness">
+          <div class="product-image">
+            <img src="assets/products/collagen.jpg" alt="อาหารเสริมคอลลาเจน" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 data-i18n="p3.name">อาหารเสริมคอลลาเจน</h3>
+            <p data-i18n="p3.desc">คอลลาเจนจากธรรมชาติ ช่วยบำรุงผิวจากภายใน</p>
+            <div class="product-price">฿1,590</div>
+            <div class="product-actions">
+              <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
+              <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
+            </div>
           </div>
         </div>
-      </div>
 
+        <!-- Card 4 -->
+        <div class="product-card" data-category="aromatherapy">
+          <div class="product-image">
+            <img src="assets/products/lavender-oil.jpg" alt="น้ำมันหอมระเหย ลาเวนเดอร์" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 data-i18n="p4.name">น้ำมันหอมระเหย ลาเวนเดอร์</h3>
+            <p data-i18n="p4.desc">น้ำมันหอมระเหยบริสุทธิ์ ช่วยผ่อนคลายและนอนหลับสบาย</p>
+            <div class="product-price">฿690</div>
+            <div class="product-actions">
+              <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
+              <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="product-card" data-category="skincare">
+          <div class="product-image">
+            <img src="assets/products/green-tea-mask.jpg" alt="มาส์กหน้าชาเขียว" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 data-i18n="p5.name">มาส์กหน้าชาเขียว</h3>
+            <p data-i18n="p5.desc">มาส์กหน้าจากชาเขียวออร์แกนิค ช่วยลดสิว และกระชับรูขุมขน</p>
+            <div class="product-price">฿590</div>
+            <div class="product-actions">
+              <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
+              <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="product-card" data-category="wellness">
+          <div class="product-image">
+            <img src="assets/products/detox-tea.jpg" alt="ชาดีท็อกซ์" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 data-i18n="p6.name">ชาดีท็อกซ์</h3>
+            <p data-i18n="p6.desc">ชาสมุนไพรออร์แกนิค ช่วยขับสารพิษและเสริมสร้างภูมิคุ้มกัน</p>
+            <div class="product-price">฿490</div>
+            <div class="product-actions">
+              <a class="line-btn" href="https://line.me/R/ti/p/@heavenbeauty" target="_blank" rel="noopener" data-i18n="btn.line">สั่งซื้อ/แชทไลน์</a>
+              <button class="buy-btn" data-i18n="btn.buy">สั่งซื้อ</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
+  <!-- ===== About -->
   <section class="about" id="about">
-    <div class="about-container">
-      <div class="about-content">
+    <div class="container">
+      <div class="grid">
         <div class="about-text">
           <h2 data-i18n="about.title">เกี่ยวกับเรา</h2>
-          <div class="about-subtitle" data-i18n="about.subtitle">Heaven and Beauty</div>
-          <p class="about-description" data-i18n="about.body">เราเป็นแบรนด์ความงามและสุขภาพที่มุ่งมั่นในการนำเสนอผลิตภัณฑ์ออร์แกนิคคุณภาพสูง ด้วยความเชื่อมั่นว่าความงามที่แท้จริงต้องเริ่มต้นจากภายใน เราคัดสรรส่วนผสมจากธรรมชาติที่ดีที่สุดจากทั่วโลก เพื่อสร้างสรรค์ผลิตภัณฑ์ที่ปลอดภัย อ่อนโยน และมีประสิทธิภาพ</p>
-          <div class="about-stats">
-            <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label" data-i18n="about.stat1">ปีแห่งประสบการณ์</div></div>
-            <div class="stat-item"><div class="stat-number">50K+</div><div class="stat-label" data-i18n="about.stat2">ลูกค้าที่ไว้วางใจ</div></div>
-            <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label" data-i18n="about.stat3">ส่วนผสมธรรมชาติ</div></div>
+          <div class="subtitle" data-i18n="about.subtitle">Heaven and Beauty</div>
+          <p class="desc" data-i18n="about.body">
+            เราเป็นแบรนด์ความงามและสุขภาพที่มุ่งมั่นในการนำเสนอผลิตภัณฑ์ออร์แกนิคคุณภาพสูง ด้วยความเชื่อมั่นว่าความงามที่แท้จริงต้องเริ่มต้นจากภายใน เราคัดสรรส่วนผสมจากธรรมชาติที่ดีที่สุดจากทั่วโลก เพื่อสร้างสรรค์ผลิตภัณฑ์ที่ปลอดภัย อ่อนโยน และมีประสิทธิภาพ
+          </p>
+          <div class="stats">
+            <div class="stat"><div class="num">10+</div><div class="lbl" data-i18n="about.stat1">ปีแห่งประสบการณ์</div></div>
+            <div class="stat"><div class="num">50K+</div><div class="lbl" data-i18n="about.stat2">ลูกค้าที่ไว้วางใจ</div></div>
+            <div class="stat"><div class="num">100%</div><div class="lbl" data-i18n="about.stat3">ส่วนผสมธรรมชาติ</div></div>
           </div>
         </div>
+
         <div class="about-visual">
           <div class="luxury-frame">
             <div class="frame-content">
-               <img src="https://i.postimg.cc/g0QTrJ6j/LINE-ALBUM-250925-3.jpg" alt="Heaven and Beauty – About visual" loading="lazy">
-                <defs>
-                  <linearGradient id="luxuryGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#ffd700;stop-opacity:0.8" />
-                    <stop offset="50%" style="stop-color:#e91e63;stop-opacity:0.9" />
-                    <stop offset="100%" style="stop-color:#8e24aa;stop-opacity:0.8" />
-                  </linearGradient>
-                </defs>
-                <circle cx="150" cy="200" r="120" fill="#f8bbd9" opacity="0.25"/>
-                <rect x="155" y="100" width="30" height="100" rx="6" fill="url(#luxuryGrad1)" />
-                <rect x="120" y="120" width="25" height="80" rx="5" fill="url(#luxuryGrad1)" />
-                <rect x="195" y="130" width="25" height="70" rx="5" fill="url(#luxuryGrad1)" />
-              </svg>
+              <!-- ใส่รูปของคุณที่นี่ -->
+              <img src="https://i.postimg.cc/g0QTrJ6j/LINE-ALBUM-250925-3.jpg" alt="Heaven and Beauty – About visual" loading="lazy">
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="about-values">
-        <h3 data-i18n="values.title">ค่านิยมของเรา</h3>
-        <div class="values-grid">
-          <div class="value-card">
-            <div class="value-icon">⭐</div>
-            <h4 data-i18n="values.v1t">คุณภาพเป็นเลิศ</h4>
-            <p data-i18n="values.v1d">เราไม่ยอมประนีประนอมในเรื่องคุณภาพ ทุกผลิตภัณฑ์ผ่านการทดสอบอย่างเข้มงวด</p>
-          </div>
-          <div class="value-card">
-            <div class="value-icon">🌱</div>
-            <h4 data-i18n="values.v2t">ใส่ใจธรรมชาติ</h4>
-            <p data-i18n="values.v2d">เราเคารพและอนุรักษ์ธรรมชาติ ใช้ส่วนผสมที่ยั่งยืนและเป็นมิตรกับสิ่งแวดล้อม</p>
-          </div>
-          <div class="value-card">
-            <div class="value-icon">💡</div>
-            <h4 data-i18n="values.v3t">นวัตกรรม</h4>
-            <p data-i18n="values.v3d">เราพัฒนาและสร้างสรรค์ผลิตภัณฑ์ใหม่ๆ ด้วยเทคโนโลยีที่ทันสมัย</p>
-          </div>
+  <!-- ===== Features -->
+  <section class="features" id="wellness">
+    <div class="container">
+      <h2 data-i18n="wellness.title">ความงามและสุขภาพแบบองค์รวม</h2>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon">🌿</div><h3 data-i18n="wellness.f1t">100% ออร์แกนิค</h3><p data-i18n="wellness.f1d">ส่วนผสมจากธรรมชาติล้วนๆ ปลอดสารเคมีที่เป็นอันตราย เพื่อผิวที่สุขภาพดีและเปล่งปลั่ง</p></div>
+        <div class="feature-card"><div class="feature-icon">🧘‍♀️</div><h3 data-i18n="wellness.f2t">ผ่อนคลายจิตใจ</h3><p data-i18n="wellness.f2d">ผลิตภัณฑ์ที่ช่วยให้คุณรู้สึกสงบ ผ่อนคลาย และเติมพลังให้กับร่างกายและจิตใจ</p></div>
+        <div class="feature-card"><div class="feature-icon">✨</div><h3 data-i18n="wellness.f3t">เปล่งปลั่งธรรมชาติ</h3><p data-i18n="wellness.f3d">เผยผิวที่สดใส เปล่งปลั่ง และมีสุขภาพดี ด้วยสูตรที่พัฒนาจากธรรมชาติ</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 data-i18n="contact.title">ติดต่อเรา</h2>
+      <p class="contact-subtitle" data-i18n="contact.subtitle">เราพร้อมให้คำปรึกษาและดูแลความงามของคุณด้วยใจ<br>ติดตามข่าวสารและเคล็ดลับความงามเฉพาะจากเรา</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-item-icon">📍</span>
+          <h3 data-i18n="contact.branch">สาขาหลัก</h3>
+          <p data-i18n="contact.addr">โครงการ HAVANA<br>เลขที่777 333 Cho Ho, เมือง Nakhon Ratchasima 30000</p>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-icon">📞</span>
+          <h3 data-i18n="contact.phone">โทรศัพท์</h3>
+          <p data-i18n="contact.phone_detail">098-549-7939<br>เปิดทุกวัน 10:00–22:00 น.</p>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-icon">💌</span>
+          <h3 data-i18n="contact.email">อีเมล</h3>
+          <p>info@heavenbeauty.com<br>support@heavenbeauty.com<br><span data-i18n="contact.sla">ตอบกลับภายใน 24 ชั่วโมง</span></p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="features" id="wellness">
-    <h2 data-i18n="wellness.title">ความงามและสุขภาพแบบองค์รวม</h2>
-    <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon">🌿</div><h3 data-i18n="wellness.f1t">100% ออร์แกนิค</h3><p data-i18n="wellness.f1d">ส่วนผสมจากธรรมชาติล้วนๆ ปลอดสารเคมีที่เป็นอันตราย เพื่อผิวที่สุขภาพดีและเปล่งปลั่ง</p></div>
-      <div class="feature-card"><div class="feature-icon">🧘‍♀️</div><h3 data-i18n="wellness.f2t">ผ่อนคลายจิตใจ</h3><p data-i18n="wellness.f2d">ผลิตภัณฑ์ที่ช่วยให้คุณรู้สึกสงบ ผ่อนคลาย และเติมพลังให้กับร่างกายและจิตใจ</p></div>
-      <div class="feature-card"><div class="feature-icon">✨</div><h3 data-i18n="wellness.f3t">เปล่งปลั่งธรรมชาติ</h3><p data-i18n="wellness.f3d">เผยผิวที่สดใส เปล่งปลั่ง และมีสุขภาพดี ด้วยสูตรที่พัฒนาจากธรรมชาติ</p></div>
-    </div>
-  </section>
-
-  <section class="contact" id="contact">
-    <h2 data-i18n="contact.title">ติดต่อเรา</h2>
-    <p class="contact-subtitle" data-i18n="contact.subtitle">เราพร้อมให้คำปรึกษาและดูแลความงามของคุณด้วยใจ<br>ติดตามข่าวสารและเคล็ดลับความงามเฉพาะจากเรา</p>
-    <div class="contact-info">
-      <div class="contact-item">
-        <span class="contact-item-icon">📍</span>
-        <h3 data-i18n="contact.branch">สาขาหลัก</h3>
-        <p data-i18n="contact.addr">โครงการ HAVANA<br>เลขที่777 333 Cho Ho, เมือง Nakhon Ratchasima 30000</p>
+      <div class="social-icons">
+        <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/yourpage" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://line.me/ti/p/~yourlineid" target="_blank"><i class="fab fa-line"></i></a>
+        <a href="https://tiktok.com/@yourpage" target="_blank"><i class="fab fa-tiktok"></i></a>
       </div>
-      <div class="contact-item">
-        <span class="contact-item-icon">📞</span>
-        <h3 data-i18n="contact.phone">โทรศัพท์</h3>
-        <p data-i18n="contact.phone_detail">098-549-7939<br>เปิดทุกวัน 10:00–22:00 น.</p>
-      </div>
-      <div class="contact-item">
-        <span class="contact-item-icon">💌</span>
-        <h3 data-i18n="contact.email">อีเมล</h3>
-        <p>info@heavenbeauty.com<br>support@heavenbeauty.com<br><span data-i18n="contact.sla">ตอบกลับภายใน 24 ชั่วโมง</span></p>
-      </div>
-    </div>
-
-    <div class="social-icons" style="display:flex;justify-content:center;gap:20px;margin-top:20px;">
-      <a href="https://facebook.com/yourpage" target="_blank" style="background:#ff4081;color:white;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.2);">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-
-      <a href="https://instagram.com/yourpage" target="_blank" style="background:#ff4081;color:white;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.2);">
-        <i class="fab fa-instagram"></i>
-      </a>
-
-      <a href="https://line.me/ti/p/~yourlineid" target="_blank" style="background:#06C755;color:white;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.2);">
-        <i class="fab fa-line"></i>
-      </a>
-
-      <a href="https://tiktok.com/@yourpage" target="_blank" style="background:#000;color:white;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.2);">
-        <i class="fab fa-tiktok"></i>
-      </a>
     </div>
   </section>
 
   <footer>
-    <p>&copy; <span id="year"></span> <span data-i18n="brand">Heaven &amp; Beauty</span>. <span data-i18n="footer">ดูแลความงามและสุขภาพด้วยใจ</span></p>
+    <div class="container">
+      <p>&copy; <span id="year"></span> <span data-i18n="brand">Heaven &amp; Beauty</span>. <span data-i18n="footer">ดูแลความงามและสุขภาพด้วยใจ</span></p>
+    </div>
   </footer>
 
   <script>
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const href = a.getAttribute('href');
-        if (href.length > 1) {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const href=a.getAttribute('href');
+        if(href.length>1){ e.preventDefault(); const t=document.querySelector(href); t&&t.scrollIntoView({behavior:'smooth',block:'start'}); }
+      })
     });
 
-    // Product filtering
-    const categoryBtns = document.querySelectorAll('.category-btn');
-    const productCards = document.querySelectorAll('.product-card');
-    categoryBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        categoryBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const cat = btn.getAttribute('data-category');
-        productCards.forEach(card => {
-          const show = (cat === 'all' || card.getAttribute('data-category') === cat);
-          card.classList.toggle('hidden', !show);
-          if (show) card.style.animation = 'fadeInUp .5s ease forwards';
+    // Hamburger toggle
+    const burger=document.getElementById('hamburger');
+    const navMenu=document.getElementById('navMenu');
+    burger?.addEventListener('click',()=>{ burger.classList.toggle('active'); navMenu.classList.toggle('active'); });
+    // Close after click (mobile)
+    navMenu.querySelectorAll('a').forEach(el=> el.addEventListener('click',()=>{ if(window.innerWidth<=768){ navMenu.classList.remove('active'); burger.classList.remove('active'); } }));
+
+    // Product filter
+    const categoryBtns=document.querySelectorAll('.category-btn');
+    const productCards=document.querySelectorAll('.product-card');
+    categoryBtns.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        categoryBtns.forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+        const cat=btn.dataset.category;
+        productCards.forEach(card=>{
+          const show=(cat==='all'||card.dataset.category===cat);
+          card.style.display=show?'block':'none';
+          if(show){ card.style.animation='fadeInUp .5s ease forwards'; }
         });
       });
     });
 
-    // Hamburger Menu Toggle (เพิ่มเฉพาะส่วนนีี้)
-    const hamburgerBtn = document.querySelector('.hamburger-btn');
-    const navMenu = document.querySelector('.nav-menu');
-    if (hamburgerBtn) {
-      hamburgerBtn.addEventListener('click', () => {
-        hamburgerBtn.classList.toggle('active');
-        navMenu.classList.toggle('active');
-      });
-      // ปิดเมนูเมื่อกดรายการ
-      navMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          setTimeout(() => {
-            if (window.innerWidth <= 600) {
-              navMenu.classList.remove('active');
-              hamburgerBtn.classList.remove('active');
-            }
-          }, 200);
-        });
-      });
-    }
-
-    // i18n strings (เหลือ TH/EN เท่านั้น)
-    const I18N = {
-      th: {
-        brand: 'Heaven & Beauty',
-        'nav.home': 'หน้าแรก', 'nav.products': 'ผลิตภัณฑ์', 'nav.about': 'เกี่ยวกับเรา', 'nav.wellness': 'Wellness', 'nav.contact': 'ติดต่อ',
-        'lang.label': 'ภาษา:',
-        'hero.title': 'ยินดีต้อนรับสู่ Heaven and Beauty',
-        'hero.desc': 'เราคัดสรรส่วนผสมที่ดีที่สุดจากธรรมชาติ เพื่อสร้างสรรค์ผลิตภัณฑ์ออร์แกนิคที่ปลอดภัยและอ่อนโยนต่อผิวคุณ ดูแลสุขภาพและความงามอย่างธรรมชาติ',
-        'hero.cta': 'สำรวจผลิตภัณฑ์',
-        'products.title': 'ผลิตภัณฑ์ของเรา', 'products.cat_all': 'ทั้งหมด', 'products.cat_skincare': 'ดูแลผิว', 'products.cat_wellness': 'เวลเนส', 'products.cat_aroma': 'อโรมาเธอราปี',
-        'p1.name': 'กันเเดดตัว', 'p1.desc': 'เซรั่มจากสารสกัดธรรมชาติ ช่วยให้ผิวเปล่งปลั่งและชุ่มชื้น',
-        'p2.name': 'กันเเดดหน้าฝาทอง', 'p2.desc': 'ครีมบำรุงผิวจากอโลเวร่าและน้ำมันธรรมชาติ เพื่อผิวนุ่มเนียน',
-        'p3.name': 'ตัวกันเเฮงค์', 'p3.desc': 'คอลลาเจนจากธรรมชาติ ช่วยบำรุงผิวจากภายใน',
-        'p4.name': 'วิตซี', 'p4.desc': 'น้ำมันหอมระเหยบริสุทธิ์ ช่วยผ่อนคลายและนอนหลับสบาย',
-        'p5.name': 'มาส์กหน้าชาเขียว', 'p5.desc': 'มาส์กหน้าจากชาเขียวออร์แกนิค ช่วยลดสิว และกระชับรูขุมขน',
-        'p6.name': 'ชาดีท็อกซ์', 'p6.desc': 'ชาสมุนไพรออร์แกนิค ช่วยขับสารพิษและเสริมสร้างภูมิคุ้มกัน',
-        'btn.buy': 'สั่งซื้อ', 'btn.line': 'สั่งซื้อ/แชทไลน์',
-        'about.title': 'เกี่ยวกับเรา', 'about.subtitle': 'Heaven and Beauty', 'about.body': 'เราเป็นแบรนด์ความงามและสุขภาพที่มุ่งมั่นในการนำเสนอผลิตภัณฑ์ออร์แกนิคคุณภาพสูง ด้วยความเชื่อมั่นว่าความงามที่แท้จริงต้องเริ่มต้นจากภายใน เราคัดสรรส่วนผสมจากธรรมชาติที่ดีที่สุดจากทั่วโลก เพื่อสร้างสรรค์ผลิตภัณฑ์ที่ปลอดภัย อ่อนโยน และมีประสิทธิภาพ',
-        'about.stat1': 'ปีแห่งประสบการณ์', 'about.stat2': 'ลูกค้าที่ไว้วางใจ', 'about.stat3': 'ส่วนผสมธรรมชาติ',
-        'values.title': 'ค่านิยมของเรา', 'values.v1t': 'คุณภาพเป็นเลิศ', 'values.v1d': 'เราไม่ยอมประนีประนอมในเรื่องคุณภาพ ทุกผลิตภัณฑ์ผ่านการทดสอบอย่างเข้มงวด', 'values.v2t': 'ใส่ใจธรรมชาติ', 'values.v2d': 'เราเคารพและอนุรักษ์ธรรมชาติ ใช้ส่วนผสมที่ยั่งยืนและเป็นมิตรกับสิ่งแวดล้อม', 'values.v3t': 'นวัตกรรม', 'values.v3d': 'เราพัฒนาและสร้างสรรค์ผลิตภัณฑ์ใหม่ๆ ด้วยเทคโนโลยีที่ทันสมัย',
-        'wellness.title': 'ความงามและสุขภาพแบบองค์รวม', 'wellness.f1t': '100% ออร์แกนิค', 'wellness.f1d': 'ส่วนผสมจากธรรมชาติล้วนๆ ปลอดสารเคมีที่เป็นอันตราย เพื่อผิวที่สุขภาพดีและเปล่งปลั่ง', 'wellness.f2t': 'ผ่อนคลายจิตใจ', 'wellness.f2d': 'ผลิตภัณฑ์ที่ช่วยให้คุณรู้สึกสงบ ผ่อนคลาย และเติมพลังให้กับร่างกายและจิตใจ', 'wellness.f3t': 'เปล่งปลั่งธรรมชาติ', 'wellness.f3d': 'เผยผิวที่สดใส เปล่งปลั่ง และมีสุขภาพดี ด้วยสูตรที่พัฒนาจากธรรมชาติ',
-        'contact.title': 'ติดต่อเรา', 'contact.subtitle': 'เราพร้อมให้คำปรึกษาและดูแลความงามของคุณด้วยใจ\nติดตามข่าวสารและเคล็ดลับความงามเฉพาะจากเรา', 'contact.branch': 'สาขาหลัก', 'contact.addr': 'โครงการ HAVANA<br>เลขที่777 333 Cho Ho, เมือง Nakhon Ratchasima 30000', 'contact.phone': 'โทรศัพท์', 'contact.phone_detail': '098-549-7939<br>เปิดทุกวัน 10:00–22:00 น.', 'contact.email': 'อีเมล', 'contact.sla': 'ตอบกลับภายใน 24 ชั่วโมง', 'footer': 'ดูแลความงามและสุขภาพด้วยใจ'
+    // i18n (TH/EN)
+    const I18N={
+      th:{ brand:'Heaven & Beauty',
+        'nav.home':'หน้าแรก','nav.products':'ผลิตภัณฑ์','nav.about':'เกี่ยวกับเรา','nav.wellness':'Wellness','nav.contact':'ติดต่อ',
+        'lang.label':'ภาษา:','hero.title':'ยินดีต้อนรับสู่ Heaven and Beauty',
+        'hero.desc':'เราคัดสรรส่วนผสมที่ดีที่สุดจากธรรมชาติ เพื่อสร้างสรรค์ผลิตภัณฑ์ออร์แกนิคที่ปลอดภัยและอ่อนโยนต่อผิวคุณ ดูแลสุขภาพและความงามอย่างธรรมชาติ',
+        'hero.cta':'สำรวจผลิตภัณฑ์','products.title':'ผลิตภัณฑ์ของเรา',
+        'products.cat_all':'ทั้งหมด','products.cat_skincare':'ดูแลผิว','products.cat_wellness':'เวลเนส','products.cat_aroma':'อโรมาเธอราปี',
+        'p1.name':'เซรั่มบำรุงผิวหน้า','p1.desc':'เซรั่มจากสารสกัดธรรมชาติ ช่วยให้ผิวเปล่งปลั่งและชุ่มชื้น',
+        'p2.name':'ครีมบำรุงผิวกาย','p2.desc':'ครีมบำรุงผิวจากอโลเวร่าและน้ำมันธรรมชาติ เพื่อผิวนุ่มเนียน',
+        'p3.name':'อาหารเสริมคอลลาเจน','p3.desc':'คอลลาเจนจากธรรมชาติ ช่วยบำรุงผิวจากภายใน',
+        'p4.name':'น้ำมันหอมระเหย ลาเวนเดอร์','p4.desc':'น้ำมันหอมระเหยบริสุทธิ์ ช่วยผ่อนคลายและนอนหลับสบาย',
+        'p5.name':'มาส์กหน้าชาเขียว','p5.desc':'มาส์กหน้าจากชาเขียวออร์แกนิค ช่วยลดสิว และกระชับรูขุมขน',
+        'p6.name':'ชาดีท็อกซ์','p6.desc':'ชาสมุนไพรออร์แกนิค ช่วยขับสารพิษและเสริมสร้างภูมิคุ้มกัน',
+        'btn.buy':'สั่งซื้อ','btn.line':'สั่งซื้อ/แชทไลน์',
+        'about.title':'เกี่ยวกับเรา','about.subtitle':'Heaven and Beauty','about.body':'เราเป็นแบรนด์ความงามและสุขภาพที่มุ่งมั่นในการนำเสนอผลิตภัณฑ์ออร์แกนิคคุณภาพสูง ด้วยความเชื่อมั่นว่าความงามที่แท้จริงต้องเริ่มต้นจากภายใน เราคัดสรรส่วนผสมจากธรรมชาติที่ดีที่สุดจากทั่วโลก เพื่อสร้างสรรค์ผลิตภัณฑ์ที่ปลอดภัย อ่อนโยน และมีประสิทธิภาพ',
+        'about.stat1':'ปีแห่งประสบการณ์','about.stat2':'ลูกค้าที่ไว้วางใจ','about.stat3':'ส่วนผสมธรรมชาติ',
+        'values.title':'ค่านิยมของเรา','wellness.title':'ความงามและสุขภาพแบบองค์รวม',
+        'wellness.f1t':'100% ออร์แกนิค','wellness.f1d':'ส่วนผสมจากธรรมชาติล้วนๆ ปลอดสารเคมีที่เป็นอันตราย เพื่อผิวที่สุขภาพดีและเปล่งปลั่ง',
+        'wellness.f2t':'ผ่อนคลายจิตใจ','wellness.f2d':'ผลิตภัณฑ์ที่ช่วยให้คุณรู้สึกสงบ ผ่อนคลาย และเติมพลังให้กับร่างกายและจิตใจ',
+        'wellness.f3t':'เปล่งปลั่งธรรมชาติ','wellness.f3d':'เผยผิวที่สดใส เปล่งปลั่ง และมีสุขภาพดี ด้วยสูตรที่พัฒนาจากธรรมชาติ',
+        'contact.title':'ติดต่อเรา','contact.subtitle':'เราพร้อมให้คำปรึกษาและดูแลความงามของคุณด้วยใจ\nติดตามข่าวสารและเคล็ดลับความงามเฉพาะจากเรา',
+        'contact.branch':'สาขาหลัก','contact.addr':'โครงการ HAVANA<br>เลขที่777 333 Cho Ho, เมือง Nakhon Ratchasima 30000',
+        'contact.phone':'โทรศัพท์','contact.phone_detail':'098-549-7939<br>เปิดทุกวัน 10:00–22:00 น.',
+        'contact.email':'อีเมล','contact.sla':'ตอบกลับภายใน 24 ชั่วโมง','footer':'ดูแลความงามและสุขภาพด้วยใจ'
       },
-      en: {
-        brand: 'Heaven & Beauty',
-        'nav.home': 'Home', 'nav.products': 'Products', 'nav.about': 'About', 'nav.wellness': 'Wellness', 'nav.contact': 'Contact',
-        'lang.label': 'Language:',
-        'hero.title': 'Welcome to Heaven and Beauty',
-        'hero.desc': 'We carefully select the best natural ingredients to craft safe, gentle organic products. Nurture your health and beauty the natural way.',
-        'hero.cta': 'Browse Products',
-        'products.title': 'Our Products', 'products.cat_all': 'All', 'products.cat_skincare': 'Skincare', 'products.cat_wellness': 'Wellness', 'products.cat_aroma': 'Aromatherapy',
-        'p1.name': 'Brightening Facial Serum', 'p1.desc': 'Natural-extract serum for radiant, hydrated skin.',
-        'p2.name': 'Nourishing Body Cream', 'p2.desc': 'Aloe vera & natural oils for silky smooth skin.',
-        'p3.name': 'Collagen Supplement', 'p3.desc': 'Natural collagen to support beauty from within.',
-        'p4.name': 'Lavender Essential Oil', 'p4.desc': 'Pure essential oil for relaxation and restful sleep.',
-        'p5.name': 'Green Tea Face Mask', 'p5.desc': 'Organic green tea mask to calm acne and tighten pores.',
-        'p6.name': 'Detox Herbal Tea', 'p6.desc': 'Organic herbal tea that helps detox and boost immunity.',
-        'btn.buy': 'Order', 'btn.line': 'Order / Chat LINE',
-        'about.title': 'About Us', 'about.subtitle': 'Heaven and Beauty', 'about.body': 'We are a wellness & beauty brand committed to premium organic products. True beauty starts from within—so we use the finest nature-derived ingredients to create safe, gentle and effective formulas.',
-        'about.stat1': 'Years of Experience', 'about.stat2': 'Happy Customers', 'about.stat3': 'Natural Ingredients',
-        'values.title': 'Our Values', 'values.v1t': 'Uncompromising Quality', 'values.v1d': 'Every formula is rigorously tested to meet our high standards.', 'values.v2t': 'Nature First', 'values.v2d': 'Sustainable, eco-friendly ingredients with respect for the planet.', 'values.v3t': 'Innovation', 'values.v3d': 'Continuous R&D to bring you modern, effective solutions.',
-        'wellness.title': 'Holistic Beauty & Wellness', 'wellness.f1t': '100% Organic', 'wellness.f1d': 'No harsh chemicals—only safe, natural ingredients for healthy glow.', 'wellness.f2t': 'Relax Your Mind', 'wellness.f2d': 'Feel calm, relaxed and recharged in body and mind.', 'wellness.f3t': 'Naturally Radiant', 'wellness.f3d': 'Reveal brighter, healthier skin with nature-powered formulas.',
-        'contact.title': 'Contact Us', 'contact.subtitle': 'We are here to help you feel your best.\nFollow us for exclusive tips & updates.', 'contact.branch': 'Flagship Store', 'contact.addr': 'CentralWorld, 3rd Floor<br>999/9 Phloen Chit, Bangkok 10330', 'contact.phone': 'Phone', 'contact.phone_detail': '02-123-4567<br>or 089-123-4567<br>Open daily 10:00–22:00', 'contact.email': 'Email', 'contact.sla': 'Response within 24 hours', 'footer': 'Caring for your beauty & wellness'
+      en:{ brand:'Heaven & Beauty',
+        'nav.home':'Home','nav.products':'Products','nav.about':'About','nav.wellness':'Wellness','nav.contact':'Contact',
+        'lang.label':'Language:','hero.title':'Welcome to Heaven and Beauty',
+        'hero.desc':'We carefully select the best natural ingredients to craft safe, gentle organic products. Nurture your health and beauty the natural way.',
+        'hero.cta':'Browse Products','products.title':'Our Products',
+        'products.cat_all':'All','products.cat_skincare':'Skincare','products.cat_wellness':'Wellness','products.cat_aroma':'Aromatherapy',
+        'p1.name':'Brightening Facial Serum','p1.desc':'Natural-extract serum for radiant, hydrated skin.',
+        'p2.name':'Nourishing Body Cream','p2.desc':'Aloe vera & natural oils for silky smooth skin.',
+        'p3.name':'Collagen Supplement','p3.desc':'Natural collagen to support beauty from within.',
+        'p4.name':'Lavender Essential Oil','p4.desc':'Pure essential oil for relaxation and restful sleep.',
+        'p5.name':'Green Tea Face Mask','p5.desc':'Organic green tea mask to calm acne and tighten pores.',
+        'p6.name':'Detox Herbal Tea','p6.desc':'Organic herbal tea that helps detox and boost immunity.',
+        'btn.buy':'Order','btn.line':'Order / Chat LINE',
+        'about.title':'About Us','about.subtitle':'Heaven and Beauty','about.body':'We are a wellness & beauty brand committed to premium organic products. True beauty starts from within—so we use the finest nature-derived ingredients to create safe, gentle and effective formulas.',
+        'about.stat1':'Years of Experience','about.stat2':'Happy Customers','about.stat3':'Natural Ingredients',
+        'values.title':'Our Values','wellness.title':'Holistic Beauty & Wellness',
+        'wellness.f1t':'100% Organic','wellness.f1d':'No harsh chemicals—only safe, natural ingredients for healthy glow.',
+        'wellness.f2t':'Relax Your Mind','wellness.f2d':'Feel calm, relaxed and recharged in body and mind.',
+        'wellness.f3t':'Naturally Radiant','wellness.f3d':'Reveal brighter, healthier skin with nature-powered formulas.',
+        'contact.title':'Contact Us','contact.subtitle':'We are here to help you feel your best.\nFollow us for exclusive tips & updates.',
+        'contact.branch':'Flagship Store','contact.addr':'CentralWorld, 3rd Floor<br>999/9 Phloen Chit, Bangkok 10330',
+        'contact.phone':'Phone','contact.phone_detail':'02-123-4567<br>or 089-123-4567<br>Open daily 10:00–22:00',
+        'contact.email':'Email','contact.sla':'Response within 24 hours','footer':'Caring for your beauty & wellness'
       }
     };
-
-    function setLang(lang) {
-      const dict = I18N[lang] || I18N.th;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (dict[key]) {
-          if (el.tagName.toLowerCase() === 'input' || el.tagName.toLowerCase() === 'textarea') {
-            el.placeholder = dict[key];
-          } else {
-            el.innerHTML = dict[key].replace(/\n/g, '<br>');
-          }
+    function setLang(lang){
+      const dict=I18N[lang]||I18N.th;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const k=el.getAttribute('data-i18n');
+        if(dict[k]){
+          if(['input','textarea'].includes(el.tagName.toLowerCase())) el.placeholder=dict[k];
+          else el.innerHTML=dict[k].replace(/\n/g,'<br>');
         }
       });
-      document.documentElement.setAttribute('lang', lang);
-      localStorage.setItem('lang', lang);
+      document.documentElement.setAttribute('lang',lang);
+      localStorage.setItem('lang',lang);
     }
+    const langSelect=document.getElementById('lang');
+    const initialLang=localStorage.getItem('lang')||'th';
+    langSelect.value=initialLang; setLang(initialLang);
+    langSelect.addEventListener('change',e=> setLang(e.target.value));
 
-    const langSelect = document.getElementById('lang');
-    const initialLang = localStorage.getItem('lang') || 'th';
-    langSelect.value = initialLang; setLang(initialLang);
-    langSelect.addEventListener('change', e => setLang(e.target.value));
+    // simple appear animation
+    const style=document.createElement('style');
+    style.innerHTML='@keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}';
+    document.head.appendChild(style);
   </script>
 </body>
 </html>
