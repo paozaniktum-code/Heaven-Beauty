@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Heaven and Beauty - Wellness & Organic Beauty</title>
 
-  <!-- Font Awesome -->
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -192,6 +191,36 @@
     .frame-content{ width:100%; height:100%; display:flex; align-items:center; justify-content:center }
     .frame-content img{ width:100%; height:100%; object-fit:cover; border-radius:24px; display:block }
 
+    /* Services (New) */
+    .services{ padding: 64px 0 }
+    .services h2{ text-align:center; color:var(--brand); font-size:clamp(22px,3vw,32px); margin:0 0 24px }
+    .services-grid{
+      display:grid; gap:24px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+    .service-card{
+      background:rgba(255,255,255,.92); padding:28px 24px; border-radius:20px;
+      text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.08);
+      border:2px solid transparent; transition:.25s ease;
+    }
+    .service-card:hover{
+      transform:translateY(-8px); box-shadow:0 20px 40px rgba(233,30,99,.16);
+      border-color:rgba(233,30,99,.25);
+    }
+    .service-icon{ font-size:2.5rem; color:var(--brand); margin-bottom:12px; }
+    .service-card h3{ color:var(--brand); font-size:1.2rem; margin:10px 0; }
+    .service-card p{ color:#666; line-height:1.6; font-size:.95rem; margin: 0 0 10px; }
+    .service-price{
+      font-weight: 800; color:var(--brand-2); margin:12px 0 18px;
+      font-size:1.1rem;
+    }
+    .book-btn{
+      display:inline-block; padding:.8rem 1.6rem; border-radius:999px;
+      background:var(--brand); color:#fff; font-weight:800; border:0;
+      cursor:pointer; text-decoration:none; transition:.25s ease;
+    }
+    .book-btn:hover{ background:var(--brand-2); box-shadow:0 8px 20px rgba(233,30,99,.3); }
+
     /* Features */
     .features{ padding:64px 0 }
     .features h2{ text-align:center; color:var(--brand); font-size:clamp(22px,3vw,32px); margin:0 0 24px }
@@ -216,7 +245,7 @@
       text-decoration:none; background:#ff4081; color:#fff; box-shadow:0 6px 16px rgba(0,0,0,.2)
     }
     .social-icons a:nth-child(3){ background:#06C755 } /* LINE */
-    .social-icons a:nth-child(4){ background:#000 }   /* TikTok */
+    .social-icons a:nth-child(4){ background:#000 }    /* TikTok */
 
     footer{ text-align:center; color:#666; padding:28px 0; background:rgba(255,255,255,.8) }
 
@@ -224,6 +253,7 @@
     @media (max-width:1199px){
       .container{ max-width:var(--max-w-tablet) }
       .products .products-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) }
+      .services-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } /* Added */
       .features-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) }
       .about .grid{ grid-template-columns:1fr; text-align:center }
       .about h2::after{ left:50%; transform:translateX(-50%) }
@@ -234,7 +264,7 @@
     @media (max-width:768px){
       body{ padding-top:60px }
       .navbar{ gap:10px; padding:0 8px }
-      .nav-menu{ display:none }       /* hide desktop menu */
+      .nav-menu{ display:none }        /* hide desktop menu */
       .hamburger-btn{ display:block } /* show burger */
       .nav-right label{ display:none }
       .nav-lang{ height:36px }
@@ -248,6 +278,7 @@
 
       .hero .inner{ padding:44px 16px }
       .products .products-grid{ grid-template-columns:1fr }
+      .services-grid{ grid-template-columns: 1fr; } /* Added */
       .features-grid{ grid-template-columns:1fr }
       .contact-info{ grid-template-columns:1fr }
       .luxury-frame{ height:340px }
@@ -255,14 +286,12 @@
   </style>
 </head>
 <body>
-  <!-- floating stars -->
   <div class="bg-animation">
     <div class="floating-star"><svg viewBox="0 0 24 24"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#f06292"/></svg></div>
     <div class="floating-star"><svg viewBox="0 0 24 24"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#e91e63"/></svg></div>
     <div class="floating-star"><svg viewBox="0 0 24 24"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#ec407a"/></svg></div>
   </div>
 
-  <!-- ===== Header -->
   <header>
     <div class="container">
       <nav class="navbar">
@@ -274,6 +303,7 @@
             <li><a href="#home" class="active" data-i18n="nav.home">หน้าแรก</a></li>
             <li><a href="#products" data-i18n="nav.products">ผลิตภัณฑ์</a></li>
             <li><a href="#about" data-i18n="nav.about">เกี่ยวกับเรา</a></li>
+            <li><a href="#services" data-i18n="nav.services">สปา</a></li>
             <li><a href="#wellness" data-i18n="nav.wellness">Wellness</a></li>
             <li><a href="#contact" data-i18n="nav.contact">ติดต่อ</a></li>
           </ul>
@@ -292,7 +322,6 @@
     </div>
   </header>
 
-  <!-- ===== Hero -->
   <section class="hero" id="home">
     <div class="container inner">
       <h1 data-i18n="hero.title">ยินดีต้อนรับสู่ Heaven and Beauty</h1>
@@ -301,7 +330,6 @@
     </div>
   </section>
 
-  <!-- ===== Products -->
   <section class="products" id="products">
     <div class="container">
       <h2 data-i18n="products.title">ผลิตภัณฑ์ของเรา</h2>
@@ -314,7 +342,6 @@
       </div>
 
       <div class="products-grid">
-        <!-- Card 1 -->
         <div class="product-card" data-category="skincare">
           <div class="product-image">
             <img src="https://i.postimg.cc/rp8Cz6hX/image.jpg" alt="กันเเดดตัว" loading="lazy">
@@ -330,7 +357,6 @@
           </div>
         </div>
 
-        <!-- Card 2 -->
         <div class="product-card" data-category="skincare">
           <div class="product-image">
             <img src="https://i.postimg.cc/HLp4jGSC/image.jpg" alt="กันเเดดหน้าฝาทอง" loading="lazy">
@@ -346,10 +372,9 @@
           </div>
         </div>
 
-        <!-- Card 3 -->
         <div class="product-card" data-category="wellness">
           <div class="product-image">
-            <img src="assets/products/collagen.jpg" alt="อาหารเสริมคอลลาเจน" loading="lazy">
+            <img src="https://via.placeholder.com/140x140.png?text=Collagen" alt="อาหารเสริมคอลลาเจน" loading="lazy">
           </div>
           <div class="product-info">
             <h3 data-i18n="p3.name">อาหารเสริมคอลลาเจน</h3>
@@ -362,10 +387,9 @@
           </div>
         </div>
 
-        <!-- Card 4 -->
         <div class="product-card" data-category="aromatherapy">
           <div class="product-image">
-            <img src="assets/products/lavender-oil.jpg" alt="น้ำมันหอมระเหย ลาเวนเดอร์" loading="lazy">
+            <img src="https://via.placeholder.com/140x140.png?text=Lavender+Oil" alt="น้ำมันหอมระเหย ลาเวนเดอร์" loading="lazy">
           </div>
           <div class="product-info">
             <h3 data-i18n="p4.name">น้ำมันหอมระเหย ลาเวนเดอร์</h3>
@@ -378,10 +402,9 @@
           </div>
         </div>
 
-        <!-- Card 5 -->
         <div class="product-card" data-category="skincare">
           <div class="product-image">
-            <img src="assets/products/green-tea-mask.jpg" alt="มาส์กหน้าชาเขียว" loading="lazy">
+            <img src="https://via.placeholder.com/140x140.png?text=Green+Tea+Mask" alt="มาส์กหน้าชาเขียว" loading="lazy">
           </div>
           <div class="product-info">
             <h3 data-i18n="p5.name">มาส์กหน้าชาเขียว</h3>
@@ -394,10 +417,9 @@
           </div>
         </div>
 
-        <!-- Card 6 -->
         <div class="product-card" data-category="wellness">
           <div class="product-image">
-            <img src="assets/products/detox-tea.jpg" alt="ชาดีท็อกซ์" loading="lazy">
+            <img src="https://via.placeholder.com/140x140.png?text=Detox+Tea" alt="ชาดีท็อกซ์" loading="lazy">
           </div>
           <div class="product-info">
             <h3 data-i18n="p6.name">ชาดีท็อกซ์</h3>
@@ -414,7 +436,6 @@
     </div>
   </section>
 
-  <!-- ===== About -->
   <section class="about" id="about">
     <div class="container">
       <div class="grid">
@@ -434,7 +455,6 @@
         <div class="about-visual">
           <div class="luxury-frame">
             <div class="frame-content">
-              <!-- ใส่รูปของคุณที่นี่ -->
               <img src="https://i.postimg.cc/g0QTrJ6j/LINE-ALBUM-250925-3.jpg" alt="Heaven and Beauty – About visual" loading="lazy">
             </div>
           </div>
@@ -443,7 +463,39 @@
     </div>
   </section>
 
-  <!-- ===== Features -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 data-i18n="services.title">สปาและบริการนวด</h2>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-spa"></i></div>
+          <h3 data-i18n="s1.name">นวดอโรมาเธอราปี</h3>
+          <p data-i18n="s1.desc">ผ่อนคลายด้วยน้ำมันหอมระเหยบริสุทธิ์ ลดความเครียดและบำรุงผิวพรรณ</p>
+          <div class="service-price" data-i18n="s1.price">60 นาที / ฿1,200</div>
+          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" class="book-btn" data-i18n="btn.book">จองเลย</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <h3 data-i18n="s2.name">นวดแผนไทย</h3>
+          <p data-i18n="s2.desc">ศาสตร์แห่งการบำบัดแบบดั้งเดิม ช่วยคลายกล้ามเนื้อและปรับสมดุลร่างกาย</p>
+          <div class="service-price" data-i18n="s2.price">90 นาที / ฿990</div>
+          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" class="book-btn" data-i18n="btn.book">จองเลย</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-hot-tub"></i></div>
+          <h3 data-i18n="s3.name">สปาหินร้อน</h3>
+          <p data-i18n="s3.desc">ใช้หินภูเขาไฟเพื่อผ่อนคลายกล้ามเนื้อส่วนลึก กระตุ้นการไหลเวียนโลหิต</p>
+          <div class="service-price" data-i18n="s3.price">75 นาที / ฿1,800</div>
+          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" class="book-btn" data-i18n="btn.book">จองเลย</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <section class="features" id="wellness">
     <div class="container">
       <h2 data-i18n="wellness.title">ความงามและสุขภาพแบบองค์รวม</h2>
@@ -455,7 +507,6 @@
     </div>
   </section>
 
-  <!-- ===== Contact -->
   <section class="contact" id="contact">
     <div class="container">
       <h2 data-i18n="contact.title">ติดต่อเรา</h2>
@@ -530,7 +581,7 @@
     // i18n (TH/EN)
     const I18N={
       th:{ brand:'Heaven & Beauty',
-        'nav.home':'หน้าแรก','nav.products':'ผลิตภัณฑ์','nav.about':'เกี่ยวกับเรา','nav.wellness':'Wellness','nav.contact':'ติดต่อ',
+        'nav.home':'หน้าแรก','nav.products':'ผลิตภัณฑ์','nav.about':'เกี่ยวกับเรา', 'nav.services':'สปา','nav.wellness':'Wellness','nav.contact':'ติดต่อ',
         'lang.label':'ภาษา:','hero.title':'ยินดีต้อนรับสู่ Heaven and Beauty',
         'hero.desc':'เราคัดสรรส่วนผสมที่ดีที่สุดจากธรรมชาติ เพื่อสร้างสรรค์ผลิตภัณฑ์ออร์แกนิคที่ปลอดภัยและอ่อนโยนต่อผิวคุณ ดูแลสุขภาพและความงามอย่างธรรมชาติ',
         'hero.cta':'สำรวจผลิตภัณฑ์','products.title':'ผลิตภัณฑ์ของเรา',
@@ -541,10 +592,14 @@
         'p4.name':'น้ำมันหอมระเหย ลาเวนเดอร์','p4.desc':'น้ำมันหอมระเหยบริสุทธิ์ ช่วยผ่อนคลายและนอนหลับสบาย',
         'p5.name':'มาส์กหน้าชาเขียว','p5.desc':'มาส์กหน้าจากชาเขียวออร์แกนิค ช่วยลดสิว และกระชับรูขุมขน',
         'p6.name':'ชาดีท็อกซ์','p6.desc':'ชาสมุนไพรออร์แกนิค ช่วยขับสารพิษและเสริมสร้างภูมิคุ้มกัน',
-        'btn.buy':'สั่งซื้อ','btn.line':'สั่งซื้อ/แชทไลน์',
+        'btn.buy':'สั่งซื้อ','btn.line':'สั่งซื้อ/แชทไลน์', 'btn.book':'จองเลย',
         'about.title':'เกี่ยวกับเรา','about.subtitle':'Heaven and Beauty','about.body':'เราเป็นแบรนด์ความงามและสุขภาพที่มุ่งมั่นในการนำเสนอผลิตภัณฑ์ออร์แกนิคคุณภาพสูง ด้วยความเชื่อมั่นว่าความงามที่แท้จริงต้องเริ่มต้นจากภายใน เราคัดสรรส่วนผสมจากธรรมชาติที่ดีที่สุดจากทั่วโลก เพื่อสร้างสรรค์ผลิตภัณฑ์ที่ปลอดภัย อ่อนโยน และมีประสิทธิภาพ',
         'about.stat1':'ปีแห่งประสบการณ์','about.stat2':'ลูกค้าที่ไว้วางใจ','about.stat3':'ส่วนผสมธรรมชาติ',
-        'values.title':'ค่านิยมของเรา','wellness.title':'ความงามและสุขภาพแบบองค์รวม',
+        'services.title':'สปาและบริการนวด',
+        's1.name':'นวดอโรมาเธอราปี', 's1.desc':'ผ่อนคลายด้วยน้ำมันหอมระเหยบริสุทธิ์ ลดความเครียดและบำรุงผิวพรรณ', 's1.price':'60 นาที / ฿1,200',
+        's2.name':'นวดแผนไทย', 's2.desc':'ศาสตร์แห่งการบำบัดแบบดั้งเดิม ช่วยคลายกล้ามเนื้อและปรับสมดุลร่างกาย', 's2.price':'90 นาที / ฿990',
+        's3.name':'สปาหินร้อน', 's3.desc':'ใช้หินภูเขาไฟเพื่อผ่อนคลายกล้ามเนื้อส่วนลึก กระตุ้นการไหลเวียนโลหิต', 's3.price':'75 นาที / ฿1,800',
+        'wellness.title':'ความงามและสุขภาพแบบองค์รวม',
         'wellness.f1t':'100% ออร์แกนิค','wellness.f1d':'ส่วนผสมจากธรรมชาติล้วนๆ ปลอดสารเคมีที่เป็นอันตราย เพื่อผิวที่สุขภาพดีและเปล่งปลั่ง',
         'wellness.f2t':'ผ่อนคลายจิตใจ','wellness.f2d':'ผลิตภัณฑ์ที่ช่วยให้คุณรู้สึกสงบ ผ่อนคลาย และเติมพลังให้กับร่างกายและจิตใจ',
         'wellness.f3t':'เปล่งปลั่งธรรมชาติ','wellness.f3d':'เผยผิวที่สดใส เปล่งปลั่ง และมีสุขภาพดี ด้วยสูตรที่พัฒนาจากธรรมชาติ',
@@ -554,7 +609,7 @@
         'contact.email':'อีเมล','contact.sla':'ตอบกลับภายใน 24 ชั่วโมง','footer':'ดูแลความงามและสุขภาพด้วยใจ'
       },
       en:{ brand:'Heaven & Beauty',
-        'nav.home':'Home','nav.products':'Products','nav.about':'About','nav.wellness':'Wellness','nav.contact':'Contact',
+        'nav.home':'Home','nav.products':'Products','nav.about':'About', 'nav.services':'Spa', 'nav.wellness':'Wellness','nav.contact':'Contact',
         'lang.label':'Language:','hero.title':'Welcome to Heaven and Beauty',
         'hero.desc':'We carefully select the best natural ingredients to craft safe, gentle organic products. Nurture your health and beauty the natural way.',
         'hero.cta':'Browse Products','products.title':'Our Products',
@@ -565,10 +620,14 @@
         'p4.name':'Lavender Essential Oil','p4.desc':'Pure essential oil for relaxation and restful sleep.',
         'p5.name':'Green Tea Face Mask','p5.desc':'Organic green tea mask to calm acne and tighten pores.',
         'p6.name':'Detox Herbal Tea','p6.desc':'Organic herbal tea that helps detox and boost immunity.',
-        'btn.buy':'Order','btn.line':'Order / Chat LINE',
+        'btn.buy':'Order','btn.line':'Order / Chat LINE', 'btn.book':'Book Now',
         'about.title':'About Us','about.subtitle':'Heaven and Beauty','about.body':'We are a wellness & beauty brand committed to premium organic products. True beauty starts from within—so we use the finest nature-derived ingredients to create safe, gentle and effective formulas.',
         'about.stat1':'Years of Experience','about.stat2':'Happy Customers','about.stat3':'Natural Ingredients',
-        'values.title':'Our Values','wellness.title':'Holistic Beauty & Wellness',
+        'services.title':'Spa & Massage Services',
+        's1.name':'Aromatherapy Massage', 's1.desc':'Relax with pure essential oils to relieve stress and nourish your skin.', 's1.price':'60 min / ฿1,200',
+        's2.name':'Traditional Thai Massage', 's2.desc':'An ancient healing art to release muscle tension and restore balance.', 's2.price':'90 min / ฿990',
+        's3.name':'Hot Stone Spa', 's3.desc':'Uses volcanic stones to soothe deep muscles and improve circulation.', 's3.price':'75 min / ฿1,800',
+        'wellness.title':'Holistic Beauty & Wellness',
         'wellness.f1t':'100% Organic','wellness.f1d':'No harsh chemicals—only safe, natural ingredients for healthy glow.',
         'wellness.f2t':'Relax Your Mind','wellness.f2d':'Feel calm, relaxed and recharged in body and mind.',
         'wellness.f3t':'Naturally Radiant','wellness.f3d':'Reveal brighter, healthier skin with nature-powered formulas.',
