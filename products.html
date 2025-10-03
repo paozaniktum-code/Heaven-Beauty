@@ -3,30 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ผลิตภัณฑ์ — Heaven & Beauty</title>
+  <title>Heaven and Beauty - ผลิตภัณฑ์</title>
+
+  <!-- CSS หลัก -->
+  <link rel="stylesheet" href="assets/style.css">
+  <!-- ไอคอน -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="assets/style.css" />
   <meta name="description" content="เลือกชมผลิตภัณฑ์ออร์แกนิคจาก Heaven & Beauty — สกินแคร์ เวลเนส และอโรมาเธอราปี" />
 </head>
 <body>
-  <!-- พื้นหลังเอฟเฟกต์นุ่มนวล -->
-  <div class="bg-animation" aria-hidden="true">
-    <div class="floating-star"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#f06292"/></svg></div>
-    <div class="floating-star"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#e91e63"/></svg></div>
-    <div class="floating-star"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z" fill="#ec407a"/></svg></div>
-  </div>
-
-  <!-- Header / เมนูหลัก -->
+  <!-- Header -->
   <header>
     <div class="container">
       <nav class="navbar" aria-label="หลัก">
         <div class="nav-left">
-          <a href="index.html#home" class="brand" aria-label="Heaven and Beauty">
+          <a href="index.html" class="brand" aria-label="Heaven and Beauty">
             <img src="https://i.postimg.cc/q7Z9WpbC/Black-and-White-Elegant-Floral-Beauty-Salon-Logo.png" alt="โลโก้ Heaven and Beauty" />
           </a>
           <ul class="nav-menu" id="navMenu">
             <li><a href="index.html">หน้าแรก</a></li>
-            <li><a class="active" href="products.html">ผลิตภัณฑ์</a></li>
+            <li><a href="products.html" class="active">ผลิตภัณฑ์</a></li>
             <li><a href="about.html">เกี่ยวกับเรา</a></li>
             <li><a href="services.html">สปา</a></li>
             <li><a href="wellness.html">Wellness</a></li>
@@ -34,7 +30,7 @@
           </ul>
         </div>
         <div class="nav-right">
-          <button class="hamburger-btn" id="hamburger" aria-label="เปิด/ปิดเมนู" aria-expanded="false">
+          <button class="hamburger-btn" id="hamburger" aria-label="เปิด/ปิดเมนู">
             <span class="bar"></span><span class="bar"></span><span class="bar"></span>
           </button>
         </div>
@@ -42,121 +38,105 @@
     </div>
   </header>
 
-  <!-- Hero เฉพาะหน้าผลิตภัณฑ์ -->
-  <section class="page-hero">
+  <!-- Hero -->
+  <section class="hero">
     <div class="container inner">
-      <span class="kicker">Products</span>
       <h1>ผลิตภัณฑ์ของเรา</h1>
-      <p class="lead">ออร์แกนิค ปลอดภัย อ่อนโยน คัดสรรจากธรรมชาติ เพื่อผิวและสุขภาพที่ดีอย่างยั่งยืน</p>
-      <div class="breadcrumbs"><a href="index.html">หน้าแรก</a> • <span>ผลิตภัณฑ์</span></div>
+      <p>คัดสรรผลิตภัณฑ์ออร์แกนิคและธรรมชาติคุณภาพสูง เพื่อดูแลสุขภาพและความงามของคุณ</p>
     </div>
   </section>
 
-  <!-- ฟิลเตอร์หมวดหมู่ -->
-  <section class="page-section products" id="products">
+  <!-- Products Grid (ไม่มีปุ่มหมวด และไม่มีปุ่มสั่งซื้อสีชมพู) -->
+  <section class="products">
     <div class="container">
-      <div class="product-categories" role="tablist" aria-label="หมวดหมู่สินค้า">
-        <button class="category-btn active" data-category="all">ทั้งหมด</button>
-        <button class="category-btn" data-category="skincare">ดูแลผิว</button>
-        <button class="category-btn" data-category="wellness">เวลเนส</button>
-        <button class="category-btn" data-category="aromatherapy">อโรมาเธอราปี</button>
-      </div>
-
-      <!-- กริดสินค้า -->
       <div class="products-grid">
         <!-- 1 -->
-        <div class="product-card" data-category="skincare">
+        <div class="product-card">
           <div class="product-image">
             <img src="https://i.postimg.cc/rp8Cz6hX/image.jpg" alt="อะโทมี่ เฟรช ซัน โลชั่น" loading="lazy">
           </div>
           <div class="product-info">
             <h3>อะโทมี่ เฟรช ซัน โลชั่น</h3>
-            <p>ครีมกันแดดสูตรอินออร์แกนิก บางเบา ไม่อุดตัน</p>
+            <p>ครีมกันแดดสูตรอินออร์แกนิก</p>
             <div class="product-price">฿xxxx</div>
             <div class="product-actions">
               <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank" rel="noopener">สั่งซื้อ/แชทไลน์</a>
-              <button class="buy-btn" type="button">สั่งซื้อ</button>
             </div>
           </div>
         </div>
         <!-- 2 -->
-        <div class="product-card" data-category="skincare">
+        <div class="product-card">
           <div class="product-image">
             <img src="https://i.postimg.cc/HLp4jGSC/image.jpg" alt="อะโทมี่ แอบโซลูท" loading="lazy">
           </div>
           <div class="product-info">
             <h3>อะโทมี่ แอบโซลูท</h3>
-            <p>เอสเซนส์ ซันสกรีน SPF50+ / PA++++ กันน้ำ</p>
+            <p>เอสเซนส์ ซันสกรีน เอสพีเอฟ 50+ / พีเอ++++</p>
             <div class="product-price">฿xxx</div>
             <div class="product-actions">
               <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank" rel="noopener">สั่งซื้อ/แชทไลน์</a>
-              <button class="buy-btn" type="button">สั่งซื้อ</button>
             </div>
           </div>
         </div>
         <!-- 3 -->
-        <div class="product-card" data-category="wellness">
+        <div class="product-card">
           <div class="product-image">
             <img src="https://via.placeholder.com/140x140.png?text=Collagen" alt="อาหารเสริมคอลลาเจน" loading="lazy">
           </div>
           <div class="product-info">
             <h3>อาหารเสริมคอลลาเจน</h3>
-            <p>คอลลาเจนจากธรรมชาติ บำรุงผิว ข้อเข่า และเส้นผม</p>
+            <p>คอลลาเจนจากธรรมชาติ ช่วยบำรุงผิวจากภายใน</p>
             <div class="product-price">฿1,590</div>
             <div class="product-actions">
               <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank" rel="noopener">สั่งซื้อ/แชทไลน์</a>
-              <button class="buy-btn" type="button">สั่งซื้อ</button>
             </div>
           </div>
         </div>
         <!-- 4 -->
-        <div class="product-card" data-category="aromatherapy">
+        <div class="product-card">
           <div class="product-image">
             <img src="https://via.placeholder.com/140x140.png?text=Lavender+Oil" alt="น้ำมันหอมระเหย ลาเวนเดอร์" loading="lazy">
           </div>
           <div class="product-info">
             <h3>น้ำมันหอมระเหย ลาเวนเดอร์</h3>
-            <p>ช่วยผ่อนคลาย หลับสบาย ลดความตึงเครียด</p>
+            <p>ช่วยผ่อนคลายและนอนหลับสบาย</p>
             <div class="product-price">฿690</div>
             <div class="product-actions">
               <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank" rel="noopener">สั่งซื้อ/แชทไลน์</a>
-              <button class="buy-btn" type="button">สั่งซื้อ</button>
             </div>
           </div>
         </div>
         <!-- 5 -->
-        <div class="product-card" data-category="skincare">
+        <div class="product-card">
           <div class="product-image">
             <img src="https://via.placeholder.com/140x140.png?text=Green+Tea+Mask" alt="มาส์กหน้าชาเขียว" loading="lazy">
           </div>
           <div class="product-info">
             <h3>มาส์กหน้าชาเขียว</h3>
-            <p>ปลอบประโลมผิว ลดสิว กระชับรูขุมขน</p>
+            <p>มาส์กหน้าจากชาเขียวออร์แกนิค</p>
             <div class="product-price">฿590</div>
             <div class="product-actions">
               <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank" rel="noopener">สั่งซื้อ/แชทไลน์</a>
-              <button class="buy-btn" type="button">สั่งซื้อ</button>
             </div>
           </div>
         </div>
         <!-- 6 -->
-        <div class="product-card" data-category="wellness">
+        <div class="product-card">
           <div class="product-image">
             <img src="https://via.placeholder.com/140x140.png?text=Detox+Tea" alt="ชาดีท็อกซ์" loading="lazy">
           </div>
           <div class="product-info">
             <h3>ชาดีท็อกซ์</h3>
-            <p>ชาสมุนไพรออร์แกนิค ช่วยขับของเสียและเพิ่มภูมิคุ้มกัน</p>
+            <p>ชาสมุนไพรออร์แกนิค ขับสารพิษและเสริมภูมิคุ้มกัน</p>
             <div class="product-price">฿490</div>
             <div class="product-actions">
               <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank" rel="noopener">สั่งซื้อ/แชทไลน์</a>
-              <button class="buy-btn" type="button">สั่งซื้อ</button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- หมายเหตุ/เงื่อนไขการสั่งซื้อ (ปรับตามจริงได้) -->
+      <!-- หมายเหตุ -->
       <div class="card" style="margin-top:16px">
         <p style="margin:0"><strong>หมายเหตุ:</strong> สี/แพ็กเกจสินค้าอาจแตกต่างจากภาพเล็กน้อย กรุณาติดต่อแอดมินเพื่อยืนยันสต็อกก่อนชำระเงิน</p>
       </div>
@@ -170,6 +150,7 @@
     </div>
   </footer>
 
+  <!-- JS รวมการทำงานของเมนูมือถือ/active menu/เลื่อนนุ่มนวล -->
   <script src="assets/app.js"></script>
 </body>
 </html>
