@@ -57,8 +57,25 @@ section{ scroll-margin-top:80px }
 .product-info p{ color:#666; line-height:1.6; font-size:.95rem; margin:0 0 10px }
 .product-price{ font-weight:900; color:var(--brand); font-size:1.4rem; margin:8px 0 14px }
 .product-actions{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap }
-.line-btn,.buy-btn{ padding:.6rem 1rem; border-radius:999px; font-weight:800; border:0; cursor:pointer }
-.line-btn{ background:#06C755; color:#fff; text-decoration:none }
+.line-btn {
+  background: #06C755;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 1.05rem;
+  display: inline-block;
+  box-shadow: 0 6px 16px rgba(6, 199, 85, 0.35);
+  transition: all 0.3s ease;
+}
+
+.line-btn:hover {
+  background: #04a844;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(6, 199, 85, 0.45);
+}
+
 .buy-btn{ background:var(--brand); color:#fff }
 
 /* About */
