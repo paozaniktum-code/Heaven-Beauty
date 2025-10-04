@@ -3,20 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>เกี่ยวกับเรา | Heaven and Beauty</title>
+  <title>Heaven and Beauty - Wellness & Organic Beauty</title>
+  <meta name="description" content="Heaven and Beauty — ผลิตภัณฑ์ออร์แกนิค สปา และเวลเนส เพื่อสุขภาพและความงามจากธรรมชาติ" />
   <link rel="stylesheet" href="assets/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="container">
       <nav class="navbar" aria-label="หลัก">
         <div class="nav-left">
-          <a href="index.html" class="brand"><img src="https://i.postimg.cc/q7Z9WpbC/Black-and-White-Elegant-Floral-Beauty-Salon-Logo.png" alt="Heaven and Beauty"></a>
+          <a href="index.html" class="brand" aria-label="Heaven and Beauty">
+            <img src="https://i.postimg.cc/q7Z9WpbC/Black-and-White-Elegant-Floral-Beauty-Salon-Logo.png" alt="โลโก้ Heaven and Beauty" />
+          </a>
           <ul class="nav-menu" id="navMenuTop">
-            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="index.html" class="active">หน้าแรก</a></li>
             <li><a href="products.html">ผลิตภัณฑ์</a></li>
-            <li><a href="about.html" class="active">เกี่ยวกับเรา</a></li>
+            <li><a href="about.html">เกี่ยวกับเรา</a></li>
             <li><a href="services.html">สปา</a></li>
             <li><a href="contact.html">ติดต่อ</a></li>
           </ul>
@@ -25,25 +29,73 @@
     </div>
   </header>
 
-  <section class="page-hero">
-    <div class="inner">
-      <h1>เกี่ยวกับเรา</h1>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container inner">
+      <h1>ยินดีต้อนรับสู่ Heaven and Beauty</h1>
+      <p>เราคัดสรรผลิตภัณฑ์ออร์แกนิคคุณภาพสูง เพื่อสุขภาพและความงามจากธรรมชาติ</p>
+      <a href="products.html" class="cta-button">สำรวจผลิตภัณฑ์</a>
     </div>
   </section>
 
+  <!-- Featured Products -->
+  <section class="products">
+    <div class="container">
+      <h2>ผลิตภัณฑ์แนะนำ</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://i.postimg.cc/rp8Cz6hX/image.jpg" alt="อะโทมี่ เฟรช ซัน โลชั่น">
+          </div>
+          <div class="product-info">
+            <h3>อะโทมี่ เฟรช ซัน โลชั่น</h3>
+            <p>ครีมกันแดดสูตรอินออร์แกนิก</p>
+            <div class="product-price">฿xxxx</div>
+            <div class="product-actions">
+              <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank" rel="noopener">สั่งซื้อ/แชทไลน์</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://i.postimg.cc/HLp4jGSC/image.jpg" alt="อะโทมี่ แอบโซลูท">
+          </div>
+          <div class="product-info">
+            <h3>อะโทมี่ แอบโซลูท</h3>
+            <p>เอสเซนส์ ซันสกรีน SPF 50+ / PA++++</p>
+            <div class="product-price">฿xxx</div>
+            <div class="product-actions">
+              <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank" rel="noopener">สั่งซื้อ/แชทไลน์</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://i.postimg.cc/yNVXWqfB/image.jpg" alt="อาหารเสริมคอลลาเจน">
+          </div>
+          <div class="product-info">
+            <h3>อาหารเสริมคอลลาเจน</h3>
+            <p>คอลลาเจนจากธรรมชาติ ช่วยบำรุงผิวจากภายใน</p>
+            <div class="product-price">฿xxx</div>
+            <div class="product-actions">
+              <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank" rel="noopener">สั่งซื้อ/แชทไลน์</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About (สรุปสั้นในหน้าแรก) -->
   <section class="about">
     <div class="container">
       <div class="grid">
-        <div>
-          <h2>Heaven and Beauty</h2>
-          <p class="desc">
-            เราเป็นแบรนด์ความงามและสุขภาพที่มุ่งมั่นในการนำเสนอผลิตภัณฑ์ออร์แกนิคคุณภาพสูง
-            ด้วยความเชื่อมั่นว่าความงามที่แท้จริงต้องเริ่มต้นจากภายใน
-            เราคัดสรรส่วนผสมจากธรรมชาติที่ดีที่สุดจากทั่วโลก เพื่อสร้างสรรค์ผลิตภัณฑ์ที่ปลอดภัย อ่อนโยน และมีประสิทธิภาพ
-          </p>
-          <div class="product-actions">
-            <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank">แชทกับเราใน LINE</a>
-          </div>
+        <div class="about-text">
+          <h2>เกี่ยวกับเรา</h2>
+          <p class="desc">แบรนด์ความงามและสุขภาพที่มุ่งมั่นในการนำเสนอผลิตภัณฑ์ออร์แกนิคคุณภาพสูง ด้วยความเชื่อว่าความงามที่แท้จริงเริ่มต้นจากภายใน</p>
         </div>
         <div class="about-visual">
           <img src="https://i.postimg.cc/g0QTrJ6j/LINE-ALBUM-250925-3.jpg" alt="บรรยากาศร้าน">
@@ -52,12 +104,44 @@
     </div>
   </section>
 
+  <!-- Services (สรุปสั้นในหน้าแรก) -->
+  <section class="services">
+    <div class="container">
+      <h2>สปาและบริการนวด</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-spa"></i></div>
+          <h3>นวดอโรมา</h3>
+          <p>ผ่อนคลายด้วยน้ำมันหอมระเหยบริสุทธิ์</p>
+          <div class="service-price">60 นาที / ฿1,200</div>
+          <a href="https://lin.ee/piYhcCd" class="line-btn" target="_blank">จองผ่าน LINE</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <h3>นวดแผนไทย</h3>
+          <p>ศาสตร์การบำบัดแบบดั้งเดิม คลายกล้ามเนื้อ</p>
+          <div class="service-price">90 นาที / ฿990</div>
+          <a href="https://lin.ee/piYhcCd" class="line-btn" target="_blank">จองผ่าน LINE</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-hot-tub"></i></div>
+          <h3>สปาหินร้อน</h3>
+          <p>ผ่อนคลายกล้ามเนื้อส่วนลึก กระตุ้นการไหลเวียนโลหิต</p>
+          <div class="service-price">75 นาที / ฿1,800</div>
+          <a href="https://lin.ee/piYhcCd" class="line-btn" target="_blank">จองผ่าน LINE</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <div class="container">
       <p>&copy; <span id="year"></span> Heaven &amp; Beauty</p>
     </div>
   </footer>
 
+  <!-- Bottom Navigation (Mobile) -->
   <nav class="bottom-nav" id="bottomNav" aria-label="เมนูล่าง">
     <a href="index.html"><i class="fas fa-home"></i><span>หน้าแรก</span></a>
     <a href="products.html"><i class="fas fa-box-open"></i><span>ผลิตภัณฑ์</span></a>
