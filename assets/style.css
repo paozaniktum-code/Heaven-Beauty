@@ -263,3 +263,55 @@ footer{ text-align:center; color:#666; padding:28px 0; background:rgba(255,255,2
   .contact-info{ grid-template-columns:1fr }
   .luxury-frame{ height:340px }
 }
+/* ===== Fix Bottom Navigation to Horizontal ===== */
+@media (max-width: 768px){
+  .bottom-nav{
+    display:block;
+    position:fixed; left:0; right:0; bottom:0;
+    background:#fff;
+    border-top:1px solid rgba(0,0,0,.1);
+    box-shadow:0 -4px 12px rgba(0,0,0,.1);
+    z-index:999;
+  }
+
+  .bottom-nav .inner{
+    display:flex;                /* แนวนอน */
+    flex-direction:row;          /* ยืนยันว่าต้องเรียงเป็นแถว */
+    justify-content:space-around;
+    align-items:center;
+    gap:6px;
+    padding:8px 12px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+
+  .bottom-nav a{
+    flex:1;                      /* ให้ปุ่มกว้างเท่าๆ กัน */
+    text-align:center;
+    text-decoration:none;
+    color:#9ca3af;
+    display:flex;
+    flex-direction:column;       /* ไอคอนบน ข้อความล่าง */
+    align-items:center;
+    justify-content:center;
+    padding:6px 4px;
+    border-radius:10px;
+    font-size:.82rem;
+    font-weight:700;
+    transition:all .2s ease;
+  }
+
+  .bottom-nav a .icon{
+    font-size:1.2rem;
+    margin-bottom:2px;
+  }
+
+  .bottom-nav a.active{
+    color:#e91e63;
+    background:rgba(233,30,99,.08);
+  }
+
+  .bottom-nav a:active{ transform:scale(.95) }
+
+  body{ padding-bottom:72px } /* กันโดนเมนูล่างบัง */
+}
