@@ -1,139 +1,164 @@
-/* ===== Base Theme ===== */
-:root{
-  --brand:#e91e63; --brand-2:#f06292;
-  --bg-1:#fce4ec; --bg-2:#f8bbd9; --bg-3:#e1bee7;
-  --text:#434343; --muted:#666;
-  --max-w-desktop:1200px; --radius-xl:40px;
-
-  /* === Motion Controls (ปรับตรงนี้ได้เลย) === */
-  --menu-stagger: 90ms;           /* หน่วงแต่ละรายการ */
-  --menu-duration: .42s;          /* เวลาแต่ละรายการ */
-  --panel-duration: .34s;         /* เวลาเปิด/ปิด panel & backdrop */
-  --ease-panel: cubic-bezier(.22,.61,.36,1);
-  --ease-item: cubic-bezier(.2,.7,.3,1);
-}
+/* ===== Theme Tokens */
+:root{ --brand:#e91e63; --brand-2:#f06292; --bg-1:#fce4ec; --bg-2:#f8bbd9; --bg-3:#e1bee7; --text:#434343; --muted:#666; --max-w-desktop:1200px; --max-w-tablet:960px; --radius-xl:40px; }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{
-  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-  color:var(--text);
-  background:linear-gradient(135deg,var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
-  min-height:100vh; overflow-x:hidden; padding-top:64px;
-}
+body{ font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; color:var(--text); background: linear-gradient(135deg,var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%); min-height:100vh; overflow-x:hidden; padding-top:64px }
 .container{ width:100%; max-width:var(--max-w-desktop); margin:0 auto; padding:0 24px }
 
-/* ===== Header ===== */
-header{
-  position:fixed; left:0; right:0; top:0; height:64px; z-index:10000;
-  background:rgba(255,255,255,.95); backdrop-filter: blur(10px);
-  box-shadow:0 2px 20px rgba(233,30,99,.08);
-}
+/* Background floaters (คงไว้ถ้ามี) */
+.bg-animation{ position:fixed; inset:0; z-index:-1; opacity:.2 }
+.floating-star{ position:absolute; animation:floatStar 8s ease-in-out infinite }
+.floating-star svg{ width:24px;height:24px }
+.floating-star:nth-child(1){ top:5%; left:8%}
+.floating-star:nth-child(2){ top:12%; right:15%; animation-delay:1.5s}
+.floating-star:nth-child(3){ top:62%; right:12%; animation-delay:.5s}
+@keyframes floatStar{ 0%,100%{ transform:translateY(0) rotate(0) scale(1); opacity:.4} 25%{ transform:translateY(-20px) rotate(90deg) scale(1.2); opacity:.8} 50%{ transform:translateY(-35px) rotate(180deg) scale(.8); opacity:.3} 75%{ transform:translateY(-15px) rotate(270deg) scale(1.05); opacity:.6} }
+
+/* Header */
+header{ position:fixed; inset:0 0 auto 0; height:64px; z-index:100; background:rgba(255,255,255,.95); backdrop-filter: blur(10px); box-shadow:0 2px 20px rgba(233,30,99,.08) }
 .navbar{ height:64px; display:flex; align-items:center; justify-content:space-between; gap:16px }
 .brand img{ height:52px; width:auto; object-fit:contain }
 .nav-left{ display:flex; align-items:center; gap:24px }
 
-/* Desktop Menu */
-.nav-desktop{ display:flex; gap:24px; list-style:none; margin:0; padding:0 }
-.nav-desktop a{
-  display:inline-flex; align-items:center; justify-content:center;
-  height:40px; padding:0 12px; border-radius:10px; text-decoration:none;
-  color:#434343; font-weight:600; white-space:nowrap;
-}
-.nav-desktop a:hover,.nav-desktop a.active{ background:rgba(0,0,0,.06) }
+/* Desktop menu */
+.nav-menu{ display:flex; gap:24px; list-style:none; margin:0; padding:0 }
+.nav-menu a{ display:inline-flex; align-items:center; justify-content:center; height:40px; padding:0 12px; border-radius:10px; text-decoration:none; color:#434343; font-weight:600; white-space:nowrap }
+.nav-menu a:hover,.nav-menu a.active{ background:rgba(0,0,0,.06) }
 
-/* ===== Mobile Menu (CSS-only + เอฟเฟกต์) ===== */
-.nav-mobile{ display:none }         /* ซ่อนบนเดสก์ท็อป */
-.nav-mobile summary{ list-style:none; cursor:pointer; user-select:none }
-.nav-mobile summary::-webkit-details-marker{ display:none }
+/* Hamburger button (ซ่อนไว้บนเดสก์ท็อป) */
+.hamburger-btn{
+  display:none; position:relative; width:36px; height:28px;
+  background:none; border:0; cursor:pointer; padding:0; margin-left:auto; color:var(--brand); z-index:1002;
+}
+.hamburger-btn .bar{ display:block; width:26px;height:3px;background:var(--brand); border-radius:2px; margin:5px 0; transition:.35s ease }
+.hamburger-btn.active .bar:nth-child(1){ transform:translateY(8px) rotate(45deg) }
+.hamburger-btn.active .bar:nth-child(2){ opacity:0 }
+.hamburger-btn.active .bar:nth-child(3){ transform:translateY(-8px) rotate(-45deg) }
 
-.hamburger{
-  position:relative; width:44px; height:36px; display:block; border:0; background:none;
-}
-.hamburger .bar{
-  position:relative; display:block; width:28px; height:3px; margin:6px auto;
-  background:var(--brand); border-radius:2px;
-  transition:transform .35s var(--ease-panel), opacity .25s var(--ease-panel), background .2s;
-}
-.nav-mobile[open] .hamburger .bar:nth-child(1){ transform:translateY(9px) rotate(45deg) }
-.nav-mobile[open] .hamburger .bar:nth-child(2){ opacity:0 }
-.nav-mobile[open] .hamburger .bar:nth-child(3){ transform:translateY(-9px) rotate(-45deg) }
-
-/* Backdrop */
-.mobile-backdrop{
-  position:fixed; inset:0; background:rgba(0,0,0,.25);
-  backdrop-filter:blur(4px); opacity:0; pointer-events:none;
-  transition: opacity var(--panel-duration) var(--ease-panel), backdrop-filter var(--panel-duration) var(--ease-panel);
-}
-.nav-mobile[open] .mobile-backdrop{ opacity:1; pointer-events:auto }
-
-/* Panel */
-.mobile-panel{
-  position:fixed; left:12px; right:12px; top:72px;
-  background:#fff; border-radius:16px; padding:10px 0;
-  box-shadow:0 20px 50px rgba(0,0,0,.2); z-index:10001;
-  transform:translateY(-10px); opacity:0;
-  transition: transform var(--panel-duration) var(--ease-panel), opacity var(--panel-duration) var(--ease-panel);
-}
-.nav-mobile[open] .mobile-panel{ transform:translateY(0); opacity:1 }
-
-/* รายการเมนู + Stagger */
-.mobile-menu{ list-style:none; margin:0; padding:0 }
-.mobile-menu a{
-  display:block; width:92%; margin:0 auto; padding:12px 10px;
-  border-radius:10px; text-decoration:none; color:#333; font-weight:800;
-  border-bottom:1px solid rgba(233,30,99,.12);
-  opacity:0; transform:translateY(-6px);
-  animation:menuIn var(--menu-duration) var(--ease-item) forwards;
-  animation-delay: calc(var(--d, 0) * var(--menu-stagger) + 80ms);
-}
-.mobile-menu li:last-child a{ border-bottom:none }
-.mobile-menu a:hover{ background:rgba(0,0,0,.06) }
-@keyframes menuIn{
-  to{ opacity:1; transform:translateY(0) }
-}
-
-/* Lock scroll when menu open */
-body.menu-open{ overflow:hidden; touch-action:none }
-
-/* ===== Hero (ตัวอย่างสั้น) ===== */
-.hero{
-  position:relative; overflow:hidden; margin:32px auto; border-radius:var(--radius-xl);
-  background:linear-gradient(135deg, rgba(255,255,255,.9) 0%, rgba(248,187,217,.25) 100%);
-  border:1px solid rgba(255,255,255,.35); box-shadow:0 25px 50px rgba(233,30,99,.15);
-}
+/* ===== Hero */
+.hero{ position:relative; overflow:hidden; margin:32px auto; border-radius:var(--radius-xl); background:linear-gradient(135deg, rgba(255,255,255,.9) 0%, rgba(248,187,217,.25) 100%); border:1px solid rgba(255,255,255,.35); box-shadow:0 25px 50px rgba(233,30,99,.15) }
 .hero .inner{ padding: clamp(48px, 6vw, 96px) 24px; text-align:center }
-.hero h1{
-  margin:0 0 12px; font-weight:800; line-height:1.15; font-size:clamp(28px, 4.2vw, 48px);
-  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 50%, #ec407a 100%);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  text-shadow: 3px 3px 6px rgba(233,30,99,.15);
-}
-.hero h1::after{
-  content:""; display:block; margin:14px auto 0; width:120px; height:4px;
-  background:linear-gradient(45deg,var(--brand),var(--brand-2)); border-radius:2px; box-shadow:0 2px 10px rgba(233,30,99,.25);
-}
+.hero h1{ margin:0 0 12px; font-weight:800; line-height:1.15; font-size:clamp(28px, 4.2vw, 48px); background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 50%, #ec407a 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; text-shadow: 3px 3px 6px rgba(233,30,99,.15) }
+.hero h1::after{ content:""; display:block; margin:14px auto 0; width:120px; height:4px; background:linear-gradient(45deg,var(--brand),var(--brand-2)); border-radius:2px; box-shadow:0 2px 10px rgba(233,30,99,.25) }
 .hero p{ margin:0 auto 28px; max-width:780px; color:#555; line-height:1.8; font-size:clamp(14px, 1.6vw, 18px) }
-.cta-button{
-  display:inline-block; padding:14px 28px; border-radius:999px; border:0;
-  background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#fff; font-weight:800;
-  letter-spacing:.5px; text-decoration:none; box-shadow:0 10px 30px rgba(233,30,99,.3); position:relative; overflow:hidden;
-}
+.cta-button{ display:inline-block; padding:14px 28px; border-radius:999px; border:0; background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#fff; font-weight:800; letter-spacing:.5px; text-decoration:none; box-shadow:0 10px 30px rgba(233,30,99,.3); position:relative; overflow:hidden }
 .cta-button::before{ content:""; position:absolute; inset:0; left:-100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent); transition:left .6s ease }
 .cta-button:hover::before{ left:100% }
 
-/* ===== Responsive ===== */
-@media (max-width:1024px){
-  .container{ max-width:960px }
+/* Sections */
+section{ scroll-margin-top:80px }
+.products{ padding:64px 0 }
+.products h2,.services h2,.features h2,.contact h2,.page-hero h1,.page-section h2{ text-align:center; color:var(--brand); font-size:clamp(22px,3vw,32px); margin:0 0 24px }
+.products-grid{ display:grid; gap:24px; grid-template-columns: repeat(3, minmax(0,1fr)) }
+.product-card{ background:rgba(255,255,255,.95); border-radius:20px; padding:24px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.08); border:2px solid transparent; transition:.25s ease }
+.product-card:hover{ transform:translateY(-8px); box-shadow:0 20px 40px rgba(233,30,99,.16); border-color:rgba(233,30,99,.25) }
+.product-image{ display:flex; justify-content:center; margin-bottom:12px }
+.product-image img{ width:140px; height:140px; object-fit:contain; filter:drop-shadow(0 6px 14px rgba(0,0,0,.12)); transition:transform .3s ease }
+.product-card:hover .product-image img{ transform:scale(1.05) }
+.product-info h3{ color:var(--brand); font-size:1.1rem; margin:10px 0 }
+.product-info p{ color:#666; line-height:1.6; font-size:.95rem; margin: 0 0 10px }
+.product-price{ font-weight:900; color:var(--brand); font-size:1.4rem; margin:8px 0 14px }
+.product-actions{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap }
+
+/* ปุ่ม LINE (เน้น) */
+.line-btn {
+  background: #06C755; color:#fff; text-decoration:none; padding:.9rem 1.8rem;
+  border-radius:999px; font-weight:900; font-size:1.06rem; display:inline-block;
+  box-shadow:0 10px 24px rgba(6,199,85,.35), inset 0 -2px 0 rgba(0,0,0,.08);
+  transition: transform .2s ease, box-shadow .25s ease, background .2s ease;
 }
+.line-btn:hover{ background:#04a844; transform:translateY(-1px) scale(1.03); box-shadow:0 14px 28px rgba(6,199,85,.45) }
+
+/* About */
+.about{ padding:72px 0 }
+.about .grid{ display:grid; gap:40px; grid-template-columns:1.1fr .9fr; align-items:center }
+.about h2{ font-size:clamp(24px,3.2vw,38px); margin:0 0 8px; font-weight:900; background:linear-gradient(135deg,#ffd700 0%, var(--brand) 50%, #8e24aa 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; position:relative }
+.about h2::after{ content:""; position:absolute; left:0; bottom:-10px; width:100px; height:4px; background:linear-gradient(45deg,#ffd700,var(--brand),#8e24aa); border-radius:2px; box-shadow:0 2px 10px rgba(233,30,99,.25) }
+.about .subtitle{ font-size:1.25rem; color:#8e24aa; font-weight:700; margin:14px 0 }
+.about .desc{ color:#555; line-height:1.85; font-weight:300; margin:16px 0 28px }
+.about .stats{ display:flex; gap:14px; flex-wrap:wrap }
+.stat{ flex:1 1 240px; text-align:center; padding:16px; background:rgba(255,255,255,.85); border-radius:16px; position:relative; box-shadow:0 10px 30px rgba(0,0,0,.08) }
+.stat .num{ font-weight:900; font-size:1.8rem; background:linear-gradient(135deg,#ffd700 0%, var(--brand) 50%, #8e24aa 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:4px }
+.stat .lbl{ font-size:.9rem; color:#666; font-weight:700 }
+.about-visual{ display:flex; justify-content:center }
+.luxury-frame{ position:relative; width:min(420px, 100%); height:clamp(360px, 45vw, 480px); background:linear-gradient(135deg, rgba(255,255,255,.92) 0%, rgba(248,187,217,.28) 100%); border:1px solid rgba(255,255,255,.35); border-radius:30px; padding:18px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.6) }
+.luxury-frame::before{ content:""; position:absolute; inset:-2px; z-index:-1; border-radius:32px; background:linear-gradient(45deg,#ffd700,var(--brand),#8e24aa,#ffd700); animation:luxuryBorder 4s linear infinite }
+@keyframes luxuryBorder{ 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+.frame-content{ width:100%; height:100%; display:flex; align-items:center; justify-content:center }
+.frame-content img{ width:100%; height:100%; object-fit:cover; border-radius:24px; display:block }
+
+/* Services */
+.services{ padding:64px 0 }
+.services-grid{ display:grid; gap:24px; grid-template-columns: repeat(3, minmax(0,1fr)) }
+.service-card{ background:rgba(255,255,255,.92); padding:28px 24px; border-radius:20px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.08); border:2px solid transparent; transition:.25s ease }
+.service-card:hover{ transform:translateY(-8px); box-shadow:0 20px 40px rgba(233,30,99,.16); border-color:rgba(233,30,99,.25) }
+.service-icon{ font-size:2.5rem; color:var(--brand); margin-bottom:12px }
+.service-card h3{ color:var(--brand); font-size:1.2rem; margin:10px 0 }
+.service-card p{ color:#666; line-height:1.6; font-size:.95rem; margin: 0 0 10px }
+.service-price{ font-weight:800; color:var(--brand-2); margin:12px 0 18px; font-size:1.1rem }
+
+/* Features */
+.features{ padding:64px 0 }
+.features-grid{ display:grid; gap:18px; grid-template-columns: repeat(3, minmax(0,1fr)) }
+.feature-card{ background:rgba(255,255,255,.92); padding:24px; border-radius:20px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.08) }
+.feature-icon{ font-size:2rem; margin-bottom:8px }
+
+/* Contact / Map / Social (ถ้ามีในหน้าต่าง ๆ) */
+.contact{ margin:64px 0; padding:64px 24px; border-radius:var(--radius-xl); background:linear-gradient(135deg, rgba(255,255,255,.95) 0%, rgba(248,187,217,.3) 100%); border:1px solid rgba(255,255,255,.35); box-shadow:0 25px 50px rgba(233,30,99,.15); text-align:center }
+.contact-subtitle{ color:#666; font-weight:300; line-height:1.7; margin:6px 0 24px }
+.contact-info{ display:grid; gap:14px; grid-template-columns: repeat(3, minmax(0,1fr)); margin-bottom:16px }
+.contact-item{ background:rgba(255,255,255,.85); padding:18px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.1) }
+.contact-item-icon{ font-size:1.5rem; display:block; margin-bottom:6px }
+.map-wrap{ margin:16px 0 0; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.12) }
+.map-wrap iframe{ width:100%; height:360px; border:0; display:block }
+.social-icons{ display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-top:16px }
+.social-icons a{ width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; background:#ff4081; color:#fff; box-shadow:0 6px 16px rgba(0,0,0,.2) }
+.social-icons a:nth-child(3){ background:#06C755 }
+.social-icons a:nth-child(4){ background:#000 }
+
+/* Footer */
+footer{ text-align:center; color:#666; padding:28px 0; background:rgba(255,255,255,.8) }
+
+/* ===== Mobile Drawer Menu (เฉพาะมือถือ) ===== */
+#mobileBackdrop{
+  position:fixed; inset:0; background:rgba(0,0,0,.25); backdrop-filter:blur(4px);
+  opacity:0; pointer-events:none; z-index:98; transition:opacity .28s ease;
+}
+#mobileBackdrop.active{ opacity:1; pointer-events:auto }
+
 @media (max-width:768px){
-  .nav-desktop{ display:none }   /* ซ่อนเดสก์ท็อป */
-  .nav-mobile{ display:block }   /* แสดงมือถือ */
-  body{ padding-top:60px }
+  .hamburger-btn{ display:block }
+  /* เปลี่ยน .nav-menu เป็น Drawer ด้านขวา */
+  .nav-menu{
+    position:fixed; top:0; right:-100%; bottom:0; width:78%;
+    max-width:360px; background:#fff; z-index:99;
+    display:flex; flex-direction:column; gap:0; padding:88px 18px 18px;
+    box-shadow:-4px 0 24px rgba(0,0,0,.18);
+    transition:right .34s cubic-bezier(.22,.61,.36,1);
+  }
+  .nav-menu.active{ right:0 }
+  .nav-menu li{ list-style:none }
+  .nav-menu a{
+    display:block; padding:14px 12px; border-radius:12px; font-weight:800; color:#333;
+    border-bottom:1px solid rgba(233,30,99,.1);
+    opacity:0; transform:translateX(12px);
+  }
+  .nav-menu.active li:nth-child(1) a{ animation:drawerIn .42s cubic-bezier(.2,.7,.3,1) .05s forwards }
+  .nav-menu.active li:nth-child(2) a{ animation:drawerIn .42s cubic-bezier(.2,.7,.3,1) .11s forwards }
+  .nav-menu.active li:nth-child(3) a{ animation:drawerIn .42s cubic-bezier(.2,.7,.3,1) .17s forwards }
+  .nav-menu.active li:nth-child(4) a{ animation:drawerIn .42s cubic-bezier(.2,.7,.3,1) .23s forwards }
+  .nav-menu.active li:nth-child(5) a{ animation:drawerIn .42s cubic-bezier(.2,.7,.3,1) .29s forwards }
+  .nav-menu.active li:nth-child(6) a{ animation:drawerIn .42s cubic-bezier(.2,.7,.3,1) .35s forwards }
+  .nav-menu a:hover{ background:rgba(0,0,0,.06) }
+
+  @keyframes drawerIn{
+    to{ opacity:1; transform:translateX(0) }
+  }
+
+  /* ล็อกสกอร์ลเมื่อเปิดเมนู */
+  body.menu-open{ overflow:hidden; touch-action:none }
 }
 
-/* ลด motion ให้ผู้ใช้ที่ตั้งค่า Prefers Reduced Motion */
-@media (prefers-reduced-motion: reduce){
-  :root{ --menu-stagger: 0ms; --menu-duration: .01s; --panel-duration: .01s }
-  .mobile-menu a{ animation:none; opacity:1; transform:none }
-  .mobile-panel, .mobile-backdrop{ transition:none }
-}
+/* ===== Responsive เดิม ===== */
+@media (max-width:1199px){ .container{ max-width:var(--max-w-tablet) } .products .products-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) } .services-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) } .features-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) } .about .grid{ grid-template-columns:1fr; text-align:center } .about h2::after{ left:50%; transform:translateX(-50%) } .about .stats{ justify-content:center } }
+@media (max-width:768px){ body{ padding-top:60px } .hero .inner{ padding:44px 16px } .products .products-grid{ grid-template-columns:1fr } .services-grid{ grid-template-columns: 1fr } .features-grid{ grid-template-columns:1fr } .contact-info{ grid-template-columns:1fr } .luxury-frame{ height:340px } }
