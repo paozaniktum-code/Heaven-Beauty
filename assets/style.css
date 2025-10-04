@@ -315,3 +315,80 @@ footer{ text-align:center; color:#666; padding:28px 0; background:rgba(255,255,2
 
   body{ padding-bottom:72px } /* กันโดนเมนูล่างบัง */
 }
+/* ===== FIX: Desktop header & Mobile bottom nav (force layout) ===== */
+
+/* เดสก์ท็อป/แท็บเล็ต: แสดงเมนูบน header เสมอ, ซ่อน bottom-nav */
+@media (min-width: 769px){
+  header .nav-menu{
+    display:flex !important;
+    gap:24px !important;
+  }
+  .bottom-nav{
+    display:none !important;
+  }
+}
+
+/* มือถือ: ซ่อนเมนูบน header, ใช้ Bottom Nav เป็นหลัก (แนวนอน) */
+@media (max-width: 768px){
+
+  /* กัน header menu โผล่มาซ้อน */
+  header .nav-menu{
+    display:none !important;
+  }
+
+  /* เผื่อพื้นที่ให้ bottom-nav */
+  body{
+    padding-bottom: 76px !important;
+  }
+
+  /* bottom-nav แสดงและเรียงเป็นแนวนอนแน่นอน */
+  .bottom-nav{
+    position:fixed; left:0; right:0; bottom:0; z-index:120;
+    display:block !important;
+    background:#fff;
+    border-top:1px solid rgba(0,0,0,.08);
+    box-shadow:0 -8px 24px rgba(0,0,0,.08);
+  }
+  /* รองรับทั้ง .inner และ ul>li */
+  .bottom-nav .inner,
+  .bottom-nav > ul{
+    display:flex !important;
+    flex-direction:row !important;
+    justify-content:space-between !important;
+    align-items:center !important;
+    gap:8px !important;
+    max-width: 1200px;
+    margin:0 auto;
+    padding:10px 12px;
+  }
+  .bottom-nav li{
+    list-style:none !important;
+    flex:1 1 0 !important;
+    min-width:0 !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+  .bottom-nav a{
+    flex:1 1 0 !important;
+    min-width:0 !important;
+    width:100% !important;
+    text-decoration:none !important;
+    color:#9ca3af !important;
+    display:flex !important;
+    flex-direction:column !important; /* ไอคอนบน/ข้อความล่าง */
+    align-items:center !important;
+    justify-content:center !important;
+    gap:6px !important;
+    padding:8px 6px !important;
+    border-radius:14px !important;
+    font-size:.82rem !important;
+    font-weight:700 !important;
+    transition:transform .16s ease, background .16s ease, color .16s ease !important;
+  }
+  .bottom-nav a .icon{ font-size:1.22rem; line-height:1 }
+  .bottom-nav a.active{
+    color:#e91e63 !important;
+    background:rgba(233,30,99,.08) !important;
+  }
+  .bottom-nav a:active{ transform:scale(.98) }
+}
