@@ -5,35 +5,15 @@ html,body{margin:0;padding:0}
 body{ font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; color:var(--text); background: linear-gradient(135deg,var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%); min-height:100vh; overflow-x:hidden; padding-top:64px }
 .container{ width:100%; max-width:var(--max-w-desktop); margin:0 auto; padding:0 24px }
 
-/* Background floaters (คงไว้ถ้ามี) */
-.bg-animation{ position:fixed; inset:0; z-index:-1; opacity:.2 }
-.floating-star{ position:absolute; animation:floatStar 8s ease-in-out infinite }
-.floating-star svg{ width:24px;height:24px }
-.floating-star:nth-child(1){ top:5%; left:8%}
-.floating-star:nth-child(2){ top:12%; right:15%; animation-delay:1.5s}
-.floating-star:nth-child(3){ top:62%; right:12%; animation-delay:.5s}
-@keyframes floatStar{ 0%,100%{ transform:translateY(0) rotate(0) scale(1); opacity:.4} 25%{ transform:translateY(-20px) rotate(90deg) scale(1.2); opacity:.8} 50%{ transform:translateY(-35px) rotate(180deg) scale(.8); opacity:.3} 75%{ transform:translateY(-15px) rotate(270deg) scale(1.05); opacity:.6} }
-
 /* Header */
 header{ position:fixed; inset:0 0 auto 0; height:64px; z-index:100; background:rgba(255,255,255,.95); backdrop-filter: blur(10px); box-shadow:0 2px 20px rgba(233,30,99,.08) }
 .navbar{ height:64px; display:flex; align-items:center; justify-content:space-between; gap:16px }
 .brand img{ height:52px; width:auto; object-fit:contain }
 .nav-left{ display:flex; align-items:center; gap:24px }
 
-/* Desktop menu */
 .nav-menu{ display:flex; gap:24px; list-style:none; margin:0; padding:0 }
 .nav-menu a{ display:inline-flex; align-items:center; justify-content:center; height:40px; padding:0 12px; border-radius:10px; text-decoration:none; color:#434343; font-weight:600; white-space:nowrap }
 .nav-menu a:hover,.nav-menu a.active{ background:rgba(0,0,0,.06) }
-
-/* Hamburger button (ซ่อนไว้บนเดสก์ท็อป) */
-.hamburger-btn{
-  display:none; position:relative; width:36px; height:28px;
-  background:none; border:0; cursor:pointer; padding:0; margin-left:auto; color:var(--brand); z-index:1002;
-}
-.hamburger-btn .bar{ display:block; width:26px;height:3px;background:var(--brand); border-radius:2px; margin:5px 0; transition:.35s ease }
-.hamburger-btn.active .bar:nth-child(1){ transform:translateY(8px) rotate(45deg) }
-.hamburger-btn.active .bar:nth-child(2){ opacity:0 }
-.hamburger-btn.active .bar:nth-child(3){ transform:translateY(-8px) rotate(-45deg) }
 
 /* ===== Hero */
 .hero{ position:relative; overflow:hidden; margin:32px auto; border-radius:var(--radius-xl); background:linear-gradient(135deg, rgba(255,255,255,.9) 0%, rgba(248,187,217,.25) 100%); border:1px solid rgba(255,255,255,.35); box-shadow:0 25px 50px rgba(233,30,99,.15) }
@@ -60,9 +40,9 @@ section{ scroll-margin-top:80px }
 .product-price{ font-weight:900; color:var(--brand); font-size:1.4rem; margin:8px 0 14px }
 .product-actions{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap }
 
-/* ปุ่ม LINE (เน้น) */
+/* ปุ่ม LINE โดดเด่น */
 .line-btn {
-  background: #06C755; color:#fff; text-decoration:none; padding:.9rem 1.8rem;
+  background:#06C755; color:#fff; text-decoration:none; padding:.9rem 1.8rem;
   border-radius:999px; font-weight:900; font-size:1.06rem; display:inline-block;
   box-shadow:0 10px 24px rgba(6,199,85,.35), inset 0 -2px 0 rgba(0,0,0,.08);
   transition: transform .2s ease, box-shadow .25s ease, background .2s ease;
@@ -103,62 +83,48 @@ section{ scroll-margin-top:80px }
 .feature-card{ background:rgba(255,255,255,.92); padding:24px; border-radius:20px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.08) }
 .feature-icon{ font-size:2rem; margin-bottom:8px }
 
-/* Contact / Map / Social (ถ้ามีในหน้าต่าง ๆ) */
+/* Contact (ถ้ามีในหน้าอื่น) */
 .contact{ margin:64px 0; padding:64px 24px; border-radius:var(--radius-xl); background:linear-gradient(135deg, rgba(255,255,255,.95) 0%, rgba(248,187,217,.3) 100%); border:1px solid rgba(255,255,255,.35); box-shadow:0 25px 50px rgba(233,30,99,.15); text-align:center }
-.contact-subtitle{ color:#666; font-weight:300; line-height:1.7; margin:6px 0 24px }
-.contact-info{ display:grid; gap:14px; grid-template-columns: repeat(3, minmax(0,1fr)); margin-bottom:16px }
-.contact-item{ background:rgba(255,255,255,.85); padding:18px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.1) }
-.contact-item-icon{ font-size:1.5rem; display:block; margin-bottom:6px }
-.map-wrap{ margin:16px 0 0; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.12) }
-.map-wrap iframe{ width:100%; height:360px; border:0; display:block }
-.social-icons{ display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-top:16px }
-.social-icons a{ width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; background:#ff4081; color:#fff; box-shadow:0 6px 16px rgba(0,0,0,.2) }
-.social-icons a:nth-child(3){ background:#06C755 }
-.social-icons a:nth-child(4){ background:#000 }
 
 /* Footer */
-footer{ text-align:center; color:#666; padding:28px 0; background:rgba(255,255,255,.8) }
+footer{ text-align:center; color:#666; padding:28px 0 84px; background:rgba(255,255,255,.8) } /* เผื่อพื้นที่ bottom nav บนมือถือ */
 
-/* ===== Mobile Drawer Menu (เฉพาะมือถือ) ===== */
-#mobileBackdrop{
-  position:fixed; inset:0; background:rgba(0,0,0,.25); backdrop-filter:blur(4px);
-  opacity:0; pointer-events:none; z-index:98; transition:opacity .28s ease;
+/* ===== Bottom Navigation (มือถือเท่านั้น) ===== */
+.bottom-nav{
+  position:fixed; left:0; right:0; bottom:0; height:64px; background:#fff;
+  border-top:1px solid rgba(0,0,0,.08); box-shadow:0 -6px 18px rgba(0,0,0,.08);
+  display:none; align-items:center; justify-content:space-around; z-index:999;
 }
-#mobileBackdrop.active{ opacity:1; pointer-events:auto }
+.bottom-nav .bn-item{
+  flex:1; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-decoration:none; color:#666; font-size:11px; gap:3px; transition:color .25s ease, transform .15s ease;
+}
+.bottom-nav .bn-item i{ font-size:18px }
+.bottom-nav .bn-item.active, .bottom-nav .bn-item:hover{ color:var(--brand) }
+.bottom-nav .bn-item:active{ transform:scale(.96) }
 
 @media (max-width:768px){
-  .hamburger-btn{ display:block }
-  /* เปลี่ยน .nav-menu เป็น Drawer ด้านขวา */
-  .nav-menu{
-    position:fixed; top:0; right:-100%; bottom:0; width:78%;
-    max-width:360px; background:#fff; z-index:99;
-    display:flex; flex-direction:column; gap:0; padding:88px 18px 18px;
-    box-shadow:-4px 0 24px rgba(0,0,0,.18);
-    transition:right .34s cubic-bezier(.22,.61,.36,1);
-  }
-  .nav-menu.active{ right:0 }
-  .nav-menu li{ list-style:none }
-  .nav-menu a{
-    display:block; padding:14px 12px; border-radius:12px; font-weight:800; color:#333;
-    border-bottom:1px solid rgba(233,30,99,.1);
-    opacity:0; transform:translateX(12px);
-  }
-  .nav-menu.active li:nth-child(1) a{ animation:drawerIn .42s cubic-bezier(.2,.7,.3,1) .05s forwards }
-  .nav-menu.active li:nth-child(2) a{ animation:drawerIn .42s cubic-bezier(.2,.7,.3,1) .11s forwards }
-  .nav-menu.active li:nth-child(3) a{ animation:drawerIn .42s cubic-bezier(.2,.7,.3,1) .17s forwards }
-  .nav-menu.active li:nth-child(4) a{ animation:drawerIn .42s cubic-bezier(.2,.7,.3,1) .23s forwards }
-  .nav-menu.active li:nth-child(5) a{ animation:drawerIn .42s cubic-bezier(.2,.7,.3,1) .29s forwards }
-  .nav-menu.active li:nth-child(6) a{ animation:drawerIn .42s cubic-bezier(.2,.7,.3,1) .35s forwards }
-  .nav-menu a:hover{ background:rgba(0,0,0,.06) }
-
-  @keyframes drawerIn{
-    to{ opacity:1; transform:translateX(0) }
-  }
-
-  /* ล็อกสกอร์ลเมื่อเปิดเมนู */
-  body.menu-open{ overflow:hidden; touch-action:none }
+  /* ซ่อนเมนูบนหัวเว็บในมือถือ */
+  .nav-menu { display:none }
+  /* เผื่อพื้นที่ให้เนื้อหาเลี่ยง bottom nav */
+  body{ padding-bottom:80px }
+  .bottom-nav{ display:flex }
 }
 
-/* ===== Responsive เดิม ===== */
-@media (max-width:1199px){ .container{ max-width:var(--max-w-tablet) } .products .products-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) } .services-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) } .features-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) } .about .grid{ grid-template-columns:1fr; text-align:center } .about h2::after{ left:50%; transform:translateX(-50%) } .about .stats{ justify-content:center } }
-@media (max-width:768px){ body{ padding-top:60px } .hero .inner{ padding:44px 16px } .products .products-grid{ grid-template-columns:1fr } .services-grid{ grid-template-columns: 1fr } .features-grid{ grid-template-columns:1fr } .contact-info{ grid-template-columns:1fr } .luxury-frame{ height:340px } }
+/* Responsive เดิม */
+@media (max-width:1199px){
+  .container{ max-width:var(--max-w-tablet) }
+  .products .products-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) }
+  .services-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) }
+  .features-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) }
+  .about .grid{ grid-template-columns:1fr; text-align:center }
+  .about h2::after{ left:50%; transform:translateX(-50%) }
+  .about .stats{ justify-content:center }
+}
+@media (max-width:768px){
+  body{ padding-top:60px }
+  .hero .inner{ padding:44px 16px }
+  .products .products-grid{ grid-template-columns:1fr }
+  .services-grid{ grid-template-columns:1fr }
+  .features-grid{ grid-template-columns:1fr }
+}
