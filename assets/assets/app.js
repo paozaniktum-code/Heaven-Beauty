@@ -37,30 +37,23 @@ const HB = (() => {
 
 // ===== Active state for Header menu + Bottom Navigation =====
 (() => {
-  // คืนชื่อไฟล์ปัจจุบันแบบ normalize (ตัด query, hash และโฟลเดอร์)
   const getCurrentFile = () => {
     const path = window.location.pathname;
     let file = path.split('/').pop() || 'index.html';
-    // บาง host อาจให้ path ว่าง ให้ใช้ index.html
     if (file === '' || file === '/') file = 'index.html';
-    // ลบ query/hash
     file = file.split('?')[0].split('#')[0];
     return file.toLowerCase();
   };
 
-  // แปลง href หรือ data-page -> ชื่อไฟล์
   const normalizeFileFromLink = (a) => {
-    // รองรับ data-page (แนะนำให้ใส่ใน bottom nav)
     const data = a.getAttribute('data-page');
     const raw = (data && data.trim()) || a.getAttribute('href') || '';
-    // รองรับกรณีเป็นลิงก์เต็มรูปแบบ
     try {
       const url = new URL(raw, window.location.origin);
       const file = (url.pathname.split('/').pop() || 'index.html')
         .split('?')[0].split('#')[0];
       return (file || 'index.html').toLowerCase();
     } catch {
-      // กรณีเป็น # หรือ path สั้นๆ
       if (raw.startsWith('#')) return getCurrentFile();
       const parts = raw.split('/').pop() || 'index.html';
       return parts.split('?')[0].split('#')[0].toLowerCase();
@@ -69,7 +62,6 @@ const HB = (() => {
 
   const current = getCurrentFile();
 
-  // header
   const headerLinks = HB.$$('#navMenuTop a');
   headerLinks.forEach(a => {
     const file = normalizeFileFromLink(a);
@@ -77,7 +69,6 @@ const HB = (() => {
     else a.classList.remove('active');
   });
 
-  // bottom nav
   const bottomLinks = HB.$$('.bottom-nav a');
   bottomLinks.forEach(a => {
     const file = normalizeFileFromLink(a);
@@ -92,8 +83,8 @@ const HB = (() => {
   if (!nav) return;
 
   let lastY = window.scrollY;
-  let acc = 0; // สะสมความต่างเพื่อตัดสินใจซ่อน/โชว์
-  const MAX_OFFSET = 56; // ขนาดเลื่อนที่ต้องการก่อนซ่อน/โชว์
+  let acc = 0;
+  const MAX_OFFSET = 56;
 
   const apply = () => {
     nav.style.transform = `translateY(${acc}px)`;
@@ -101,19 +92,16 @@ const HB = (() => {
 
   const onScroll = () => {
     const y = window.scrollY;
-    const diff = HB.clamp(y - lastY, -12, 12); // จำกัดความเร็วการซ่อน/โชว์
+    const diff = HB.clamp(y - lastY, -12, 12);
     lastY = y;
 
-    // เลื่อนลง -> ซ่อน (แปลเป็นบวก), เลื่อนขึ้น -> โชว์ (กลับศูนย์)
     acc = HB.clamp(acc + diff, 0, MAX_OFFSET);
-    // ถ้าขึ้นแรงๆ ให้โชว์ทันที
     if (diff < -8) acc = 0;
 
     apply();
   };
 
   const onResize = () => {
-    // รีเซ็ตเมื่อเปลี่ยนแนว/ขนาดหน้าจอ
     acc = 0;
     apply();
   };
@@ -122,13 +110,12 @@ const HB = (() => {
   window.addEventListener('resize', HB.debounce(onResize, 150));
 })();
 
-// ===== Product filter (ทำงานเฉพาะหน้าที่มีปุ่ม .category-btn) — ปลอดภัยถ้าไม่มี =====
+// ===== Product filter (index & products; safe if missing) =====
 (() => {
   const btns = HB.$$('.category-btn');
   const cards = HB.$$('.product-card');
   if (!btns.length || !cards.length) return;
 
-  // Inject keyframes เฉพาะตอนใช้งาน
   const style = document.createElement('style');
   style.innerHTML = '@keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}';
   document.head.appendChild(style);
