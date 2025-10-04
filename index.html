@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Heaven and Beauty - Wellness & Organic Beauty</title>
 
-  <link rel="stylesheet" href="assets/style.css?v=7" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/style.css?v=8" />
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <meta name="description" content="Heaven and Beauty — Wellness & Organic Beauty ศูนย์รวมผลิตภัณฑ์ออร์แกนิค สปา และเวลเนส" />
 </head>
@@ -18,60 +20,165 @@
           <a href="index.html" class="brand" aria-label="Heaven and Beauty">
             <img src="https://i.postimg.cc/q7Z9WpbC/Black-and-White-Elegant-Floral-Beauty-Salon-Logo.png" alt="โลโก้ Heaven and Beauty" />
           </a>
-
-          <!-- Desktop menu -->
-          <ul class="nav-menu nav-desktop" id="navMenuDesktop">
-            <li><a href="index.html" class="active">หน้าแรก</a></li>
-            <li><a href="products.html">ผลิตภัณฑ์</a></li>
-            <li><a href="about.html">เกี่ยวกับเรา</a></li>
-            <li><a href="services.html">สปา</a></li>
-            <li><a href="wellness.html">Wellness</a></li>
-            <li><a href="contact.html">ติดต่อ</a></li>
-          </ul>
         </div>
 
-        <!-- Mobile menu -->
-        <details class="nav-mobile" id="navMobile">
-          <summary class="hamburger" aria-label="เปิดเมนู" aria-haspopup="true" aria-controls="mobilePanel" role="button">
-            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-          </summary>
+        <!-- ปุ่มเมนูมือถือ -->
+        <button class="hamburger-btn" id="hamburger" aria-label="เปิด/ปิดเมนู" aria-expanded="false" aria-controls="navMenu">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
 
-          <!-- Backdrop -->
-          <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
-
-          <!-- Panel -->
-          <div class="mobile-panel" id="mobilePanel" role="menu" aria-label="เมนูนำทาง">
-            <ul class="mobile-menu">
-              <li style="--d:0"><a href="index.html">หน้าแรก</a></li>
-              <li style="--d:1"><a href="products.html">ผลิตภัณฑ์</a></li>
-              <li style="--d:2"><a href="about.html">เกี่ยวกับเรา</a></li>
-              <li style="--d:3"><a href="services.html">สปา</a></li>
-              <li style="--d:4"><a href="wellness.html">Wellness</a></li>
-              <li style="--d:5"><a href="contact.html">ติดต่อ</a></li>
-            </ul>
-          </div>
-        </details>
+        <!-- เมนูหลัก (เดสก์ท็อปปกติ / มือถือเป็น drawer) -->
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="active">หน้าแรก</a></li>
+          <li><a href="products.html">ผลิตภัณฑ์</a></li>
+          <li><a href="about.html">เกี่ยวกับเรา</a></li>
+          <li><a href="services.html">สปา</a></li>
+          <li><a href="wellness.html">Wellness</a></li>
+          <li><a href="contact.html">ติดต่อ</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Hero (ตัวอย่าง) -->
-  <section class="hero">
+  <!-- Backdrop สำหรับมือถือ -->
+  <div id="mobileBackdrop" aria-hidden="true"></div>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
     <div class="container inner">
       <h1>ยินดีต้อนรับสู่ Heaven and Beauty</h1>
-      <p>เราคัดสรรส่วนผสมที่ดีที่สุดจากธรรมชาติ เพื่อสร้างสรรค์ผลิตภัณฑ์ออร์แกนิคที่ปลอดภัยและอ่อนโยนต่อผิวคุณ</p>
+      <p>เราคัดสรรส่วนผสมที่ดีที่สุดจากธรรมชาติ เพื่อสร้างสรรค์ผลิตภัณฑ์ออร์แกนิคที่ปลอดภัยและอ่อนโยนต่อผิวคุณ ดูแลสุขภาพและความงามอย่างธรรมชาติ</p>
       <a href="products.html" class="cta-button">สำรวจผลิตภัณฑ์</a>
     </div>
   </section>
 
-  <!-- เนื้อหาอื่นของคุณ… -->
+  <!-- Featured Products -->
+  <section class="products">
+    <div class="container">
+      <h2>ผลิตภัณฑ์แนะนำ</h2>
+      <div class="products-grid">
+        <!-- 1 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://i.postimg.cc/rp8Cz6hX/image.jpg" alt="อะโทมี่ เฟรช ซัน โลชั่น" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3>อะโทมี่ เฟรช ซัน โลชั่น</h3>
+            <p>ครีมกันแดดสูตรอินออร์แกนิก</p>
+            <div class="product-price">฿xxxx</div>
+            <div class="product-actions">
+              <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank" rel="noopener">สั่งซื้อ/แชทไลน์</a>
+            </div>
+          </div>
+        </div>
+        <!-- 2 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://i.postimg.cc/HLp4jGSC/image.jpg" alt="อะโทมี่ แอบโซลูท" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3>อะโทมี่ แอบโซลูท</h3>
+            <p>เอสเซนส์ ซันสกรีน SPF 50+ / PA++++</p>
+            <div class="product-price">฿xxx</div>
+            <div class="product-actions">
+              <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank" rel="noopener">สั่งซื้อ/แชทไลน์</a>
+            </div>
+          </div>
+        </div>
+        <!-- 3 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://i.postimg.cc/yNVXWqfB/image.jpg" alt="อาหารเสริมคอลลาเจน" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3>อาหารเสริมคอลลาเจน</h3>
+            <p>คอลลาเจนจากธรรมชาติ ช่วยบำรุงผิวจากภายใน</p>
+            <div class="product-price">฿xxx</div>
+            <div class="product-actions">
+              <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank" rel="noopener">สั่งซื้อ/แชทไลน์</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ปุ่ม "ดูทั้งหมดในหน้าผลิตภัณฑ์" ถูกลบออก -->
+    </div>
+  </section>
 
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="grid">
+        <div class="about-text">
+          <h2>เกี่ยวกับเรา</h2>
+          <div class="subtitle">Heaven and Beauty</div>
+          <p class="desc">เราเป็นแบรนด์ความงามและสุขภาพที่มุ่งมั่นในการนำเสนอผลิตภัณฑ์ออร์แกนิคคุณภาพสูง ด้วยความเชื่อมั่นว่าความงามที่แท้จริงต้องเริ่มต้นจากภายใน</p>
+          <div class="stats">
+            <div class="stat"><div class="num">10+</div><div class="lbl">ปีแห่งประสบการณ์</div></div>
+            <div class="stat"><div class="num">50K+</div><div class="lbl">ลูกค้าที่ไว้วางใจ</div></div>
+            <div class="stat"><div class="num">100%</div><div class="lbl">ส่วนผสมธรรมชาติ</div></div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="luxury-frame">
+            <div class="frame-content">
+              <img src="https://i.postimg.cc/g0QTrJ6j/LINE-ALBUM-250925-3.jpg" alt="Heaven and Beauty – บรรยากาศร้าน" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2>สปาและบริการนวด</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-spa"></i></div>
+          <h3>นวดอโรมาเธอราปี</h3>
+          <p>ผ่อนคลายด้วยน้ำมันหอมระเหยบริสุทธิ์ ลดความเครียดและบำรุงผิวพรรณ</p>
+          <div class="service-price">60 นาที / ฿1,200</div>
+          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" class="line-btn">จองผ่าน LINE</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <h3>นวดแผนไทย</h3>
+          <p>ศาสตร์แห่งการบำบัดแบบดั้งเดิม คลายกล้ามเนื้อและปรับสมดุลร่างกาย</p>
+          <div class="service-price">90 นาที / ฿990</div>
+          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" class="line-btn">จองผ่าน LINE</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-hot-tub"></i></div>
+          <h3>สปาหินร้อน</h3>
+          <p>ใช้หินภูเขาไฟเพื่อผ่อนคลายกล้ามเนื้อ กระตุ้นการไหลเวียนโลหิต</p>
+          <div class="service-price">75 นาที / ฿1,800</div>
+          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" class="line-btn">จองผ่าน LINE</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wellness -->
+  <section class="features" id="wellness">
+    <div class="container">
+      <h2>ความงามและสุขภาพแบบองค์รวม</h2>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon">🌿</div><h3>100% ออร์แกนิค</h3><p>ส่วนผสมจากธรรมชาติล้วนๆ ปลอดสารเคมีอันตราย เพื่อผิวที่สุขภาพดี</p></div>
+        <div class="feature-card"><div class="feature-icon">🧘‍♀️</div><h3>ผ่อนคลายจิตใจ</h3><p>ผลิตภัณฑ์ช่วยให้รู้สึกสงบและเติมพลังให้ร่างกายและจิตใจ</p></div>
+        <div class="feature-card"><div class="feature-icon">✨</div><h3>เปล่งปลั่งธรรมชาติ</h3><p>เผยผิวที่สดใส เปล่งปลั่ง และมีสุขภาพดี</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <div class="container">
       <p>&copy; <span id="year"></span> Heaven &amp; Beauty. ดูแลความงามและสุขภาพด้วยใจ</p>
     </div>
   </footer>
 
-  <script src="assets/app.js?v=7"></script>
+  <!-- JS -->
+  <script src="assets/app.js?v=8"></script>
 </body>
 </html>
