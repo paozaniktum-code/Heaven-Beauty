@@ -1,87 +1,68 @@
-(function(){
-  const safe = fn => { try{ fn(); } catch(e){ /* console.warn(e); */ } };
+// ปีในฟุตเตอร์
+(() => {
+  const el = document.getElementById('year');
+  if (el) el.textContent = new Date().getFullYear();
+})();
 
-  // ปีปัจจุบัน
-  safe(() => {
-    const el = document.getElementById('year');
-    if (el) el.textContent = new Date().getFullYear();
+// ไฮไลต์เมนูเดสก์ท็อปตามหน้า
+(() => {
+  const nav=document.getElementById('navMenuDesktop'); if(!nav) return;
+  const links=[...nav.querySelectorAll('a')];
+  const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+  const fileOf = href => {
+    try { const u = new URL(href, location.origin); return (u.pathname.split('/').pop()||'index.html').toLowerCase(); }
+    catch { return href; }
+  };
+  links.forEach(a=>{
+    const f=fileOf(a.getAttribute('href'));
+    const isIndex=(f===''||f==='#'||f==='index.html');
+    const active=(isIndex&&(path===''||path==='index.html')) || f===path;
+    a.classList.toggle('active', !!active);
+  });
+})();
+
+// เมนูมือถือ: ปิด/เปิด + UX ครบ
+(() => {
+  const navMobile = document.getElementById('navMobile');
+  const panel = document.getElementById('mobilePanel');
+  const backdrop = document.getElementById('mobileBackdrop');
+  if (!navMobile) return;
+
+  const closeMenu = () => { navMobile.open = false; document.body.classList.remove('menu-open'); };
+  const openMenu  = () => { navMobile.open = true;  document.body.classList.add('menu-open'); };
+
+  // Toggle body lock เมื่อมีการเปิด/ปิด
+  navMobile.addEventListener('toggle', () => {
+    if (navMobile.open) document.body.classList.add('menu-open');
+    else document.body.classList.remove('menu-open');
   });
 
-  // เลื่อนนุ่มนวลสำหรับลิงก์ # ภายในหน้าเดียวกัน
-  safe(() => {
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',e=>{
-        const href=a.getAttribute('href');
-        if(href && href.length>1){
-          const t=document.querySelector(href);
-          if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
-        }
-      });
-    });
+  // คลิกลิงก์แล้วปิด
+  panel?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => closeMenu());
   });
 
-  // ไฮไลต์เมนูตามหน้า
-  safe(() => {
-    const nav=document.getElementById('navMenu'); if(!nav) return;
-    const links=[...nav.querySelectorAll('a')];
-    const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
-    const fileOf = href=>{
-      try{ const u=new URL(href, location.origin); return (u.pathname.split('/').pop()||'index.html').toLowerCase(); }
-      catch{ return href; }
-    };
-    links.forEach(a=>{
-      const f=fileOf(a.getAttribute('href'));
-      const isIndex=(f===''||f==='#'||f==='index.html');
-      const active=(isIndex&&(path===''||path==='index.html')) || f===path;
-      a.classList.toggle('active', !!active);
-    });
+  // แตะฉากหลังเพื่อปิด
+  backdrop?.addEventListener('click', () => closeMenu());
+
+  // ปิดด้วย ESC
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
+  // ถ้าขยายจอเป็นเดสก์ท็อป ให้ปิด
+  const mq = window.matchMedia('(min-width:769px)');
+  if (mq.addEventListener) mq.addEventListener('change', e => { if (e.matches) closeMenu(); });
+  else if (mq.addListener) mq.addListener(e => { if (e.matches) closeMenu(); });
+
+  // โฟกัสแรกเข้าที่ลิงก์แรก
+  navMobile.addEventListener('toggle', () => {
+    if (navMobile.open) {
+      const firstLink = panel?.querySelector('a');
+      firstLink && firstLink.focus({preventScroll:true});
+    }
   });
 
-  // เมนูมือถือ
-  document.addEventListener('DOMContentLoaded', function(){
-    const burger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('navMenu');
-    if(!burger || !navMenu) return;
-
-    const openMenu = ()=>{
-      burger.classList.add('active');
-      navMenu.classList.add('active');
-      document.body.classList.add('menu-open');
-      burger.setAttribute('aria-expanded','true');
-    };
-    const closeMenu = ()=>{
-      burger.classList.remove('active');
-      navMenu.classList.remove('active');
-      document.body.classList.remove('menu-open');
-      burger.setAttribute('aria-expanded','false');
-    };
-    const toggleMenu = ()=> navMenu.classList.contains('active') ? closeMenu() : openMenu();
-
-    burger.addEventListener('click', toggleMenu);
-
-    // ปิดเมื่อคลิกลิงก์ (เฉพาะมือถือ)
-    navMenu.querySelectorAll('a').forEach(a=>{
-      a.addEventListener('click', ()=>{
-        if (window.matchMedia('(max-width:768px)').matches) closeMenu();
-      });
-    });
-
-    // ปิดเมื่อกด ESC
-    window.addEventListener('keydown', e=>{ if (e.key==='Escape') closeMenu(); });
-
-    // ปิดเมื่อคลิกนอกเมนู
-    document.addEventListener('click', e=>{
-      if (!navMenu.contains(e.target) && !burger.contains(e.target) && navMenu.classList.contains('active')){
-        closeMenu();
-      }
-    });
-
-    // ปิดเมื่อขยายเป็นเดสก์ท็อป
-    const mq = window.matchMedia('(min-width:769px)');
-    if (mq.addEventListener) mq.addEventListener('change', e=>{ if(e.matches) closeMenu(); });
-    else if (mq.addListener) mq.addListener(e=>{ if(e.matches) closeMenu(); });
-
-    // ปิดเมื่อเปลี่ยนแนวจอ
-    window.addEventListener('orientationchange', () => closeMenu());
-  });
+  // กัน scroll-jump iOS (optional)
+  document.addEventListener('touchmove', (e) => {
+    if (navMobile.open && !panel.contains(e.target)) e.preventDefault();
+  }, { passive:false });
 })();
