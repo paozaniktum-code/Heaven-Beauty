@@ -5,18 +5,42 @@
   --text:#434343; --muted:#666;
   --max-w-desktop:1200px; --max-w-tablet:960px;
   --radius-xl:40px;
+
+  /* Bottom Nav */
+  --nav-bg:#ffffff;
+  --nav-active:#e91e63;
+  --nav-muted:#9ca3af;
+  --nav-shadow:0 10px 30px rgba(0,0,0,.08);
 }
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
+
+/* ===== Reset / Base */
+*{ box-sizing:border-box }
+html,body{ margin:0; padding:0 }
 body{
-  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color:var(--text);
-  background:linear-gradient(135deg,var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
-  min-height:100vh; overflow-x:hidden; padding-top:64px;
+  background: linear-gradient(135deg,var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
+  min-height:100vh;
+  overflow-x:hidden;
+  padding-top:64px; /* header height */
 }
 .container{ width:100%; max-width:var(--max-w-desktop); margin:0 auto; padding:0 24px }
 
-/* ===== Header (Desktop Nav) */
+/* ===== Floating soft background */
+.bg-animation{ position:fixed; inset:0; z-index:-1; opacity:.2 }
+.floating-star{ position:absolute; animation:floatStar 8s ease-in-out infinite }
+.floating-star svg{ width:24px;height:24px }
+.floating-star:nth-child(1){ top:5%; left:8%}
+.floating-star:nth-child(2){ top:12%; right:15%; animation-delay:1.5s}
+.floating-star:nth-child(3){ top:62%; right:12%; animation-delay:.5s}
+@keyframes floatStar{
+  0%,100%{ transform:translateY(0) rotate(0) scale(1); opacity:.4}
+  25%{ transform:translateY(-20px) rotate(90deg) scale(1.2); opacity:.8}
+  50%{ transform:translateY(-35px) rotate(180deg) scale(.8); opacity:.3}
+  75%{ transform:translateY(-15px) rotate(270deg) scale(1.05); opacity:.6}
+}
+
+/* ===== Header (Desktop / Tablet) */
 header{
   position:fixed; inset:0 0 auto 0; height:64px; z-index:100;
   background:rgba(255,255,255,.95); backdrop-filter: blur(10px);
@@ -33,21 +57,25 @@ header{
 }
 .nav-menu a:hover,.nav-menu a.active{ background:rgba(0,0,0,.06) }
 
-/* ===== Hero / Page Hero */
-.hero,.page-hero{
+/* ปุ่ม hamburger ไม่ใช้แล้ว แต่คง style ไว้เผื่อโค้ดเดิม */
+.hamburger-btn{ display:none }
+
+/* ===== Hero */
+.hero{
   position:relative; overflow:hidden; margin:32px auto; border-radius:var(--radius-xl);
   background:linear-gradient(135deg, rgba(255,255,255,.9) 0%, rgba(248,187,217,.25) 100%);
   border:1px solid rgba(255,255,255,.35);
   box-shadow:0 25px 50px rgba(233,30,99,.15);
 }
-.hero .inner,.page-hero .inner{ padding: clamp(48px, 6vw, 96px) 24px; text-align:center }
-.hero h1,.page-hero h1{
-  margin:0 0 12px; font-weight:800; line-height:1.15; font-size:clamp(28px, 4.2vw, 48px);
-  background:linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 50%, #ec407a 100%);
+.hero .inner{ padding: clamp(48px, 6vw, 96px) 24px; text-align:center }
+.hero h1{
+  margin:0 0 12px; font-weight:800; line-height:1.15;
+  font-size:clamp(28px, 4.2vw, 48px);
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 50%, #ec407a 100%);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  text-shadow:3px 3px 6px rgba(233,30,99,.15);
+  text-shadow: 3px 3px 6px rgba(233,30,99,.15);
 }
-.hero h1::after,.page-hero h1::after{
+.hero h1::after{
   content:""; display:block; margin:14px auto 0; width:120px; height:4px;
   background:linear-gradient(45deg,var(--brand),var(--brand-2)); border-radius:2px;
   box-shadow:0 2px 10px rgba(233,30,99,.25);
@@ -56,8 +84,7 @@ header{
 .cta-button{
   display:inline-block; padding:14px 28px; border-radius:999px; border:0;
   background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#fff; font-weight:800;
-  letter-spacing:.5px; text-decoration:none; box-shadow:0 10px 30px rgba(233,30,99,.3);
-  position:relative; overflow:hidden;
+  letter-spacing:.5px; text-decoration:none; box-shadow:0 10px 30px rgba(233,30,99,.3); position:relative; overflow:hidden;
 }
 .cta-button::before{ content:""; position:absolute; inset:0; left:-100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent); transition:left .6s ease }
 .cta-button:hover::before{ left:100% }
@@ -65,108 +92,219 @@ header{
 /* ===== Sections */
 section{ scroll-margin-top:80px }
 
-/* Products Grid */
-.products{ padding:64px 0 }
+/* ===== Products */
+.products{ padding: 64px 0 }
 .products h2{ text-align:center; color:var(--brand); font-size:clamp(22px,3vw,32px); margin:0 0 24px }
-.products-grid{ display:grid; gap:24px; grid-template-columns: repeat(3, minmax(0,1fr)) }
+
+.products-grid{
+  display:grid; gap:24px;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
+
 .product-card{
-  background:rgba(255,255,255,.95); border-radius:20px; padding:24px; text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.08); border:2px solid transparent; transition:.25s ease
+  background:rgba(255,255,255,.95); border-radius:20px; padding:28px; text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.08); border:2px solid transparent; transition:.25s ease;
 }
 .product-card:hover{ transform:translateY(-8px); box-shadow:0 20px 40px rgba(233,30,99,.16); border-color:rgba(233,30,99,.25) }
-.product-image{ display:flex; justify-content:center; margin-bottom:12px }
-.product-image img{ width:140px; height:140px; object-fit:contain; filter:drop-shadow(0 6px 14px rgba(0,0,0,.12)); transition:transform .3s ease }
+
+/* — ขยายรูปสินค้าให้ใหญ่ขึ้น — */
+.product-image{
+  display:flex; justify-content:center; align-items:center;
+  margin-bottom:16px;
+  min-height: clamp(220px, 30vw, 300px);
+}
+.product-image img{
+  width:  clamp(200px, 28vw, 280px);
+  height: clamp(200px, 28vw, 280px);
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.12));
+  transition: transform .3s ease;
+}
 .product-card:hover .product-image img{ transform:scale(1.05) }
-.product-info h3{ color:var(--brand); font-size:1.1rem; margin:10px 0 }
-.product-info p{ color:#666; line-height:1.6; font-size:.95rem; margin: 0 0 10px }
+
+.product-info h3{ color:var(--brand); font-size:1.12rem; margin:10px 0 }
+.product-info p{ color:#666; line-height:1.6; font-size:.98rem; margin: 0 0 10px }
 .product-price{ font-weight:900; color:var(--brand); font-size:1.2rem; margin:8px 0 14px }
+
 .product-actions{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap }
 
-/* LINE Button—เด่นขึ้น */
+/* ปุ่ม LINE – เน้นให้เด่น */
 .line-btn{
-  background:#06C755; color:#fff; text-decoration:none; padding:.9rem 1.8rem;
-  border-radius:999px; font-weight:900; font-size:1.06rem; display:inline-flex; align-items:center; gap:8px;
-  box-shadow:0 10px 24px rgba(6,199,85,.35), inset 0 -2px 0 rgba(0,0,0,.08);
-  transition: transform .2s ease, box-shadow .25s ease, background .2s ease;
+  background:#06C755; color:#fff; text-decoration:none;
+  padding:.9rem 1.8rem; border-radius:999px; font-weight:900; font-size:1.06rem;
+  display:inline-flex; align-items:center; gap:.5rem;
+  box-shadow:0 8px 20px rgba(6,199,85,.45), inset 0 -2px 0 rgba(0,0,0,.08);
+  transition:transform .22s ease, box-shadow .22s ease, filter .22s ease;
 }
-.line-btn::before{ content:""; display:inline-block; width:18px; height:18px; background:url('https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg') no-repeat center/contain }
-.line-btn:hover{ background:#04a844; transform:translateY(-1px) scale(1.03); box-shadow:0 14px 28px rgba(6,199,85,.45) }
+.line-btn::before{ content:""; width:1.05rem; height:1.05rem; display:inline-block; background:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22><path fill=%22white%22 d=%22M407.5 64C460.1 64 504 102.1 504 149.1c0 95.3-112.1 172.8-248 172.8-16.6 0-32.7-1.1-48.3-3.2-13.3 9.9-29.2 18.3-46.8 24.6-6.3 2.2-11.8-4.8-8.5-10.8 8.5-15.3 14.5-32.2 17.4-49.9C114.2 258.2 88 206.7 88 149.1 88 102.1 131.9 64 184.5 64h223z%22/></svg>') center/contain no-repeat; filter:drop-shadow(0 0 0 rgba(0,0,0,0)) }
+.line-btn:hover{ transform:translateY(-2px) scale(1.03); box-shadow:0 12px 26px rgba(6,199,85,.5) }
+.line-btn:active{ transform:translateY(0) scale(.99); filter:brightness(.98) }
 
-/* About */
+/* ===== About */
 .about{ padding:72px 0 }
-.about .grid{ display:grid; gap:40px; grid-template-columns:1.1fr .9fr; align-items:center }
+.about .grid{ display:grid; gap:40px; grid-template-columns: 1.1fr .9fr; align-items:center }
 .about h2{
   font-size:clamp(24px,3.2vw,38px); margin:0 0 8px; font-weight:900;
   background:linear-gradient(135deg,#ffd700 0%, var(--brand) 50%, #8e24aa 100%);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; position:relative
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  position:relative;
 }
 .about h2::after{
   content:""; position:absolute; left:0; bottom:-10px; width:100px; height:4px;
-  background:linear-gradient(45deg,#ffd700,var(--brand),#8e24aa); border-radius:2px; box-shadow:0 2px 10px rgba(233,30,99,.25)
+  background:linear-gradient(45deg,#ffd700,var(--brand),#8e24aa);
+  border-radius:2px; box-shadow:0 2px 10px rgba(233,30,99,.25)
 }
+.about .subtitle{ font-size:1.25rem; color:#8e24aa; font-weight:700; margin:14px 0 }
 .about .desc{ color:#555; line-height:1.85; font-weight:300; margin:16px 0 28px }
-.about-visual img{ width:100%; border-radius:24px; box-shadow:0 20px 60px rgba(0,0,0,.12) }
+.about .stats{ display:flex; gap:14px; flex-wrap:wrap }
+.stat{
+  flex:1 1 240px; text-align:center; padding:16px; background:rgba(255,255,255,.85);
+  border-radius:16px; position:relative; box-shadow:0 10px 30px rgba(0,0,0,.08)
+}
+.stat .num{
+  font-weight:900; font-size:1.8rem;
+  background:linear-gradient(135deg,#ffd700 0%, var(--brand) 50%, #8e24aa 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  margin-bottom:4px
+}
+.stat .lbl{ font-size:.9rem; color:#666; font-weight:700 }
 
-/* Services */
-.services{ padding:64px 0 }
+.about-visual{ display:flex; justify-content:center }
+.luxury-frame{
+  position:relative; width: min(420px, 100%); height:clamp(360px, 45vw, 480px);
+  background:linear-gradient(135deg, rgba(255,255,255,.92) 0%, rgba(248,187,217,.28) 100%);
+  border:1px solid rgba(255,255,255,.35); border-radius:30px; padding:18px; overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.6);
+}
+.luxury-frame::before{
+  content:""; position:absolute; inset:-2px; z-index:-1; border-radius:32px;
+  background:linear-gradient(45deg,#ffd700,var(--brand),#8e24aa,#ffd700);
+  animation:luxuryBorder 4s linear infinite;
+}
+@keyframes luxuryBorder{ 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+.frame-content{ width:100%; height:100%; display:flex; align-items:center; justify-content:center }
+.frame-content img{ width:100%; height:100%; object-fit:cover; border-radius:24px; display:block }
+
+/* ===== Services */
+.services{ padding: 64px 0 }
 .services h2{ text-align:center; color:var(--brand); font-size:clamp(22px,3vw,32px); margin:0 0 24px }
-.services-grid{ display:grid; gap:24px; grid-template-columns: repeat(3, minmax(0,1fr)) }
+.services-grid{
+  display:grid; gap:24px;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
 .service-card{
   background:rgba(255,255,255,.92); padding:28px 24px; border-radius:20px;
   text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.08);
   border:2px solid transparent; transition:.25s ease;
 }
-.service-card:hover{ transform:translateY(-8px); box-shadow:0 20px 40px rgba(233,30,99,.16); border-color:rgba(233,30,99,.25) }
-.service-icon{ font-size:2.5rem; color:var(--brand); margin-bottom:12px }
-.service-price{ font-weight:800; color:var(--brand-2); margin:12px 0 18px; font-size:1.1rem }
+.service-card:hover{
+  transform:translateY(-8px); box-shadow:0 20px 40px rgba(233,30,99,.16);
+  border-color:rgba(233,30,99,.25);
+}
+.service-icon{ font-size:2.5rem; color:var(--brand); margin-bottom:12px; }
+.service-card h3{ color:var(--brand); font-size:1.2rem; margin:10px 0; }
+.service-card p{ color:#666; line-height:1.6; font-size:.95rem; margin: 0 0 10px; }
+.service-price{ font-weight: 800; color:var(--brand-2); margin:12px 0 18px; font-size:1.1rem; }
 
-/* Contact */
-.contact{ margin:64px 0; padding:64px 24px; border-radius:var(--radius-xl);
+/* ===== Features (Wellness on index) */
+.features{ padding:64px 0 }
+.features h2{ text-align:center; color:var(--brand); font-size:clamp(22px,3vw,32px); margin:0 0 24px }
+.features-grid{ display:grid; gap:18px; grid-template-columns: repeat(3, minmax(0,1fr)) }
+.feature-card{ background:rgba(255,255,255,.92); padding:24px; border-radius:20px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.08) }
+.feature-icon{ font-size:2rem; margin-bottom:8px }
+
+/* ===== Contact */
+.contact{
+  margin:64px 0; padding:64px 24px; border-radius:var(--radius-xl);
   background:linear-gradient(135deg, rgba(255,255,255,.95) 0%, rgba(248,187,217,.3) 100%);
   border:1px solid rgba(255,255,255,.35); box-shadow:0 25px 50px rgba(233,30,99,.15); text-align:center
 }
-.contact h2{ text-align:center; color:var(--brand); font-size:clamp(22px,3vw,32px); margin:0 0 8px; font-weight:900 }
 .contact-subtitle{ color:#666; font-weight:300; line-height:1.7; margin:6px 0 24px }
 .contact-info{ display:grid; gap:14px; grid-template-columns: repeat(3, minmax(0,1fr)); margin-bottom:16px }
 .contact-item{ background:rgba(255,255,255,.85); padding:18px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.1) }
+.contact-item-icon{ font-size:1.5rem; display:block; margin-bottom:6px }
 .map-wrap{ margin:16px 0 0; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.12) }
 .map-wrap iframe{ width:100%; height:360px; border:0; display:block }
 .social-icons{ display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-top:16px }
 .social-icons a{ width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; background:#ff4081; color:#fff; box-shadow:0 6px 16px rgba(0,0,0,.2) }
-.social-icons a:nth-child(3){ background:#06C755 } /* LINE */
-.social-icons a:nth-child(4){ background:#000 }    /* TikTok */
+.social-icons a:nth-child(3){ background:#06C755 }
+.social-icons a:nth-child(4){ background:#000 }
 
-/* Footer */
-footer{ text-align:center; color:#666; padding:28px 0 84px; background:rgba(255,255,255,.8) } /* เผื่อพื้นที่ bottom nav */
+/* ===== Sub-page common blocks */
+.page-hero{
+  position:relative; overflow:hidden; margin:32px auto 0; border-radius:var(--radius-xl);
+  background:linear-gradient(135deg, rgba(255,255,255,.92) 0%, rgba(248,187,217,.3) 100%);
+  border:1px solid rgba(255,255,255,.35); box-shadow:0 25px 50px rgba(233,30,99,.15)
+}
+.page-hero .inner{ padding: clamp(48px, 6vw, 96px) 24px; text-align:center }
+.breadcrumbs{ display:flex; gap:8px; justify-content:center; font-size:.95rem; color:#7a7a7a }
+.breadcrumbs a{ color:#7a7a7a; text-decoration:none }
+.breadcrumbs a:hover{ text-decoration:underline }
+.page-section{ padding:48px 0 }
+.kicker{ display:inline-block; padding:6px 12px; border-radius:999px; background:rgba(233,30,99,.12); color:var(--brand); font-weight:800; font-size:.9rem; letter-spacing:.3px }
+.two-col{ display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:center }
+.card{ background:rgba(255,255,255,.95); border-radius:20px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.12) }
+.lead{ font-size:1.1rem; color:#555; line-height:1.85 }
 
-/* ===== Bottom Navigation (Mobile only) ===== */
+/* ===== Footer */
+footer{ text-align:center; color:#666; padding:28px 0; background:rgba(255,255,255,.8) }
+
+/* ===== Bottom Navigation (Mobile) */
 .bottom-nav{
-  position:fixed; left:0; right:0; bottom:0; height:64px; background:#fff;
-  border-top:1px solid rgba(0,0,0,.08); box-shadow:0 -6px 18px rgba(0,0,0,.08);
-  display:none; align-items:center; justify-content:space-around; z-index:999;
+  position:fixed; left:0; right:0; bottom:0; z-index:120;
+  background:var(--nav-bg);
+  box-shadow:0 -10px 30px rgba(0,0,0,.08);
+  border-top:1px solid rgba(0,0,0,.06);
+  display:none; /* show on mobile via media query */
+}
+.bottom-nav .inner{
+  max-width:var(--max-w-desktop); margin:0 auto; padding:10px 12px;
+  display:grid; grid-template-columns: repeat(5, 1fr); gap:8px;
 }
 .bottom-nav a{
-  flex:1; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
-  text-decoration:none; color:#666; font-size:11px; gap:3px; transition:color .25s ease, transform .15s ease;
+  text-decoration:none; color:var(--nav-muted);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:6px; padding:8px 6px; border-radius:14px; font-size:.8rem; font-weight:700;
+  transition:transform .16s ease, background .16s ease, color .16s ease;
 }
-.bottom-nav a i{ font-size:18px }
-.bottom-nav a.active, .bottom-nav a:hover{ color:var(--brand) }
-.bottom-nav a:active{ transform:scale(.96) }
+.bottom-nav a .icon{ font-size:1.2rem; line-height:1 }
+.bottom-nav a.active{ color:var(--nav-active); background:rgba(233,30,99,.08) }
+.bottom-nav a:active{ transform:scale(.98) }
+
+/* blob indicator */
+.bottom-nav a.active::after{
+  content:""; width:6px; height:6px; border-radius:50%;
+  background:var(--nav-active); display:block; margin-top:2px;
+  box-shadow:0 0 0 6px rgba(233,30,99,.12);
+}
 
 /* ===== Responsive */
 @media (max-width:1199px){
   .container{ max-width:var(--max-w-tablet) }
   .products .products-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) }
   .services-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) }
+  .features-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) }
   .about .grid{ grid-template-columns:1fr; text-align:center }
   .about h2::after{ left:50%; transform:translateX(-50%) }
+  .about .stats{ justify-content:center }
+  .two-col{ grid-template-columns:1fr }
 }
+
 @media (max-width:768px){
-  body{ padding-top:60px; padding-bottom:80px } /* เว้นที่ให้ bottom nav */
-  .nav-menu{ display:none }                     /* ซ่อนเมนูบน */
-  .bottom-nav{ display:flex }                   /* แสดงเมนูล่าง */
+  body{ padding-top:60px; padding-bottom:72px } /* เผื่อพื้นที่ Bottom Nav */
+  .navbar{ gap:10px; padding:0 8px }
+  /* ซ่อนเมนูบน header ในมือถือ */
+  .nav-menu{ display:none }
+
+  /* แสดง Bottom Nav */
+  .bottom-nav{ display:block }
+
   .hero .inner{ padding:44px 16px }
   .products .products-grid{ grid-template-columns:1fr }
-  .services-grid{ grid-template-columns:1fr }
+  .product-image{ min-height: 220px }
+  .product-image img{ width: 220px; height: 220px }
+  .services-grid{ grid-template-columns: 1fr }
+  .features-grid{ grid-template-columns:1fr }
   .contact-info{ grid-template-columns:1fr }
+  .luxury-frame{ height:340px }
 }
