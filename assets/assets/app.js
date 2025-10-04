@@ -1,4 +1,4 @@
-/* Heaven & Beauty — App JS (Bottom Navigation) */
+/* Heaven & Beauty — App JS (Bottom Navigation, No Hamburger) */
 
 // ปีปัจจุบันในฟุตเตอร์
 (() => {
@@ -6,24 +6,23 @@
   if (el) el.textContent = new Date().getFullYear();
 })();
 
-// ไฮไลต์เมนูอัตโนมัติทั้งเมนูบน (เดสก์ท็อป) และเมนูล่าง (มือถือ)
+// ไฮไลต์เมนู active ทั้งบนและล่าง (อ้างอิงชื่อไฟล์ปัจจุบัน)
 (() => {
-  const highlight = (menuEl) => {
+  const setActive = (menuEl) => {
     if (!menuEl) return;
     const links = [...menuEl.querySelectorAll('a')];
-    const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
     const toFile = (href) => {
       try { const u = new URL(href, location.origin); return (u.pathname.split('/').pop() || 'index.html').toLowerCase(); }
       catch { return href; }
     };
     links.forEach(a=>{
-      const f = toFile(a.getAttribute('href'));
-      const isIndex = (f === '' || f === '#' || f === 'index.html');
-      const active = (isIndex && (path === '' || path === 'index.html')) || f === path;
+      const file = toFile(a.getAttribute('href'));
+      const isIndex = (file===''||file==='#'||file==='index.html');
+      const active = (isIndex && (current===''||current==='index.html')) || file===current;
       a.classList.toggle('active', !!active);
     });
   };
-
-  highlight(document.getElementById('navMenuTop'));   // เมนูบน (เดสก์ท็อป)
-  highlight(document.getElementById('bottomNav'));    // เมนูล่าง (มือถือ)
+  setActive(document.getElementById('navMenuTop')); // desktop
+  setActive(document.getElementById('bottomNav'));  // mobile bottom nav
 })();
