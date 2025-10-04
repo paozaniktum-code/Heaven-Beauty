@@ -3,93 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Heaven and Beauty - สปาและบริการ</title>
-
-  <!-- CSS -->
+  <title>สปาและบริการนวด | Heaven and Beauty</title>
   <link rel="stylesheet" href="assets/style.css" />
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <meta name="description" content="ผ่อนคลายไปกับสปา Heaven & Beauty — นวดแผนไทย นวดอโรม่า และบริการเพื่อสุขภาพ" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="container">
-      <nav class="navbar" aria-label="หลัก">
+      <nav class="navbar">
         <div class="nav-left">
-          <a href="index.html" class="brand" aria-label="Heaven and Beauty">
-            <img src="https://i.postimg.cc/q7Z9WpbC/Black-and-White-Elegant-Floral-Beauty-Salon-Logo.png" alt="โลโก้ Heaven and Beauty" />
-          </a>
-          <ul class="nav-menu" id="navMenu">
+          <a href="index.html" class="brand"><img src="https://i.postimg.cc/q7Z9WpbC/Black-and-White-Elegant-Floral-Beauty-Salon-Logo.png" alt="Heaven and Beauty"></a>
+          <ul class="nav-menu" id="navMenuTop">
             <li><a href="index.html">หน้าแรก</a></li>
             <li><a href="products.html">ผลิตภัณฑ์</a></li>
             <li><a href="about.html">เกี่ยวกับเรา</a></li>
             <li><a href="services.html" class="active">สปา</a></li>
-            <li><a href="wellness.html">Wellness</a></li>
             <li><a href="contact.html">ติดต่อ</a></li>
           </ul>
-        </div>
-        <div class="nav-right">
-          <button class="hamburger-btn" id="hamburger" aria-label="เปิด/ปิดเมนู">
-            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-          </button>
         </div>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container inner">
+  <section class="page-hero">
+    <div class="inner">
       <h1>สปาและบริการนวด</h1>
-      <p>สัมผัสการผ่อนคลายอย่างแท้จริงด้วยศาสตร์การบำบัดและสปาจาก Heaven & Beauty</p>
     </div>
   </section>
 
-  <!-- Services -->
   <section class="services">
     <div class="container">
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon"><i class="fas fa-spa" aria-hidden="true"></i></div>
+          <div class="service-icon"><i class="fas fa-spa"></i></div>
           <h3>นวดอโรมาเธอราปี</h3>
           <p>ผ่อนคลายด้วยน้ำมันหอมระเหยบริสุทธิ์ ลดความเครียดและบำรุงผิวพรรณ</p>
           <div class="service-price">60 นาที / ฿1,200</div>
-          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" class="line-btn">จองผ่าน LINE</a>
+          <a href="https://lin.ee/piYhcCd" target="_blank" class="line-btn">จองผ่าน LINE</a>
         </div>
         <div class="service-card">
-          <div class="service-icon"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i></div>
+          <div class="service-icon"><i class="fas fa-hand-holding-heart"></i></div>
           <h3>นวดแผนไทย</h3>
-          <p>ศาสตร์แห่งการบำบัดแบบดั้งเดิม ช่วยคลายกล้ามเนื้อและปรับสมดุลร่างกาย</p>
+          <p>ศาสตร์แห่งการบำบัดแบบดั้งเดิม คลายกล้ามเนื้อและปรับสมดุลร่างกาย</p>
           <div class="service-price">90 นาที / ฿990</div>
-          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" class="line-btn">จองผ่าน LINE</a>
+          <a href="https://lin.ee/piYhcCd" target="_blank" class="line-btn">จองผ่าน LINE</a>
         </div>
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-hot-tub" aria-hidden="true"></i></div>
+          <div class="service-card">
+          <div class="service-icon"><i class="fas fa-hot-tub"></i></div>
           <h3>สปาหินร้อน</h3>
-          <p>ใช้หินภูเขาไฟเพื่อผ่อนคลายกล้ามเนื้อส่วนลึก กระตุ้นการไหลเวียนโลหิต</p>
+          <p>ใช้หินภูเขาไฟเพื่อผ่อนคลายกล้ามเนื้อ กระตุ้นการไหลเวียนโลหิต</p>
           <div class="service-price">75 นาที / ฿1,800</div>
-          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" class="line-btn">จองผ่าน LINE</a>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-water" aria-hidden="true"></i></div>
-          <h3>อ่างจากุซซี่สมุนไพร</h3>
-          <p>แช่ตัวในน้ำสมุนไพรอุ่นๆ เพิ่มการผ่อนคลายและฟื้นฟูร่างกาย</p>
-          <div class="service-price">45 นาที / ฿1,500</div>
-          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" class="line-btn">จองผ่าน LINE</a>
+          <a href="https://lin.ee/piYhcCd" target="_blank" class="line-btn">จองผ่าน LINE</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; <span id="year"></span> Heaven &amp; Beauty. ดูแลความงามและสุขภาพด้วยใจ</p>
+      <p>&copy; <span id="year"></span> Heaven &amp; Beauty</p>
     </div>
   </footer>
 
-  <!-- JS -->
+  <nav class="bottom-nav" id="bottomNav" aria-label="เมนูล่าง">
+    <a href="index.html"><i class="fas fa-home"></i><span>หน้าแรก</span></a>
+    <a href="products.html"><i class="fas fa-box-open"></i><span>ผลิตภัณฑ์</span></a>
+    <a href="about.html"><i class="fas fa-info-circle"></i><span>เกี่ยวกับเรา</span></a>
+    <a href="services.html"><i class="fas fa-spa"></i><span>สปา</span></a>
+    <a href="contact.html"><i class="fas fa-phone-alt"></i><span>ติดต่อ</span></a>
+  </nav>
+
   <script src="assets/app.js"></script>
 </body>
 </html>
