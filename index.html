@@ -6,7 +6,7 @@
   <title>Heaven and Beauty - Wellness & Organic Beauty</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="assets/style.css?v=8" />
+  <link rel="stylesheet" href="assets/style.css?v=9" />
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <meta name="description" content="Heaven and Beauty — Wellness & Organic Beauty ศูนย์รวมผลิตภัณฑ์ออร์แกนิค สปา และเวลเนส" />
@@ -20,28 +20,19 @@
           <a href="index.html" class="brand" aria-label="Heaven and Beauty">
             <img src="https://i.postimg.cc/q7Z9WpbC/Black-and-White-Elegant-Floral-Beauty-Salon-Logo.png" alt="โลโก้ Heaven and Beauty" />
           </a>
+          <!-- เดสก์ท็อป: เมนูด้านบน (มือถือจะถูกซ่อนผ่าน CSS) -->
+          <ul class="nav-menu" id="navMenuTop">
+            <li><a href="index.html" class="active">หน้าแรก</a></li>
+            <li><a href="products.html">ผลิตภัณฑ์</a></li>
+            <li><a href="about.html">เกี่ยวกับเรา</a></li>
+            <li><a href="services.html">สปา</a></li>
+            <li><a href="wellness.html">Wellness</a></li>
+            <li><a href="contact.html">ติดต่อ</a></li>
+          </ul>
         </div>
-
-        <!-- ปุ่มเมนูมือถือ -->
-        <button class="hamburger-btn" id="hamburger" aria-label="เปิด/ปิดเมนู" aria-expanded="false" aria-controls="navMenu">
-          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </button>
-
-        <!-- เมนูหลัก (เดสก์ท็อปปกติ / มือถือเป็น drawer) -->
-        <ul class="nav-menu" id="navMenu">
-          <li><a href="index.html" class="active">หน้าแรก</a></li>
-          <li><a href="products.html">ผลิตภัณฑ์</a></li>
-          <li><a href="about.html">เกี่ยวกับเรา</a></li>
-          <li><a href="services.html">สปา</a></li>
-          <li><a href="wellness.html">Wellness</a></li>
-          <li><a href="contact.html">ติดต่อ</a></li>
-        </ul>
       </nav>
     </div>
   </header>
-
-  <!-- Backdrop สำหรับมือถือ -->
-  <div id="mobileBackdrop" aria-hidden="true"></div>
 
   <!-- Hero -->
   <section class="hero" id="home">
@@ -100,7 +91,6 @@
           </div>
         </div>
       </div>
-      <!-- ปุ่ม "ดูทั้งหมดในหน้าผลิตภัณฑ์" ถูกลบออก -->
     </div>
   </section>
 
@@ -178,7 +168,16 @@
     </div>
   </footer>
 
+  <!-- Bottom Navigation (แสดงเฉพาะมือถือ) -->
+  <nav class="bottom-nav" id="bottomNav" aria-label="เมนูล่าง">
+    <a href="index.html" class="bn-item"><i class="fas fa-home"></i><span>หน้าแรก</span></a>
+    <a href="products.html" class="bn-item"><i class="fas fa-box-open"></i><span>ผลิตภัณฑ์</span></a>
+    <a href="services.html" class="bn-item"><i class="fas fa-spa"></i><span>สปา</span></a>
+    <a href="wellness.html" class="bn-item"><i class="fas fa-heart"></i><span>Wellness</span></a>
+    <a href="contact.html" class="bn-item"><i class="fas fa-phone-alt"></i><span>ติดต่อ</span></a>
+  </nav>
+
   <!-- JS -->
-  <script src="assets/app.js?v=8"></script>
+  <script src="assets/app.js?v=9"></script>
 </body>
 </html>
