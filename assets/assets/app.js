@@ -1,50 +1,148 @@
-// assets/app.js
+/* assets/app.js — Heaven & Beauty */
 
-(function(){
-  // ปีใน footer
-  const y = document.getElementById('year');
-  if (y) y.textContent = new Date().getFullYear();
-
-  // ฟังก์ชันตั้ง active ให้ลิงก์เมนู ตามไฟล์ที่เปิด
-  const setActive = (selector) => {
-    const nav = document.querySelector(selector);
-    if (!nav) return;
-    const links = nav.querySelectorAll('a[href]');
-    if (!links.length) return;
-
-    // ไฟล์ปัจจุบัน (รองรับ index.html)
-    const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-
-    // Helper: คืนชื่อไฟล์จาก href (รองรับลิงก์สัมพัทธ์)
-    const normalize = (href) => {
-      try{
-        const u = new URL(href, location.origin);
-        const f = (u.pathname.split('/').pop() || 'index.html').toLowerCase();
-        return f || 'index.html';
-      }catch{
-        return href.toLowerCase();
-      }
+// ===== Utils =====
+const HB = (() => {
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+  const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+  const debounce = (fn, wait = 120) => {
+    let t;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn.apply(null, args), wait);
     };
+  };
+  return { $, $$, clamp, debounce };
+})();
 
-    let matched = false;
-    links.forEach(a=>{
-      const file = normalize(a.getAttribute('href') || '');
-      const isIndexLink = (file==='' || file==='#' || file==='index.html');
+// ===== Footer year =====
+(() => {
+  const el = document.getElementById('year');
+  if (el) el.textContent = new Date().getFullYear();
+})();
 
-      const active =
-        (isIndexLink && (current==='' || current==='index.html')) ||
-        (file === current);
-
-      a.classList.toggle('active', !!active);
-      if (active) matched = true;
+// ===== Smooth scroll for in-page anchors (#...) =====
+(() => {
+  HB.$$('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (!href || href.length <= 1) return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+  });
+})();
 
-    // ถ้าไม่มีลิงก์ไหนแมตช์เลย: ไม่ทำอะไร ปล่อยตาม HTML เดิม
+// ===== Active state for Header menu + Bottom Navigation =====
+(() => {
+  // คืนชื่อไฟล์ปัจจุบันแบบ normalize (ตัด query, hash และโฟลเดอร์)
+  const getCurrentFile = () => {
+    const path = window.location.pathname;
+    let file = path.split('/').pop() || 'index.html';
+    // บาง host อาจให้ path ว่าง ให้ใช้ index.html
+    if (file === '' || file === '/') file = 'index.html';
+    // ลบ query/hash
+    file = file.split('?')[0].split('#')[0];
+    return file.toLowerCase();
   };
 
-  // ตั้ง active ให้ทั้ง header และ bottom-nav
-  document.addEventListener('DOMContentLoaded', ()=>{
-    setActive('header .nav-menu');
-    setActive('.bottom-nav');
+  // แปลง href หรือ data-page -> ชื่อไฟล์
+  const normalizeFileFromLink = (a) => {
+    // รองรับ data-page (แนะนำให้ใส่ใน bottom nav)
+    const data = a.getAttribute('data-page');
+    const raw = (data && data.trim()) || a.getAttribute('href') || '';
+    // รองรับกรณีเป็นลิงก์เต็มรูปแบบ
+    try {
+      const url = new URL(raw, window.location.origin);
+      const file = (url.pathname.split('/').pop() || 'index.html')
+        .split('?')[0].split('#')[0];
+      return (file || 'index.html').toLowerCase();
+    } catch {
+      // กรณีเป็น # หรือ path สั้นๆ
+      if (raw.startsWith('#')) return getCurrentFile();
+      const parts = raw.split('/').pop() || 'index.html';
+      return parts.split('?')[0].split('#')[0].toLowerCase();
+    }
+  };
+
+  const current = getCurrentFile();
+
+  // header
+  const headerLinks = HB.$$('#navMenuTop a');
+  headerLinks.forEach(a => {
+    const file = normalizeFileFromLink(a);
+    if (file === current) a.classList.add('active');
+    else a.classList.remove('active');
+  });
+
+  // bottom nav
+  const bottomLinks = HB.$$('.bottom-nav a');
+  bottomLinks.forEach(a => {
+    const file = normalizeFileFromLink(a);
+    if (file === current) a.classList.add('active');
+    else a.classList.remove('active');
+  });
+})();
+
+// ===== Hide/Show Bottom Nav on scroll (mobile UX) =====
+(() => {
+  const nav = document.querySelector('.bottom-nav');
+  if (!nav) return;
+
+  let lastY = window.scrollY;
+  let acc = 0; // สะสมความต่างเพื่อตัดสินใจซ่อน/โชว์
+  const MAX_OFFSET = 56; // ขนาดเลื่อนที่ต้องการก่อนซ่อน/โชว์
+
+  const apply = () => {
+    nav.style.transform = `translateY(${acc}px)`;
+  };
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    const diff = HB.clamp(y - lastY, -12, 12); // จำกัดความเร็วการซ่อน/โชว์
+    lastY = y;
+
+    // เลื่อนลง -> ซ่อน (แปลเป็นบวก), เลื่อนขึ้น -> โชว์ (กลับศูนย์)
+    acc = HB.clamp(acc + diff, 0, MAX_OFFSET);
+    // ถ้าขึ้นแรงๆ ให้โชว์ทันที
+    if (diff < -8) acc = 0;
+
+    apply();
+  };
+
+  const onResize = () => {
+    // รีเซ็ตเมื่อเปลี่ยนแนว/ขนาดหน้าจอ
+    acc = 0;
+    apply();
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', HB.debounce(onResize, 150));
+})();
+
+// ===== Product filter (ทำงานเฉพาะหน้าที่มีปุ่ม .category-btn) — ปลอดภัยถ้าไม่มี =====
+(() => {
+  const btns = HB.$$('.category-btn');
+  const cards = HB.$$('.product-card');
+  if (!btns.length || !cards.length) return;
+
+  // Inject keyframes เฉพาะตอนใช้งาน
+  const style = document.createElement('style');
+  style.innerHTML = '@keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}';
+  document.head.appendChild(style);
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.category;
+      cards.forEach(c => {
+        const show = (cat === 'all' || c.dataset.category === cat);
+        c.style.display = show ? 'block' : 'none';
+        if (show) c.style.animation = 'fadeInUp .5s ease forwards';
+      });
+    });
   });
 })();
