@@ -54,8 +54,7 @@ header{
   color:#434343; font-weight:600; white-space:nowrap;
 }
 .nav-menu a:hover,.nav-menu a.active{ background:rgba(0,0,0,.06) }
-/* hamburger ไม่ใช้แล้ว (ถ้ามีใน DOM จะถูกซ่อนไว้) */
-.hamburger-btn{ display:none }
+.hamburger-btn{ display:none } /* ไม่ใช้อีกต่อไป */
 
 /* ===== Hero */
 .hero{
@@ -97,7 +96,6 @@ section{ scroll-margin-top:80px }
   box-shadow:0 10px 30px rgba(0,0,0,.08); border:2px solid transparent; transition:.25s ease
 }
 .product-card:hover{ transform:translateY(-8px); box-shadow:0 20px 40px rgba(233,30,99,.16); border-color:rgba(233,30,99,.25) }
-/* รูปสินค้าใหญ่ขึ้น */
 .product-image{ display:flex; justify-content:center; align-items:center; margin-bottom:16px; min-height:clamp(220px,30vw,300px) }
 .product-image img{
   width:clamp(200px,28vw,280px); height:clamp(200px,28vw,280px);
@@ -168,7 +166,7 @@ section{ scroll-margin-top:80px }
 .service-card p{ color:#666; line-height:1.6; font-size:.95rem; margin:0 0 10px }
 .service-price{ font-weight:800; color:var(--brand-2); margin:12px 0 18px; font-size:1.1rem }
 
-/* ===== Features (used as wellness section on index) */
+/* ===== Features */
 .features{ padding:64px 0 }
 .features h2{ text-align:center; color:var(--brand); font-size:clamp(22px,3vw,32px); margin:0 0 24px }
 .features-grid{ display:grid; gap:18px; grid-template-columns:repeat(3,minmax(0,1fr)) }
@@ -211,13 +209,13 @@ section{ scroll-margin-top:80px }
 /* ===== Footer */
 footer{ text-align:center; color:#666; padding:28px 0; background:rgba(255,255,255,.8) }
 
-/* ===== Bottom Navigation (Mobile) — Horizontal */
+/* ===== Bottom Navigation (Mobile) */
 .bottom-nav{
   position:fixed; left:0; right:0; bottom:0; z-index:120;
   background:var(--nav-bg);
   box-shadow:0 -10px 30px rgba(0,0,0,.08);
   border-top:1px solid rgba(0,0,0,.06);
-  display:none; /* เปิดในมือถือด้านล่าง */
+  display:none; /* เปิดเฉพาะมือถือ */
 }
 .bottom-nav .inner{
   max-width:var(--max-w-desktop); margin:0 auto; padding:10px 12px;
@@ -227,17 +225,12 @@ footer{ text-align:center; color:#666; padding:28px 0; background:rgba(255,255,2
   flex:1 1 0; min-width:0;
   text-decoration:none; color:var(--nav-muted);
   display:flex; flex-direction:column; align-items:center; justify-content:center;
-  gap:6px; padding:8px 6px; border-radius:14px; font-size:.8rem; font-weight:700;
+  gap:6px; padding:8px 6px; border-radius:14px; font-size:.82rem; font-weight:700;
   transition:transform .16s ease, background .16s ease, color .16s ease;
 }
-.bottom-nav a .icon{ font-size:1.2rem; line-height:1; display:block }
+.bottom-nav a .icon{ font-size:1.22rem; line-height:1; display:block }
 .bottom-nav a.active{ color:var(--nav-active); background:rgba(233,30,99,.08) }
 .bottom-nav a:active{ transform:scale(.98) }
-.bottom-nav a.active::after{
-  content:""; width:6px; height:6px; border-radius:50%;
-  background:var(--nav-active); display:block; margin-top:2px;
-  box-shadow:0 0 0 6px rgba(233,30,99,.12);
-}
 
 /* ===== Responsive */
 @media (max-width:1199px){
@@ -250,10 +243,19 @@ footer{ text-align:center; color:#666; padding:28px 0; background:rgba(255,255,2
   .about .stats{ justify-content:center }
   .two-col{ grid-template-columns:1fr }
 }
+
+@media (min-width:769px){
+  /* เดสก์ท็อป/แท็บเล็ต: ใช้เมนูบน header */
+  header .nav-menu{ display:flex !important; gap:24px !important; }
+  .bottom-nav{ display:none !important; }
+}
+
 @media (max-width:768px){
-  body{ padding-top:60px; padding-bottom:72px } /* เผื่อพื้นที่ Bottom Nav */
-  .nav-menu{ display:none }                   /* ซ่อนเมนูบน header */
-  .bottom-nav{ display:block }                /* แสดง Bottom Nav */
+  /* มือถือ: ซ่อนเมนูบน header ใช้ Bottom Nav แนวนอน */
+  header .nav-menu{ display:none !important; }
+  .bottom-nav{ display:block !important; }
+  body{ padding-bottom:76px; } /* กันถูกเมนูล่างบัง */
+
   .hero .inner{ padding:44px 16px }
   .products .products-grid{ grid-template-columns:1fr }
   .product-image{ min-height:220px }
@@ -262,133 +264,4 @@ footer{ text-align:center; color:#666; padding:28px 0; background:rgba(255,255,2
   .features-grid{ grid-template-columns:1fr }
   .contact-info{ grid-template-columns:1fr }
   .luxury-frame{ height:340px }
-}
-/* ===== Fix Bottom Navigation to Horizontal ===== */
-@media (max-width: 768px){
-  .bottom-nav{
-    display:block;
-    position:fixed; left:0; right:0; bottom:0;
-    background:#fff;
-    border-top:1px solid rgba(0,0,0,.1);
-    box-shadow:0 -4px 12px rgba(0,0,0,.1);
-    z-index:999;
-  }
-
-  .bottom-nav .inner{
-    display:flex;                /* แนวนอน */
-    flex-direction:row;          /* ยืนยันว่าต้องเรียงเป็นแถว */
-    justify-content:space-around;
-    align-items:center;
-    gap:6px;
-    padding:8px 12px;
-    max-width:1200px;
-    margin:0 auto;
-  }
-
-  .bottom-nav a{
-    flex:1;                      /* ให้ปุ่มกว้างเท่าๆ กัน */
-    text-align:center;
-    text-decoration:none;
-    color:#9ca3af;
-    display:flex;
-    flex-direction:column;       /* ไอคอนบน ข้อความล่าง */
-    align-items:center;
-    justify-content:center;
-    padding:6px 4px;
-    border-radius:10px;
-    font-size:.82rem;
-    font-weight:700;
-    transition:all .2s ease;
-  }
-
-  .bottom-nav a .icon{
-    font-size:1.2rem;
-    margin-bottom:2px;
-  }
-
-  .bottom-nav a.active{
-    color:#e91e63;
-    background:rgba(233,30,99,.08);
-  }
-
-  .bottom-nav a:active{ transform:scale(.95) }
-
-  body{ padding-bottom:72px } /* กันโดนเมนูล่างบัง */
-}
-/* ===== FIX: Desktop header & Mobile bottom nav (force layout) ===== */
-
-/* เดสก์ท็อป/แท็บเล็ต: แสดงเมนูบน header เสมอ, ซ่อน bottom-nav */
-@media (min-width: 769px){
-  header .nav-menu{
-    display:flex !important;
-    gap:24px !important;
-  }
-  .bottom-nav{
-    display:none !important;
-  }
-}
-
-/* มือถือ: ซ่อนเมนูบน header, ใช้ Bottom Nav เป็นหลัก (แนวนอน) */
-@media (max-width: 768px){
-
-  /* กัน header menu โผล่มาซ้อน */
-  header .nav-menu{
-    display:none !important;
-  }
-
-  /* เผื่อพื้นที่ให้ bottom-nav */
-  body{
-    padding-bottom: 76px !important;
-  }
-
-  /* bottom-nav แสดงและเรียงเป็นแนวนอนแน่นอน */
-  .bottom-nav{
-    position:fixed; left:0; right:0; bottom:0; z-index:120;
-    display:block !important;
-    background:#fff;
-    border-top:1px solid rgba(0,0,0,.08);
-    box-shadow:0 -8px 24px rgba(0,0,0,.08);
-  }
-  /* รองรับทั้ง .inner และ ul>li */
-  .bottom-nav .inner,
-  .bottom-nav > ul{
-    display:flex !important;
-    flex-direction:row !important;
-    justify-content:space-between !important;
-    align-items:center !important;
-    gap:8px !important;
-    max-width: 1200px;
-    margin:0 auto;
-    padding:10px 12px;
-  }
-  .bottom-nav li{
-    list-style:none !important;
-    flex:1 1 0 !important;
-    min-width:0 !important;
-    margin:0 !important;
-    padding:0 !important;
-  }
-  .bottom-nav a{
-    flex:1 1 0 !important;
-    min-width:0 !important;
-    width:100% !important;
-    text-decoration:none !important;
-    color:#9ca3af !important;
-    display:flex !important;
-    flex-direction:column !important; /* ไอคอนบน/ข้อความล่าง */
-    align-items:center !important;
-    justify-content:center !important;
-    gap:6px !important;
-    padding:8px 6px !important;
-    border-radius:14px !important;
-    font-size:.82rem !important;
-    font-weight:700 !important;
-    transition:transform .16s ease, background .16s ease, color .16s ease !important;
-  }
-  .bottom-nav a .icon{ font-size:1.22rem; line-height:1 }
-  .bottom-nav a.active{
-    color:#e91e63 !important;
-    background:rgba(233,30,99,.08) !important;
-  }
-  .bottom-nav a:active{ transform:scale(.98) }
 }
