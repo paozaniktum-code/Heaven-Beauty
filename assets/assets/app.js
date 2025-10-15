@@ -133,3 +133,78 @@ const HB = (() => {
     });
   });
 })();
+// ===== Build Mobile Cards from Price Table =====
+(function buildPriceCards(){
+  const table = document.getElementById('price-table');
+  const cardsWrap = document.getElementById('price-cards');
+  if(!table || !cardsWrap) return;
+
+  // ดึง labels ของคอลัมน์ (ยกเว้นคอลัมน์แรก)
+  const ths = Array.from(table.querySelectorAll('thead th')).map(th=>{
+    // ใช้บรรทัดบนเป็น label หลัก
+    const parts = th.innerHTML.split('<br>');
+    return parts[0]?.replace(/<[^>]+>/g,'').trim();
+  });
+
+  const durationLabels = ths.slice(1); // ข้าม "รายการ"
+
+  // สร้างการ์ดจากแต่ละแถว
+  const rows = Array.from(table.querySelectorAll('tbody tr'));
+  const frag = document.createDocumentFragment();
+
+  rows.forEach(tr=>{
+    const th = tr.querySelector('th.service');
+    const tds = Array.from(tr.querySelectorAll('td'));
+    if(!th || tds.length === 0) return;
+
+    // ชื่อไทย + อังกฤษ
+    const nameThai = th.childNodes[0]?.textContent?.trim() || '';
+    const nameEng  = th.querySelector('small')?.textContent?.trim() || '';
+
+    // สร้างDOMการ์ด
+    const card = document.createElement('article');
+    card.className = 'price-card';
+
+    const head = document.createElement('div');
+    head.className = 'head';
+    head.innerHTML = `
+      <span class="dot" aria-hidden="true"></span>
+      <div>
+        <p class="title">${nameThai}</p>
+        ${nameEng ? `<p class="sub">${nameEng}</p>` : ``}
+      </div>
+    `;
+    card.appendChild(head);
+
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+
+    durationLabels.forEach((lbl, i)=>{
+      const price = (tds[i]?.textContent || '').trim();
+      if(!price) return;
+      const l = document.createElement('div');
+      l.className = 'lbl';
+      l.textContent = lbl;
+      const v = document.createElement('div');
+      v.className = 'val';
+      v.textContent = price;
+      grid.appendChild(l);
+      grid.appendChild(v);
+    });
+
+    card.appendChild(grid);
+    frag.appendChild(card);
+  });
+
+  cardsWrap.appendChild(frag);
+
+  // toggle aria-hidden ให้ถูกต้องตามโหมดหน้าจอ (ป้องกัน screen reader อ่านซ้ำ)
+  const mq = window.matchMedia('(max-width: 640px)');
+  const syncA11y = () => {
+    const isMobile = mq.matches;
+    table.setAttribute('aria-hidden', isMobile ? 'true' : 'false');
+    cardsWrap.setAttribute('aria-hidden', isMobile ? 'false' : 'true');
+  };
+  syncA11y();
+  mq.addEventListener('change', syncA11y);
+})();
