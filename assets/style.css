@@ -288,3 +288,45 @@ footer{ text-align:center; color:#666; padding:28px 0; background:rgba(255,255,2
   .bottom-nav .inner{ gap:8px; padding:8px 8px }
   .bottom-nav a{ font-size:11px; padding:9px 6px }
 }
+/* ===== Price Section ===== */
+.price-section { padding: 28px 0 64px; }
+.price-header { display:flex; align-items:center; gap:16px; margin-bottom:16px; }
+.price-header h2 { margin:0; font-size:clamp(22px,3.6vw,32px); letter-spacing:.2px; }
+.price-header .subtitle { margin:2px 0 0; color:#6b7280; }
+
+.price-logo {
+  width:64px; height:64px; object-fit:contain;
+  border-radius:999px; border:2px solid #f4a6c1;
+  background:#fff; padding:6px;
+}
+
+/* Table wrapper for scroll on small screens */
+.price-table-wrapper { background:#fff; border:1px solid #e5e7eb; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,.05); padding:16px; overflow:auto; }
+.price-table { width:100%; border-collapse:separate; border-spacing:0; min-width:860px; }
+.price-table thead th {
+  background:#fff0f6; color:#7a3a53;
+  text-align:center; padding:14px 10px; font-weight:700; border-bottom:2px solid #f4a6c1;
+}
+.price-table thead th small { display:block; color:#9ca3af; font-weight:600; margin-top:4px; }
+
+.price-table tbody th.service {
+  text-align:left; padding:14px 12px; font-weight:700; color:#111827; background:#fff; position:sticky; left:0;
+}
+.price-table tbody th.service small { display:block; color:#6b7280; font-weight:600; margin-top:4px; }
+
+.price-table tbody td {
+  text-align:center; padding:14px 10px; font-weight:600; color:#1f2937; background:#fff;
+}
+
+.price-table tbody tr:nth-child(odd) td,
+.price-table tbody tr:nth-child(odd) th.service { background:#fffafd; }
+
+.price-table th, .price-table td { border-right:1px solid #f1d3df; border-bottom:1px solid #f1d3df; }
+.price-table thead th:first-child { border-top-left-radius:12px; }
+.price-table thead th:last-child { border-top-right-radius:12px; }
+.price-table tbody tr:last-child th.service { border-bottom-left-radius:12px; }
+.price-table tbody tr:last-child td:last-child { border-bottom-right-radius:12px; }
+.price-table td:last-child, .price-table th:last-child { border-right:none; }
+
+.price-note { margin:12px 4px 0; color:#6b7280; font-size:14px; }
+.price-note a { color:#0ea5e9; font-weight:700; }
