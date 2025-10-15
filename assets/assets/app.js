@@ -1,4 +1,4 @@
-/* assets/app.js — Heaven & Beauty */
+/* assets/app.js — Heaven & Beauty (SAFE 2025-10-15) */
 
 // ===== Utils =====
 const HB = (() => {
@@ -6,11 +6,7 @@ const HB = (() => {
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
   const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
   const debounce = (fn, wait = 120) => {
-    let t;
-    return (...args) => {
-      clearTimeout(t);
-      t = setTimeout(() => fn.apply(null, args), wait);
-    };
+    let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn.apply(null, args), wait); };
   };
   return { $, $$, clamp, debounce };
 })();
@@ -50,8 +46,7 @@ const HB = (() => {
     const raw = (data && data.trim()) || a.getAttribute('href') || '';
     try {
       const url = new URL(raw, window.location.origin);
-      const file = (url.pathname.split('/').pop() || 'index.html')
-        .split('?')[0].split('#')[0];
+      const file = (url.pathname.split('/').pop() || 'index.html').split('?')[0].split('#')[0];
       return (file || 'index.html').toLowerCase();
     } catch {
       if (raw.startsWith('#')) return getCurrentFile();
@@ -62,19 +57,21 @@ const HB = (() => {
 
   const current = getCurrentFile();
 
-  const headerLinks = HB.$$('#navMenuTop a');
-  headerLinks.forEach(a => {
-    const file = normalizeFileFromLink(a);
-    if (file === current) a.classList.add('active');
-    else a.classList.remove('active');
-  });
+  const mark = (links) => {
+    links.forEach(a => {
+      const file = normalizeFileFromLink(a);
+      if (file === current) {
+        a.classList.add('active');
+        a.setAttribute('aria-current','page');
+      } else {
+        a.classList.remove('active');
+        a.removeAttribute('aria-current');
+      }
+    });
+  };
 
-  const bottomLinks = HB.$$('.bottom-nav a');
-  bottomLinks.forEach(a => {
-    const file = normalizeFileFromLink(a);
-    if (file === current) a.classList.add('active');
-    else a.classList.remove('active');
-  });
+  mark(HB.$$('#navMenuTop a'));
+  mark(HB.$$('.bottom-nav a'));
 })();
 
 // ===== Hide/Show Bottom Nav on scroll (mobile UX) =====
@@ -85,27 +82,18 @@ const HB = (() => {
   let lastY = window.scrollY;
   let acc = 0;
   const MAX_OFFSET = 56;
-
-  const apply = () => {
-    nav.style.transform = `translateY(${acc}px)`;
-  };
+  const apply = () => { nav.style.transform = `translateY(${acc}px)`; };
 
   const onScroll = () => {
     const y = window.scrollY;
     const diff = HB.clamp(y - lastY, -12, 12);
     lastY = y;
-
     acc = HB.clamp(acc + diff, 0, MAX_OFFSET);
-    if (diff < -8) acc = 0;
-
+    if (diff < -8) acc = 0; // scroll up -> reveal
     apply();
   };
 
-  const onResize = () => {
-    acc = 0;
-    apply();
-  };
-
+  const onResize = () => { acc = 0; apply(); };
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', HB.debounce(onResize, 150));
 })();
@@ -133,78 +121,98 @@ const HB = (() => {
     });
   });
 })();
-// ===== Build Mobile Cards from Price Table =====
-(function buildPriceCards(){
+
+// ===== Build Mobile Cards from Price Table (SAFE & ROBUST) =====
+(() => {
   const table = document.getElementById('price-table');
   const cardsWrap = document.getElementById('price-cards');
-  if(!table || !cardsWrap) return;
+  const wrapper = cardsWrap?.closest('.price-table-wrapper');
+  if(!table || !cardsWrap || !wrapper) return;
 
-  // ดึง labels ของคอลัมน์ (ยกเว้นคอลัมน์แรก)
-  const ths = Array.from(table.querySelectorAll('thead th')).map(th=>{
-    // ใช้บรรทัดบนเป็น label หลัก
-    const parts = th.innerHTML.split('<br>');
-    return parts[0]?.replace(/<[^>]+>/g,'').trim();
-  });
+  try{
+    // 1) Collect column labels (skip first "รายการ")
+    const headCells = Array.from(table.querySelectorAll('thead th'));
+    if(headCells.length < 2) return;
 
-  const durationLabels = ths.slice(1); // ข้าม "รายการ"
-
-  // สร้างการ์ดจากแต่ละแถว
-  const rows = Array.from(table.querySelectorAll('tbody tr'));
-  const frag = document.createDocumentFragment();
-
-  rows.forEach(tr=>{
-    const th = tr.querySelector('th.service');
-    const tds = Array.from(tr.querySelectorAll('td'));
-    if(!th || tds.length === 0) return;
-
-    // ชื่อไทย + อังกฤษ
-    const nameThai = th.childNodes[0]?.textContent?.trim() || '';
-    const nameEng  = th.querySelector('small')?.textContent?.trim() || '';
-
-    // สร้างDOMการ์ด
-    const card = document.createElement('article');
-    card.className = 'price-card';
-
-    const head = document.createElement('div');
-    head.className = 'head';
-    head.innerHTML = `
-      <span class="dot" aria-hidden="true"></span>
-      <div>
-        <p class="title">${nameThai}</p>
-        ${nameEng ? `<p class="sub">${nameEng}</p>` : ``}
-      </div>
-    `;
-    card.appendChild(head);
-
-    const grid = document.createElement('div');
-    grid.className = 'grid';
-
-    durationLabels.forEach((lbl, i)=>{
-      const price = (tds[i]?.textContent || '').trim();
-      if(!price) return;
-      const l = document.createElement('div');
-      l.className = 'lbl';
-      l.textContent = lbl;
-      const v = document.createElement('div');
-      v.className = 'val';
-      v.textContent = price;
-      grid.appendChild(l);
-      grid.appendChild(v);
+    const durationLabels = headCells.slice(1).map(th => {
+      // Clone to strip <small> and read only the main line
+      const clone = th.cloneNode(true);
+      clone.querySelectorAll('small').forEach(s => s.remove());
+      // Keep text before any line breaks
+      const text = (clone.textContent || '').replace(/\s+/g,' ').trim();
+      // If header is like "1 ชั่วโมง (1 hour)" we keep the Thai part before '('
+      return text.split('(')[0].trim() || text;
     });
 
-    card.appendChild(grid);
-    frag.appendChild(card);
-  });
+    // 2) Build cards from each row
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+    if(rows.length === 0) return;
 
-  cardsWrap.appendChild(frag);
+    const frag = document.createDocumentFragment();
 
-  // toggle aria-hidden ให้ถูกต้องตามโหมดหน้าจอ (ป้องกัน screen reader อ่านซ้ำ)
-  const mq = window.matchMedia('(max-width: 640px)');
-  const syncA11y = () => {
-    const isMobile = mq.matches;
-    table.setAttribute('aria-hidden', isMobile ? 'true' : 'false');
-    cardsWrap.setAttribute('aria-hidden', isMobile ? 'false' : 'true');
-  };
-  syncA11y();
-  mq.addEventListener('change', syncA11y);
+    rows.forEach(tr => {
+      // first cell = service name (th or td)
+      const firstCell = tr.querySelector('th, td');
+      const tds = Array.from(tr.querySelectorAll('td'));
+      if(!firstCell || tds.length === 0) return;
+
+      // Thai = first line; Eng = from <small> or remaining text
+      const thai = (firstCell.childNodes[0]?.textContent || firstCell.textContent || '')
+                    .split('\n')[0].trim();
+      const engSmall = firstCell.querySelector('small');
+      let eng = engSmall ? engSmall.textContent.trim() : '';
+      if(!eng){
+        const all = (firstCell.textContent || '').split('\n').map(s=>s.trim()).filter(Boolean);
+        if(all.length > 1) eng = all.slice(1).join(' ');
+      }
+
+      // Create card
+      const card = document.createElement('article');
+      card.className = 'price-card';
+
+      const head = document.createElement('div');
+      head.className = 'head';
+      head.innerHTML = `
+        <span class="dot" aria-hidden="true"></span>
+        <div>
+          <p class="title">${thai}</p>
+          ${eng ? `<p class="sub">${eng}</p>` : ``}
+        </div>`;
+      card.appendChild(head);
+
+      const grid = document.createElement('div');
+      grid.className = 'grid';
+
+      durationLabels.forEach((lbl, i) => {
+        const price = (tds[i]?.textContent || '').trim();
+        if(!price) return;
+        const l = document.createElement('div'); l.className = 'lbl'; l.textContent = lbl;
+        const v = document.createElement('div'); v.className = 'val'; v.textContent = price;
+        grid.appendChild(l); grid.appendChild(v);
+      });
+
+      card.appendChild(grid);
+      frag.appendChild(card);
+    });
+
+    // 3) Mount & enable mobile mode only if at least one card exists
+    if(frag.childNodes.length){
+      cardsWrap.innerHTML = '';
+      cardsWrap.appendChild(frag);
+      wrapper.classList.add('cards-ready'); // <-- used by CSS to hide table on mobile
+
+      // Accessibility: avoid duplicate reading
+      const mq = window.matchMedia('(max-width: 640px)');
+      const syncA11y = () => {
+        const isMobile = mq.matches;
+        table.setAttribute('aria-hidden', isMobile ? 'true' : 'false');
+        cardsWrap.setAttribute('aria-hidden', isMobile ? 'false' : 'true');
+      };
+      syncA11y();
+      mq.addEventListener('change', syncA11y);
+    }
+  }catch(err){
+    console.error('price-cards error:', err);
+    // Do nothing else => table remains visible as a safe fallback
+  }
 })();
