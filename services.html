@@ -6,77 +6,159 @@
   <title>สปาและบริการนวด | Heaven and Beauty</title>
   <link rel="stylesheet" href="assets/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+  <meta name="description" content="บริการสปาและนวด ผ่อนคลายทั้งตัว ออยคลายเครียด นวดไทย นวดเท้า พร้อมตารางราคาและจองคิวผ่าน LINE">
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="container">
-      <nav class="navbar">
+      <nav class="navbar" aria-label="เมนูหลัก">
         <div class="nav-left">
-          <a href="index.html" class="brand"><img src="https://i.postimg.cc/q7Z9WpbC/Black-and-White-Elegant-Floral-Beauty-Salon-Logo.png" alt="Heaven and Beauty"></a>
-          <ul class="nav-menu" id="navMenuTop">
-            <li><a href="index.html">หน้าแรก</a></li>
-            <li><a href="products.html">ผลิตภัณฑ์</a></li>
-            <li><a href="about.html">เกี่ยวกับเรา</a></li>
-            <li><a href="services.html" class="active">สปา</a></li>
-            <li><a href="contact.html">ติดต่อ</a></li>
+          <a href="index.html" class="brand" aria-label="Heaven and Beauty — กลับหน้าแรก">
+            <img src="https://i.postimg.cc/q7Z9WpbC/Black-and-White-Elegant-Floral-Beauty-Salon-Logo.png" alt="Heaven and Beauty">
+          </a>
+          <ul class="nav-menu" id="navMenuTop" role="menubar">
+            <li role="none"><a role="menuitem" href="index.html">หน้าแรก</a></li>
+            <li role="none"><a role="menuitem" href="products.html">ผลิตภัณฑ์</a></li>
+            <li role="none"><a role="menuitem" href="about.html">เกี่ยวกับเรา</a></li>
+            <li role="none"><a role="menuitem" class="active" href="services.html" aria-current="page">สปา</a></li>
+            <li role="none"><a role="menuitem" href="contact.html">ติดต่อ</a></li>
           </ul>
         </div>
       </nav>
     </div>
   </header>
 
-  <section class="page-hero">
-    <div class="inner">
+  <!-- Hero -->
+  <section class="page-hero" role="banner">
+    <div class="container inner">
       <h1>สปาและบริการนวด</h1>
+      <p style="margin:.4rem 0 0;color:#6b7280;max-width:720px">
+        พักผ่อน เติมพลัง ให้ร่างกายและจิตใจผ่อนคลายด้วยโปรแกรมนวดที่ออกแบบมาเพื่อคุณ
+      </p>
     </div>
   </section>
 
-  <section class="services">
+  <!-- Highlight Services (การ์ด 3 ใบ) -->
+  <section class="services" aria-labelledby="svc-heading">
     <div class="container">
+      <h2 id="svc-heading" style="margin:0 0 10px;font-size:clamp(20px,3.2vw,26px)">บริการยอดนิยม</h2>
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon"><i class="fas fa-spa"></i></div>
+          <div class="service-icon"><i class="fas fa-spa" aria-hidden="true"></i></div>
           <h3>นวดอโรมาเธอราปี</h3>
           <p>ผ่อนคลายด้วยน้ำมันหอมระเหยบริสุทธิ์ ลดความเครียดและบำรุงผิวพรรณ</p>
           <div class="service-price">60 นาที / ฿1,200</div>
-          <a href="https://lin.ee/piYhcCd" target="_blank" class="line-btn">จองผ่าน LINE</a>
+          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" class="line-btn" aria-label="จองนวดอโรมาเธอราปีผ่าน LINE">จองผ่าน LINE</a>
         </div>
+
         <div class="service-card">
-          <div class="service-icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <div class="service-icon"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i></div>
           <h3>นวดแผนไทย</h3>
           <p>ศาสตร์แห่งการบำบัดแบบดั้งเดิม คลายกล้ามเนื้อและปรับสมดุลร่างกาย</p>
           <div class="service-price">90 นาที / ฿990</div>
-          <a href="https://lin.ee/piYhcCd" target="_blank" class="line-btn">จองผ่าน LINE</a>
+          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" class="line-btn" aria-label="จองนวดแผนไทยผ่าน LINE">จองผ่าน LINE</a>
         </div>
-          <div class="service-card">
-          <div class="service-icon"><i class="fas fa-hot-tub"></i></div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-hot-tub" aria-hidden="true"></i></div>
           <h3>สปาหินร้อน</h3>
           <p>ใช้หินภูเขาไฟเพื่อผ่อนคลายกล้ามเนื้อ กระตุ้นการไหลเวียนโลหิต</p>
           <div class="service-price">75 นาที / ฿1,800</div>
-          <a href="https://lin.ee/piYhcCd" target="_blank" class="line-btn">จองผ่าน LINE</a>
+          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" class="line-btn" aria-label="จองสปาหินร้อนผ่าน LINE">จองผ่าน LINE</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Price Table (รวมเข้าเพจแล้ว) -->
+  <section class="price-section" aria-labelledby="price-heading">
+    <div class="container">
+      <div class="price-header">
+        <img src="assets/logo-spa.png" alt="แสมไทย นวดเพื่อสุขภาพ" class="price-logo" />
+        <div>
+          <h2 id="price-heading">ตารางราคาสปาและบริการนวด</h2>
+          <p class="subtitle">Price List — Spa &amp; Massage</p>
+        </div>
+      </div>
+
+      <div class="price-table-wrapper">
+        <table class="price-table" aria-describedby="price-note">
+          <thead>
+            <tr>
+              <th>รายการ<br><small>list</small></th>
+              <th>ครึ่งชั่วโมง<br><small>half an hour</small></th>
+              <th>1 ชั่วโมง<br><small>1 hour</small></th>
+              <th>1 ชั่วโมงครึ่ง<br><small>1 hour and a half</small></th>
+              <th>2 ชั่วโมง<br><small>2 hour</small></th>
+              <th>2 ชั่วโมงครึ่ง<br><small>2 hour and a half</small></th>
+              <th>3 ชั่วโมง<br><small>3 hour</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="service">นวดไทยทั้งตัว<br><small>Thai Full body massage</small></th>
+              <td>130</td><td>250</td><td>380</td><td>450</td><td>580</td><td>700</td>
+            </tr>
+            <tr>
+              <th class="service">นวดเท้า<br><small>Foot massage</small></th>
+              <td>130</td><td>250</td><td>380</td><td>450</td><td>580</td><td>700</td>
+            </tr>
+            <tr>
+              <th class="service">นวดไทยเน้นลึก<br><small>Deep Tissue Muscle — Thai Full body massage</small></th>
+              <td>180</td><td>350</td><td>530</td><td>650</td><td>830</td><td>1,000</td>
+            </tr>
+            <tr>
+              <th class="service">นวดหลัง คอ บ่า ไหล่<br><small>Back &amp; Shoulder</small></th>
+              <td>180</td><td>350</td><td>530</td><td>650</td><td>830</td><td>1,000</td>
+            </tr>
+            <tr>
+              <th class="service">นวดออยคลายเครียด<br><small>Relax Oil massage</small></th>
+              <td>180</td><td>350</td><td>530</td><td>650</td><td>830</td><td>1,000</td>
+            </tr>
+            <tr>
+              <th class="service">นวดออยเน้นลึก<br><small>Deep Tissue Muscle Oil massage</small></th>
+              <td>230</td><td>450</td><td>680</td><td>850</td><td>1,080</td><td>1,300</td>
+            </tr>
+          </tbody>
+        </table>
+        <p id="price-note" class="price-note">
+          * ทุกบริการรวมค่าบริการแล้ว — จองคิวผ่าน LINE:
+          <a href="https://lin.ee/piYhcCd" target="_blank" rel="noopener">คลิกที่นี่</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA แถบโปรโมชันเล็กๆ -->
+  <section aria-label="โปรโมชัน" style="padding:0 0 64px">
+    <div class="container">
+      <div style="background:linear-gradient(90deg,#fff0f6,#e0f2fe);border:1px solid #f4a6c1;border-radius:16px;padding:18px 20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;box-shadow:0 10px 24px rgba(0,0,0,.06)">
+        <p style="margin:0;color:#7a3a53;font-weight:700">จองล่วงหน้ารับส่วนลด ⭐</p>
+        <a class="line-btn" href="https://lin.ee/piYhcCd" target="_blank" rel="noopener" aria-label="กดเพื่อจองคิวผ่าน LINE">จองผ่าน LINE</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <div class="container">
       <p>&copy; <span id="year"></span> Heaven &amp; Beauty</p>
     </div>
   </footer>
-<!-- Bottom Navigation -->
-<div class="bottom-nav" role="navigation" aria-label="เมนูด้านล่าง">
-  <div class="inner">
-    <a href="index.html"     data-page="index.html">หน้าแรก</a>
-    <a href="products.html"  data-page="products.html">ผลิตภัณฑ์</a>
-    <a href="about.html"     data-page="about.html">เกี่ยวกับเรา</a>
-    <a href="services.html"  data-page="services.html">สปา</a>
-    <a href="contact.html"   data-page="contact.html">ติดต่อ</a>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav" role="navigation" aria-label="เมนูด้านล่าง">
+    <div class="inner">
+      <a href="index.html"     data-page="index.html">หน้าแรก</a>
+      <a href="products.html"  data-page="products.html">ผลิตภัณฑ์</a>
+      <a href="about.html"     data-page="about.html">เกี่ยวกับเรา</a>
+      <a href="services.html"  data-page="services.html">สปา</a>
+      <a href="contact.html"   data-page="contact.html">ติดต่อ</a>
+    </div>
   </div>
-</div>
 
-<!-- สคริปต์หลักของเว็บ (ให้แน่ใจว่ามีอยู่ทุกหน้า) -->
-<script src="assets/app.js"></script>
-
+  <!-- Main Scripts -->
+  <script src="assets/app.js"></script>
 </body>
 </html>
